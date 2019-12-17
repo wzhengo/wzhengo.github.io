@@ -1,1 +1,1 @@
-# doc.wz.com
+# docwz.github.io
