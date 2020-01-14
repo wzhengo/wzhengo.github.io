@@ -1,0 +1,444 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  01 Activity的生命周期和启动模式 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>01 Activity的生命周期和启动模式</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/02/26</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html'>开发艺术探索</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ol>
+<li>典型情况：在有用户参与的情况下，Activity所经过的生命周期的改变</li>
+<li>异常情况：Activity被系统回收或者由于当前设备的Configuration发生改变从而导致Activity被销毁重建。</li>
+</ol>
+
+<h2 id="toc_0">1.1 Activity的生命周期全面分析 / 1</h2>
+
+<h3 id="toc_1">1.1.1 典型情况下的生命周期分析 / 2</h3>
+
+<p><img src="media/15511960673056/15762206826291.jpg" alt="" style="width:473px;"/></p>
+
+<ul>
+<li>onStart和onResume，onPause和onStop的区别？
+<ul>
+<li>onStart和onStop是从Activity是否可见来回调的</li>
+<li>onResume和onPause是从Activity是否位于前台这个角度来回调的。</li>
+</ul></li>
+<li>当前Activity为A，打开ActivityB，A的onPause会先于B的onResume执行。所以不能在onPause中执行重量级的操作，因为onPause方法执行完新的Activity的onResume才可以执行。</li>
+</ul>
+
+<h3 id="toc_2">1.1.2 异常情况下的生命周期分析 / 8</h3>
+
+<p><strong>情况1：资源相关的系统配置发生改变导致Activity被杀死并重新创建</strong></p>
+
+<ol>
+<li>Activity异常状态终止时，系统会调用onSaveInstanceState来保存Activity的状态</li>
+<li>当Activity被重新创建时，系统会调用onRestoreInstanceState，同时把被销毁时保存的Bundle对象传递给方法。</li>
+<li>系统默认恢复的：文本框的输入、ListView的滚动位置</li>
+<li>保存和恢复View的层次结构：委托上层保存数据 Activity &gt; Window &gt; ViewGroup(DecorView) 委托思想 上层委托下层，父容器委托子元素处理事情。</li>
+</ol>
+
+<p><strong>情况2：内存资源不足导致低优先级的Activity被杀死</strong></p>
+
+<ol>
+<li>Activity按优先级从高到低：
+<ol>
+<li>前台Activity：正在和用户交互的Activity</li>
+<li>可见但非前台Activity：有弹窗的Activity</li>
+<li>后台Activity：已经被暂停的Activity</li>
+</ol></li>
+<li>系统配置发生改变时不重建Activity的方法：
+<ol>
+<li>android:configChange=&quot;orientation&quot;</li>
+</ol></li>
+</ol>
+
+<h2 id="toc_3">1.2 Activity的启动模式 / 16</h2>
+
+<h3 id="toc_4">1.2.1 Activity的LaunchMode / 16</h3>
+
+<p><strong>四种启动模式</strong></p>
+
+<ol>
+<li>standard：标准模式</li>
+<li>singtop：栈顶复用模式，位于栈顶时不会重复创建</li>
+<li>singleTask：栈内复用模式，实例以上Activity全部出栈，把实例调到栈顶。</li>
+<li>singleInstance：单实例模式，创建实例时会创建新的任务栈</li>
+</ol>
+
+<p><strong>TaskAffinity 任务相关性</strong></p>
+
+<ol>
+<li>taskAffinity：标识一个Activity所需要的任务栈的名字</li>
+<li>默认Activity的栈名为包名</li>
+<li>主要和singTask或allowTaskReparenting属性配对使用
+<ol>
+<li>taskAffinity+singleTask，待启动的Activity会运行在名字和TaskAffinity相同的任务栈中</li>
+<li>taskAffinity+allowTaskReparenting，应用A启动应用B的某个Activity后，此Activity的allowTaskReparenting为true时，此Activity会直接从应用A的任务栈转移到B的任务栈中。</li>
+</ol></li>
+</ol>
+
+<h3 id="toc_5">1.2.2 Activity的Flags / 27</h3>
+
+<p>Flags影响启动模式、运行状态等</p>
+
+<ol>
+<li>FLAG_ACTIVITY_NEW_TASK</li>
+<li>FLAG_ACTIVITY_SINGLE_TOP</li>
+<li>FLAG_ACTIVITY_CLEAR_TOP</li>
+<li>FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS</li>
+</ol>
+
+<h2 id="toc_6">1.3 IntentFilter的匹配规则 / 28</h2>
+
+<p>Activity的隐式调用需要Intent能够匹配目标组件的IntentFilter中的过滤信息，如果不匹配将无法启动目标Activity。</p>
+
+<p><strong>匹配规则：</strong></p>
+
+<ol>
+<li>一个intent-filter中可以有多个cation、category、data</li>
+<li>一个Intent同时匹配action、category、data 才算完全匹配，只有完全匹配才能成功启动目标Activity。</li>
+<li><p>一个Activity 中可以有多个intent-filter，只要能匹配任何一组intent-filter即可成功启动对应的Activity。</p></li>
+</ol>
+
+<ul>
+<li>action的匹配规则
+<ul>
+<li>要求Intent中的action存在，且必须和过滤规则中的其中一个action相同。</li>
+</ul></li>
+<li>category的匹配规则
+<ul>
+<li>要求Intent 中如果含有category,那么所有的category都必须和过滤规则中的其中一个category相同。</li>
+</ul></li>
+<li>data的匹配规则
+<ul>
+<li>如果过滤规则中定义了data, 那么Intent 中必须也要定义可匹配的data。</li>
+<li>data由两部分组成，mineType和URI。
+<ul>
+<li>mimeType指媒体类型，比如image/jpeg、audio/mpeg4-generic和video/*等，可以表示图片、文本、视频等不同的媒体格式。</li>
+<li>URI包含的数据就比较多了，URI结构：<code>scheme://host:port/path|pathPrefix|pathPattern</code></li>
+<li>Scheme、Host、Port、Path等</li>
+</ul></li>
+</ul></li>
+<li>隐式启动一个Activity时，可能出现错误，判断是否有Activity符合匹配规则：
+<ul>
+<li>PackageManager.resolveActivity或Intent.resolveActivity，返回最佳匹配的Activity信息</li>
+<li>queryIntentActivities，返回所有成功的Activity信息</li>
+</ul></li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15789733843338.html" 
+          title="Previous Post: 0 Android进阶解密-目录">&laquo; 0 Android进阶解密-目录</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15536968610805.html" 
+          title="Next Post: 01 Android新特性">01 Android新特性 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

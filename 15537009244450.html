@@ -1,0 +1,416 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  04 四大组件的工作过程 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>04 四大组件的工作过程</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/03/27</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html'>进阶解密</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">4.1 根Activity的启动过程</h2>
+
+<ol>
+<li>Launcher请求AMS过程</li>
+<li>AMS到ApplicationThread的调用过程</li>
+<li>ActivityThread启动Activity的过程</li>
+</ol>
+
+<h3 id="toc_1">4.1.1 Launcher请求AMS过程</h3>
+
+<p><img src="media/15537009244450/15768281426977.jpg" alt="" style="width:889px;"/></p>
+
+<h3 id="toc_2">4.1.2 AMS到ApplicationThread的调用过程</h3>
+
+<p><img src="media/15537009244450/15768281976932.jpg" alt="" style="width:849px;"/></p>
+
+<h3 id="toc_3">4.1.3 ActivityThread启动Activity的过程</h3>
+
+<p><img src="media/15537009244450/15768288851079.jpg" alt="" style="width:920px;"/></p>
+
+<h3 id="toc_4">4.1.4 根Activity启动过程中涉及的进程</h3>
+
+<p><img src="media/15537009244450/15768289325581.jpg" alt="" style="width:598px;"/></p>
+
+<p><img src="media/15537009244450/15768289840295.jpg" alt="" style="width:787px;"/></p>
+
+<h2 id="toc_5">4.2 Service的启动过程</h2>
+
+<ol>
+<li>ContextImpl到AMS的调用过程</li>
+<li>ActivityThread启动Service</li>
+</ol>
+
+<h3 id="toc_6">4.2.1 ContextImpl到AMS的调用过程</h3>
+
+<p><img src="media/15537009244450/15768290386139.jpg" alt="" style="width:801px;"/></p>
+
+<h3 id="toc_7">4.2.2 ActivityThread启动Service</h3>
+
+<p><img src="media/15537009244450/15768291077812.jpg" alt="" style="width:933px;"/></p>
+
+<h2 id="toc_8">4.3 Service的绑定过程</h2>
+
+<ol>
+<li>ContextImpl到AMS的调用过程</li>
+<li>Service的绑定过程</li>
+</ol>
+
+<h3 id="toc_9">4.3.1 ContextImpl到AMS的调用过程</h3>
+
+<p><img src="media/15537009244450/15768291875167.jpg" alt="" style="width:783px;"/></p>
+
+<h3 id="toc_10">4.3.2 Service的绑定过程</h3>
+
+<p><img src="media/15537009244450/15768292334460.jpg" alt="" style="width:810px;"/></p>
+
+<p><img src="media/15537009244450/15768292543038.jpg" alt="" style="width:938px;"/></p>
+
+<h2 id="toc_11">4.4 广播的注册、发送和接收过程</h2>
+
+<h3 id="toc_12">4.4.1 广播的注册过程</h3>
+
+<p><img src="media/15537009244450/15768292786702.jpg" alt="" style="width:806px;"/></p>
+
+<h3 id="toc_13">4.4.2 广播的发送和接收过程</h3>
+
+<ol>
+<li>ContextImpl到AMS的调用过程</li>
+<li>AMS到BroadcastReceiver的调用过程。</li>
+</ol>
+
+<p><img src="media/15537009244450/15768293074798.jpg" alt="" style="width:831px;"/></p>
+
+<p><img src="media/15537009244450/15768294354518.jpg" alt="" style="width:967px;"/></p>
+
+<h2 id="toc_14">4.5 Content Provider的启动过程</h2>
+
+<ol>
+<li>query方法到AMS的调用过程</li>
+<li>AMS启动Content Provider的过程</li>
+</ol>
+
+<h3 id="toc_15">4.5.1 query方法到AMS的调用过程</h3>
+
+<p><img src="media/15537009244450/15768294724962.jpg" alt="" style="width:817px;"/></p>
+
+<h3 id="toc_16">4.5.2 AMS启动Content Provider的过程</h3>
+
+<p><img src="media/15537009244450/15768295158004.jpg" alt="" style="width:911px;"/></p>
+
+<h2 id="toc_17">4.6 本章小结</h2>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15760471697724.html" 
+          title="Previous Post: 04 View的工作原理">&laquo; 04 View的工作原理</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15536970568598.html" 
+          title="Next Post: 04 多线程编程">04 多线程编程 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

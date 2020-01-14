@@ -1,0 +1,519 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  13 热修复原理 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>13 热修复原理</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/03/27</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html'>进阶解密</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">13.1 热修复的产生</h2>
+
+<h2 id="toc_1">13.2 热修复框架的种类和对比</h2>
+
+<h2 id="toc_2">13.3 资源修复</h2>
+
+<h3 id="toc_3">13.3.1 Instant Run概述</h3>
+
+<p>Instant Run是Android Studio 2.0以后新增的一个运行机制， 能够显著减少开发人员第二次及以后的构建和部署时间。在没有使用Instant Run前，我们编译部署应用程序的流程如图所示。</p>
+
+<p><img src="media/15537010271155/15777597312743.jpg" alt="" style="width:608px;"/></p>
+
+<p>从图13一1可以看出,传统的编译部署需要重新安装App和重启App,这显然会很耗时,Instant Run会避免这一情况， 如图所示。</p>
+
+<p><img src="media/15537010271155/15777597727284.jpg" alt="" style="width:879px;"/></p>
+
+<p>从上图可以看出InstantRun的构建和部署都是基于更改的部分的。InstantRun部署有三种方式，Instant Run会根据代码的情况来决定采用哪种部署方式，无论哪种方式都不需要重新安装App,这一点就已经提高了不少的效率。</p>
+
+<ul>
+<li>Hotswap:从名称也可以看出HotSwap是效率最高的部署方式，代码的增量改变不需要重启App,甚至不需要重启当前的Activity。 修改一个现有方法中的代码时会采用Hot Swap。</li>
+<li>Warm Swap: App不需重启，但是Activity 需要重启。修改或删除一个现有的资源文件时会采用WarmSwap。</li>
+<li>Cold Swap: App 需要重启，但是不需要重新安装。采用Cold Swap的情况很多，比如添加、删除或修改一个字段和方法、添加一个类等。</li>
+</ul>
+
+<h3 id="toc_4">13.3.2 Instant Run的资源修复</h3>
+
+<p>Instant Run中的资源热修复可以简单地总结为两个步骤:</p>
+
+<ol>
+<li>创建新的AssetManager, 通过反射调用addAssetPath方法加载外部的资源，这样新创建的AssetManager就含有了外部资源。</li>
+<li>将AssetManager类型的mAssets字段的引用全部替换为新创建的AssetManager。</li>
+</ol>
+
+<h2 id="toc_5">13.4 代码修复</h2>
+
+<p>代码修复主要有3个方案，分别是底层替换方案、类加载方案和Instant Run方案。</p>
+
+<h3 id="toc_6">13.4.1 类加载方案</h3>
+
+<p>类加载方案基于Dex分包方案，什么是Dex分包方案呢?这个得先从65536限制和LinearAlloc限制说起。</p>
+
+<p><strong>1. 65536限制</strong></p>
+
+<p>随着应用功能越来越复杂，代码量不断地增大，引入的库也越来越多，可能会在编译时提示如下异常:</p>
+
+<pre><code class="language-text">com. android. dex. DexIndexOverflowException: method ID not in [0， 0xffff] : 65536
+</code></pre>
+
+<p>这说明应用中引用的方法数超过了最大数65536个。产生这一问题的原因就是系统的65536限制，65536 限制的主要原因是DVM Bytecode的限制，DVM指令集的方法调用指令invoke-kind索引为16bits, 最多能引用65535个方法。</p>
+
+<p><strong>2. LinearAlloc 限制</strong></p>
+
+<p>在安装应用时可能会提示INSTALL_FAILED_DEXOPT,产生的原因就是LinearAlloc限制，DVM中的LinearAlloc是一个固定的缓存区，当方法数超出了缓存区的大小时会报错。</p>
+
+<p>为了解决65536限制和LinearAlloc限制，从而产生了Dex分包方案。Dex 分包方案主要做的是在打包时将应用代码分成多个Dex,将应用启动时必须用到的类和这些类的直接引用类放到主Dex中，其他代码放到次Dex中。当应用启动时先加载主Dex，等到应用启动后再动态地加载次Dex，从而缓解了主Dex的65536限制和LinearAlloc限制。</p>
+
+<p>Dex分包方案主要有两种，分别是Google官方方案、Dex自动拆包和动态加载方案。</p>
+
+<p>在12.2.3节中学习了ClassLoader的加载过程，其中一个环节就是调用DexPathList 的findClass的方法，如下所示:</p>
+
+<pre><code class="language-text"> public Class&lt;?&gt; findClass(String name, List&lt;Throwable&gt; suppressed) {
+        for (Element element : dexElements) {//1
+            Class&lt;?&gt; clazz = element.findClass(name, definingContext, suppressed);//2
+            if (clazz != null) {
+                return clazz;
+            }
+        }
+        if (dexElementsSuppressedExceptions != null) {
+            suppressed.addAll(Arrays.asList(dexElementsSuppressedExceptions));
+        }
+        return null;
+    }
+</code></pre>
+
+<p>Element内部封装了DexFile，DexFile用于加载dex文件，因此每个dex文件对应一个Element。</p>
+
+<p>多个Element组成了有序的Element数组dexElements。当要查找类时，会在注释1处遍历Element数组dexElements（相当于遍历dex文件数组），注释2处调用Element的findClass方法，其方法内部会调用DexFile的loadClassBinaryName方法查找类。如果在Element中（dex文件）找到了该类就返回，如果没有找到就接着在下一个Element中进行查找。<br/>
+根据上面的查找流程，我们将有bug的类Key.class进行修改，再将Key.class打包成包含dex的补丁包Patch.jar，放在Element数组dexElements的第一个元素，这样会首先找到Patch.dex中的Key.class去替换之前存在bug的Key.class，排在数组后面的dex文件中的存在bug的Key.class根据ClassLoader的双亲委托模式就不会被加载，这就是类加载方案，如下图所示。</p>
+
+<p><img src="media/15537010271155/15777610942927.jpg" alt="" style="width:641px;"/></p>
+
+<p>类加载方案需要重启App后让ClassLoader重新加载新的类，为什么需要重启呢？这是因为类是无法被卸载的，因此要想重新加载新的类就需要重启App，因此采用类加载方案的热修复框架是不能即时生效的。<br/>
+虽然很多热修复框架采用了类加载方案，但具体的实现细节和步骤还是有一些区别的：</p>
+
+<ul>
+<li>QQ空间的超级补丁和Nuwa是按照上面说得将补丁包放在Element数组的第一个元素得到优先加载。</li>
+<li>微信Tinker将新旧apk做了diff，得到patch.dex，然后将patch.dex与手机中apk的classes.dex做合并，生成新的classes.dex，然后在运行时通过反射将classes.dex放在Element数组的第一个元素。</li>
+<li>饿了么的Amigo则是将补丁包中每个dex 对应的Element取出来，之后组成新的Element数组，在运行时通过反射用新的Element数组替换掉现有的Element 数组。</li>
+</ul>
+
+<p>采用类加载方案的主要是以腾讯系为主，包括微信的Tinker、QQ空间的超级补丁、手机QQ的QFix、饿了么的Amigo和Nuwa等等。</p>
+
+<h3 id="toc_7">13.4.2 底层替换方案</h3>
+
+<p>与类加载方案不同的是，底层替换方案不会再次加载新类，而是直接在Native层修改原有类，由于是在原有类进行修改限制会比较多，不能够增减原有类的方法和字段，如果我们增加了方法数，那么方法索引数也会增加，这样访问方法时会无法通过索引找到正确的方法，同样的字段也是类似的情况。</p>
+
+<p>底层替换方案和反射的原理有些关联，就拿方法替换来说，</p>
+
+<ol>
+<li>方法反射我们可以调用java.lang.Class.getDeclaredMethod.invoke()</li>
+<li>invoke方法是个native方法，对应Jni层的代码为：<code>art/runtime/native/java_lang_reflect_Method.cc</code></li>
+<li>Method_invoke函数中又调用了InvokeMethod函数：<code>art/runtime/reflection.cc</code></li>
+<li>然后可以获取传入的javaMethod（Key的show方法）在ART虚拟机中对应的一个ArtMethod指针，ArtMethod结构体中包含了Java方法的所有信息，包括执行入口、访问权限、所属类和代码执行地址等等</li>
+<li>ArtMethod结构中比较重要的字段是dex_cache_resolved_methods_和的entry_point_from_quick_compiled_code_，它们是方法的执行入口，当我们调用某一个方法时（比如Key的show方法），就会取得show方法的执行入口，通过执行入口就可以跳过去执行show方法。替换ArtMethod结构体中的字段或者替换整个ArtMethod结构体，这就是底层替换方案。</li>
+</ol>
+
+<p>AndFix采用的是替换ArtMethod结构体中的字段，这样会有兼容问题，因为厂商可能会修改ArtMethod结构体，导致方法替换失败。Sophix采用的是替换整个ArtMethod结构体，这样不会存在兼容问题。</p>
+
+<p>底层替换方案直接替换了方法，可以立即生效不需要重启。采用底层替换方案主要是阿里系为主，包括AndFix、Dexposed、阿里百川、Sophix。</p>
+
+<h3 id="toc_8">13.4.3 Instant Run方案</h3>
+
+<p>除了资源修复，代码修复同样也可以借鉴Instant Run的原理， 可以说Instant Run的出现推动了热修复框架的发展。<br/>
+Instant Run在第一次构建apk时，使用ASM在每一个方法中注入了类似如下的代码：</p>
+
+<pre><code class="language-text">IncrementalChange localIncrementalChange = $change;//1
+        if (localIncrementalChange != null) {//2
+            localIncrementalChange.access$dispatch(
+                    &quot;onCreate.(Landroid/os/Bundle;)V&quot;, new Object[] { this,
+                            paramBundle });
+            return;
+        }
+</code></pre>
+
+<ol>
+<li>其中注释1处是一个成员变量localIncrementalChange ，它的值为\(change，\)change实现了IncrementalChange这个抽象接口。</li>
+<li>当我们点击InstantRun时，如果方法没有变化则$change为null，就调用return，不做任何处理。</li>
+<li>如果方法有变化，就生成替换类，
+<ol>
+<li>这里我们假设MainActivity的onCreate方法做了修改，就会生成替换类MainActivity$override，这个类实现了IncrementalChange接口，同时也会生成一个AppPatchesLoaderImpl类，</li>
+<li>这个类的getPatchedClasses方法会返回被修改的类的列表（里面包含了MainActivity），</li>
+<li>根据列表会将MainActivity的$change设置为MainActivity$override，因此满足了注释2的条件，会执行MainActivity$override的access$dispatch方法，</li>
+<li>accessdispatch方法中会根据参数&#39;onCreate.(Landroid/os/Bundle;)V;&#39;，执行&#39;MainActivityoverride&#39;的onCreate方法，从而实现了onCreate方法的修改。</li>
+</ol></li>
+</ol>
+
+<p>借鉴Instant Run的原理的热修复框架有Robust和Aceso。</p>
+
+<h2 id="toc_9">13.5 动态链接库的修复</h2>
+
+<p>Android平台的动态链接库主要指的是so库，为了更好地理解，本章动态链接库简称为so。热修复框架的so的修复的主要是更新so，换句话说就是重新加载so，因此so的修复的基础原理就是加载。</p>
+
+<h3 id="toc_10">13.5.1 System的load和loadLibarary方法</h3>
+
+<p>加载so主要用到了System类的load和loadLibarary方法。</p>
+
+<ul>
+<li>System的load方法传入的参数是so在磁盘的完整路径,用于加载指定路径的so。</li>
+<li>System的loadLibrary方法传入的参数是so的名称，用于加载App安装后自动从apk包中复制到/data/data/ packagename/lib下的so。</li>
+</ul>
+
+<p><strong>1. System的load方法</strong></p>
+
+<ol>
+<li>Runtime.getRuntime()会得到当前Java应用程序的运行环境Runtime</li>
+<li>调用了doLoad方法，并将加载该类的类加载器作为参数传入进去:</li>
+<li>doLoad方法会调用native方法nativeLoad</li>
+</ol>
+
+<p><strong>2. System的loadLibrary方法</strong></p>
+
+<ol>
+<li>先调用Runtime的loadLibrary0方法，loadLibrary0方法分为两个部分，一个是传入的ClassLoader不为null的部分，另一个是ClassLoader为null的部分</li>
+<li>我们先来看ClassLoader 为null的部分。先遍历getLibPaths方法，这个方法会返回java.library.path选项配置的路径数组，然后拼接出so路径作为参数调用doLoad方法中。</li>
+<li>当ClassLoader不为null时，先通过ClassLoader的findLibrary方法来得到fileName，然后调用doLoad 方法。</li>
+<li><strong>findLibrary</strong>：ClassLoader的findLibrary方法在实现类BaseDexClassLoader中实现，然后会调用DexPathList的findLibrary方法，这和13.3.1 节讲到的DexPathList的findClass方法类似，
+<ol>
+<li>在NativeLibraryElement数组中的每一个NativeLibraryElement对应一个so库，</li>
+<li>然后调用NativeLibraryElement的findNativeLibrary方法就可以返回so的路径。结合的类加载方案，就可以得到so的修复的一种方案，就是：</li>
+<li>将so补丁插入到NativeLibraryElement数组的前部，让so补丁的路径先被返回，并调用Runtime的doLoad方法进行加载，</li>
+<li>在doLoad方法中会调用native 方法nativeLoad。</li>
+</ol></li>
+</ol>
+
+<h3 id="toc_11">13.5.2 nativeLoad方法分析</h3>
+
+<p>LoadNativeLibrary函数的行数很多，这里来做一个总结，LoadNativeLibrary 函数主要做了如下3方面工作：</p>
+
+<ol>
+<li>判断so是否被加载过，两次ClassLoader是否是同一个，避免so重复加载。</li>
+<li>打开so并得到so句柄，如果so句柄获取失败,就返回false。创建新的SharedLibrary,如果传入path对应的library 为空指针，就将新创建的SharedIibrary赋值给library, 并将library存储到libraries_中。</li>
+<li>查找JNI_OnLoad 的函数指针，根据不同情况设置was_successful 的值，最终返回该was_successful。</li>
+</ol>
+
+<p><img src="media/15537010271155/15777663637419.jpg" alt=""/></p>
+
+<p>讲到这里总结一下so修复主要有两个方案:</p>
+
+<ol>
+<li>将so补丁插入到NativeLibraryElement数组的前部，让so补丁的路径先被返回和加载。</li>
+<li>调用System的load方法来接管so的加载入口。</li>
+</ol>
+
+<h2 id="toc_12">13.6 本章小结</h2>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15537010145803.html" 
+          title="Previous Post: 12 理解ClassLoader">&laquo; 12 理解ClassLoader</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15789729257987.html" 
+          title="Next Post: 13 综合技术">13 综合技术 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

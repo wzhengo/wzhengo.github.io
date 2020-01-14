@@ -1,0 +1,719 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  09 注入与依赖注入框架 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>09 注入与依赖注入框架</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/03/27</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html'>进阶之光</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">9.1　注解</h2>
+
+<p>从JDK 5开始，Java增加了注解，注解是代码里的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相应的处理。通过 使用注解，开发人员可以在不改变原有逻辑的情况下，在源文件中嵌入一些补充的信息。代码分析工具、 开发工具和部署工具可以通过这些补充信息进行验证、处理或者进行部署。</p>
+
+<h3 id="toc_1">9.1.1　注解分类</h3>
+
+<p>注解分为标准注解和元注解。</p>
+
+<p><strong>1.标准注解</strong></p>
+
+<p>标准注解有以下4种：</p>
+
+<ul>
+<li>@Override:
+<ul>
+<li>对覆盖超类中的方法进行标记，如果被标记的方法并没有实际覆盖超类中的方法，则编 译器会发出错误警告。</li>
+</ul></li>
+<li>@Deprecated:
+<ul>
+<li>对不鼓励使用或者已过时的方法添加注解，当编程人员使用这些方法时，将会在编译 时显示提示信息。</li>
+</ul></li>
+<li>@SuppressWarnings:
+<ul>
+<li>选择性地取消特定代码段中的警告。</li>
+</ul></li>
+<li>@SafeVarargs:J
+<ul>
+<li>DK 7新增，用来声明使用了可变长度参数的方法，其在与泛型类一起使用时不会出现类型安全问题。 </li>
+</ul></li>
+</ul>
+
+<p><strong>2.元注解</strong></p>
+
+<p>元注解，它用来注解其他注解，从而创建新的注解。元注解有以下几种。 </p>
+
+<ul>
+<li>@Targe:
+<ul>
+<li>注解所修饰的对象范围。</li>
+</ul></li>
+<li>@Inherited:
+<ul>
+<li>表示注解可以被继承。</li>
+</ul></li>
+<li>@Documented:
+<ul>
+<li>表示这个注解应该被JavaDoc工具记录。 * @Retention:用来声明注解的保留策略。</li>
+</ul></li>
+<li>@Repeatable:
+<ul>
+<li>JDK 8 新增，允许一个注解在同一声明类型(类、属性或方法)上多次使用。</li>
+</ul></li>
+</ul>
+
+<p>其中@Targe注解取值是一个ElementType类型的数组，其中有以下几种取值，对应不同的对象范围。</p>
+
+<ul>
+<li> ElementType.TYPE:能修饰类、接口或枚举类型。</li>
+<li> ElementType.FIELD:能修饰成员变量。</li>
+<li> ElementType.METHOD:能修饰方法。</li>
+<li> ElementType.PARAMETER:能修饰参数。</li>
+<li> ElementType.CONSTRUCTOR:能修饰构造方法。</li>
+<li> ElementType.LOCAL_VARIABLE:能修饰局部变量。</li>
+<li> ElementType.ANNOTATION_TYPE:能修饰注解。</li>
+<li> ElementType.PACKAGE:能修饰包。</li>
+<li> ElementType.TYPE_PARAMETER:类型参数声明。</li>
+<li> ElementType.TYPE_USE:使用类型。</li>
+</ul>
+
+<p>其中@Retention注解有3种类型，分别表示不同级别的保留策略。</p>
+
+<ul>
+<li> RetentionPolicy.SOURCE:源码级注解。
+<ul>
+<li> 注解信息只会保留在.java源码中，源码在编译后，注解信息被丢弃，不会保留在.class中。</li>
+</ul></li>
+<li> RetentionPolicy.CLASS:编译时注解。
+<ul>
+<li> 注解信息会保留在.java 源码以及.class 中。当运行Java程序时， JVM会丢弃该注解信息，不会保留在JVM中。</li>
+</ul></li>
+<li> RetentionPolicy.RUNTIME:运行时注解。
+<ul>
+<li> 当运行Java程序时，JVM也会保留该注解信息，可以通过反射获取该注解信息。</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_2">9.1.2　定义注解</h3>
+
+<p>1）基本定义</p>
+
+<p>定义新的注解类型使用@interface关键字</p>
+
+<pre><code class="language-text">//定义
+public @interface Swordsman{}
+
+//使用
+@Swordsman
+public class AnnotationTest{}
+</code></pre>
+
+<p>2）定义成员变量</p>
+
+<p>注解只有成员变量，没有方法。注解的成员变量在注解定义中以“无形参的方法”形式来声明，其“方法名”定义了该成员变量的名字，其返回值定义了该成员变量的类型。还可以使用default关键字为其指定默认值。</p>
+
+<pre><code class="language-text">//定义注解和成员变量
+public @interface Swordsman{
+    String name();
+    int age();
+}
+//使用
+public class AnnotationTest{
+    @Swordsman(name=&quot;张无忌&quot;,age=23)
+    public void fighting(){ }
+}
+//default指定默认值
+public @interface Swordsman{
+    String name() default &quot;张无忌&quot;;
+    int age() default 23;
+}
+</code></pre>
+
+<p>3）定义运行时/编译时注解</p>
+
+<p>可以用@Retention来设定注解的保留策略，这 3个策略的生命周期长度为 SOURCE &lt;CLASS&lt; RUNTIME。生命周期短的能起作用的地方，生命周期长的一定也能起作用。</p>
+
+<ul>
+<li>一般如果需要在运行时去动态获取注解信息，那只能用RetentionPolicy.RUNTIME;</li>
+<li>如果要在编译时进行一些预处理操作，比如生成一些辅助代码，就用 RetentionPolicy.CLASS;</li>
+<li>如果只是做一些检查性的操作，比如@Override 和 @SuppressWarnings，则可选用RetentionPolicy.SOURCE。当设定为RetentionPolicy.RUNTIME时，这个注解就是运行时注解。</li>
+</ul>
+
+<h3 id="toc_3">9.1.3　注解处理器</h3>
+
+<p>对于不同的注解有不同的注解处理器。 虽然注解处理器的编写会千变万化，但是其也有处理标准，比如:针对运行时注解会采用反射机制处理， 针对编译时注解会采用 AbstractProcessor 来处理。</p>
+
+<p><strong>1.运行时注解处理器</strong></p>
+
+<p>处理运行时注解需要用到反射机制。通过反射获得Field、Method等信息，调用<code>getAnnotation()</code>方法即可获得注解信息。</p>
+
+<p><strong>2.编译时注解处理器</strong></p>
+
+<ol>
+<li>定义注解</li>
+<li>编写注解处理器
+<ol>
+<li>注解处理器ClassProcessor，它继承AbstractProcessor</li>
+<li>方法有init、process、getSupportedAnnotationTypes、getSupportedSourceVersion等。</li>
+</ol></li>
+<li>注册注解处理器
+<ol>
+<li>使用Google 开源的AutoService</li>
+<li>在ClassProcessor中添加@AutoService(Processor.class)</li>
+</ol></li>
+<li>应用注解</li>
+<li>使用android-apt插件
+<ol>
+<li>仅仅在编译时期去依赖注解处理器所在的函数库并进行工作，但不会打包到APK中。</li>
+<li>为注解处理器生成的代码设置好路径，以便Android Studio能够找到它。</li>
+</ol></li>
+</ol>
+
+<h2 id="toc_4">9.2　依赖注入的原理</h2>
+
+<h3 id="toc_5">9.2.1　控制反转与依赖注入</h3>
+
+<p><strong>1.控制反转</strong></p>
+
+<p>IoC是Inversion of Control的缩写，即控制反转，借助于“第三方”实现具有依赖关系的对象之间的解耦。</p>
+
+<ol>
+<li>引入IoC容器之前：对象A依赖于对象B，那么对象A在初始化的时候，自己必须主动去创建对象B或者使用已经创建的对象B。无论是创建对象B还是使用对象B，控制权都在自己手上。</li>
+<li>引入IoC容器之后：由于IoC容器的加入，对象A与对象B之间失去了直接联系，所以，当对象A运行到需要对象B的时候，IoC容器会主动创建一个对象B注入到对象A需要的地方。</li>
+<li>通过引入Ioc容器前后的对比，可以看出：对象A获得依赖对象B的过程，由主动行为变为被动行为，控制权颠倒过来了，这就是<strong>控制反转</strong>这个名称的由来。</li>
+</ol>
+
+<p><strong>2.依赖注入</strong></p>
+
+<p>Martin Fowler提问：<br/>
+控制反转是“哪些方面的控制被反转了呢?”<br/>
+答:“获得依赖对象的过程被反转了”。</p>
+
+<p>控制被反转之后，获得依赖对象的过程由自身管理变为由IoC容器主动注入。于是，他给控制反转取了一个更合适的名字，叫作依赖注入(Dependency Injection)，简称DI。所谓依赖注入，是指由IoC容器在运行期间，动态地将某种依赖关系注入到对象中。</p>
+
+<h3 id="toc_6">9.2.2　依赖注入的实现方式</h3>
+
+<p>这里举一个汽车的例子，汽车类Car包含了引擎Engine等组件：</p>
+
+<pre><code class="language-text">public class Car{
+    private Engine mEngine;
+    public Car(){
+        mEngine = new PetrolEngine();
+    }
+}
+</code></pre>
+
+<ol>
+<li><p>构造方法注入</p>
+<pre><code class="language-text">public class Car{
+    private Engine mEngine;<br/>
+    public Car(Engine mEngine){<br/>
+        this.mEngine = mEngine;<br/>
+    }<br/>
+}
+</code></pre></li>
+<li><p>Setter方法注入</p>
+<pre><code class="language-text">public class Car{
+    private Engine mEngine;<br/>
+    public void set(Engine mEngine){<br/>
+        this.mEngine = mEngine;<br/>
+    }<br/>
+}
+</code></pre></li>
+<li><p>接口注入</p>
+<pre><code class="language-text">public interface ICar{
+    public void setEngine(Engine engine);<br/>
+}<br/>
+public class Car implements ICar{<br/>
+    private Engine mEngine;<br/>
+    @Override<br/>
+    public void setEngine(Engine engine){<br/>
+        this.mEngine = engine;<br/>
+    }<br/>
+}
+</code></pre></li>
+</ol>
+
+<h2 id="toc_7">9.3　依赖注入框架</h2>
+
+<h3 id="toc_8">9.3.1　为何使用依赖注入框架</h3>
+
+<h3 id="toc_9">9.3.2　解析ButterKnife</h3>
+
+<p><strong>1.ButterKnife的注解使用方法</strong></p>
+
+<ol>
+<li>添加依赖库</li>
+<li>绑定控件
+<ul>
+<li>@BindView</li>
+</ul></li>
+<li>绑定资源
+<ul>
+<li>@BindString、@BindArray、@BindBool、@BindColor、@BindDimen、@BindDrawable和@BindBitmap</li>
+</ul></li>
+<li>绑定监听
+<ul>
+<li>@OnClick、@OnLongClick、@OnTextChanged、@OnTouch、@OnItemClick</li>
+</ul></li>
+<li>可选绑定
+<ul>
+<li>@Nullable防止找不到资源</li>
+</ul></li>
+</ol>
+
+<p><strong>2. ButterKnife原理解析</strong></p>
+
+<ol>
+<li>ButterKnifeProcessor源码分析
+<ol>
+<li>ButterKnifeProcessor#process#findAndParseTargets：查找所有注解并解析</li>
+<li>brewJava：方法将使用注解的类生成一个JavaFile</li>
+</ol></li>
+<li>ButterKnife的bind方法<br/>
+    1. 得到Activity的 DecorView，findBindingConstructorForClass方法获得构造器并生成实例</li>
+<li>生成的辅助类分析
+<ol>
+<li>DecorView传入这个类中，通过findViewById将View返回。</li>
+</ol></li>
+</ol>
+
+<h3 id="toc_10">9.3.3　解析Dagger2</h3>
+
+<p>Dagger2是一个基于JSR-330(Java依赖注入)标准的依赖注入框架，在编译期间自动生成代码，负责依赖对象的创建。</p>
+
+<p><strong>1.注解使用方法</strong></p>
+
+<ol>
+<li>添加依赖库</li>
+<li><p>@Inject和@Component</p>
+<ol>
+<li>@Inject：用于标记需要注入的依赖</li>
+<li>@Component：注入器，可以编译生成类，调用注入方法</li>
+</ol>
+<pre><code class="language-text">@Component
+public interface MainActivityComponent {<br/>
+    void inject (MainActivity activity) ;<br/>
+}<br/>
+public class MainActivity extends AppCompatActivity {<br/>
+    @Inject<br/>
+    Watch watch;<br/>
+    @Override<br/>
+    protected void onCreate (Bundle savedInstanceState) {<br/>
+        super.onCreate(savedInstanceState);<br/>
+        setContentView(R.layout.activity_main);<br/>
+        Dagger MainActivityComponent.create().inject(this);<br/>
+        watch.work();<br/>
+    }<br/>
+}
+</code></pre></li>
+<li><p>@Module和@Provides</p>
+<ol>
+<li>如果项目中使用了第三方的类库，或需要注入的类是抽象类，可以采用@Module和@Provides提供注入器。</li>
+</ol>
+<pre><code class="language-text">@Module
+public class GsonModule {<br/>
+    @Provides<br/>
+    public Gson provideGson() {<br/>
+        return new Gson();<br/>
+    }<br/>
+}<br/>
+@Component (modules = GsonModule.class)<br/>
+public interface MainActivityComponent {<br/>
+    void inject (MainActivity activity);<br/>
+}
+</code></pre></li>
+<li><p>@Named和@Qualifier</p>
+<ol>
+<li>@Qualifier 是限定符，@Named 则是@Qualifier 的一种实现。</li>
+<li>当有两个相同的依赖时，它们都继承同一个父类或者均实现同一个接口。当它们被提供给高层时，Component 就不知道我们到底要提供哪一个依赖 对象了，因为它找到了两个。</li>
+<li>或者通过自定义注解来实现。</li>
+</ol>
+<pre><code class="language-text">@Module
+public class Eng ineModule {<br/>
+    @Provides<br/>
+    @Named(&quot;Gasoline&quot;)<br/>
+    public Engine provideGasoline() {<br/>
+        return new GasolineEngine() ;<br/>
+    }<br/>
+    @Provides<br/>
+    @Named(&quot;Diesel&quot;)<br/>
+    public Engine provideDiesel() {<br/>
+        return new DieselEngine() ;<br/>
+    }<br/>
+}<br/>
+public class Car {<br/>
+    private Engine engine;<br/>
+    @Inject<br/>
+    public Car(@Named(&quot;Diesel&quot;) Engine engine) {<br/>
+        this.engine = engine;<br/>
+    }<br/>
+}
+</code></pre>
+<pre><code class="language-text">@Qualifier
+@Retention(RUNTIME)<br/>
+public dinterface Gasoline {}<br/>
+@Qualifier<br/>
+@Retention(RUNTIME)<br/>
+public dinterface Diesel {}<br/>
+@Module<br/>
+public class EngineModule {<br/>
+    @Provides<br/>
+    @Gasoline<br/>
+    public Engine provideGasoline() {<br/>
+        return new Gasol ineEngine();<br/>
+    }<br/>
+    @Provides<br/>
+    @Diesel<br/>
+    public Engine provideDiesel() {<br/>
+        return new DieselEngine();<br/>
+    }<br/>
+}<br/>
+public class Car {<br/>
+    private Engine engine;<br/>
+    @Inject<br/>
+    public Car(@Gasoline Engine engine) {<br/>
+        this.engine = engine;<br/>
+    }<br/>
+    public String run() {<br/>
+        return engine.work();<br/>
+    }<br/>
+}
+</code></pre></li>
+<li><p>@Singleton和@Scope</p>
+<ol>
+<li>@Scope是用来自定义注解的，而@Singleton则是用来配合实现局部单例和全局单例的。@Singleton本身不具备创建单例的能力。</li>
+<li>如果想实现全局单例，我们可以用@Scope结合Application来实现。</li>
+</ol></li>
+<li><p>@Component的dependencies</p>
+<ol>
+<li>@Component也可以用dependencies依赖于其他Component。</li>
+</ol></li>
+</ol>
+
+<p><strong>2.懒加载</strong><br/>
+Dagger2提供了懒加载模式，在@Inject的时候不初始化，而是使用的时候，调用get方法来获取实例。<br/>
+<strong>3.Dagger2原理解析</strong></p>
+
+<ol>
+<li>WatchModule_ProvideWatchFactory 用来生成 Watch 实例；</li>
+<li>Dagger2Activity_MemberInject 将 Watch 实例赋值 给 MainActivity 的成员变量 Watch；</li>
+<li>DaggerActivityComponent则作为程序入口和桥梁，负责初始化 WatchModule_ProvideWatchFactory和Dagger2Activity_MemberInject，并将它们串联起来。</li>
+</ol>
+
+<h2 id="toc_11">9.4　本章小结</h2>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15518627494454.html" 
+          title="Previous Post: 09 四大组件的工作过程">&laquo; 09 四大组件的工作过程</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15518627703620.html" 
+          title="Next Post: 10 Android的消息机制">10 Android的消息机制 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

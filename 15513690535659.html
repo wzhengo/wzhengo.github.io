@@ -1,0 +1,755 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  02 IPC机制 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>02 IPC机制</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/02/28</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html'>开发艺术探索</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">2.1 Android IPC简介</h2>
+
+<ol>
+<li><strong>IPC</strong> Inter-Process Communication，含义为进程间通信或者跨进程通信，是指两个进程之间进行数据交换的过程。
+<ul>
+<li><strong>进程</strong>：一个执行单元，PC和移动设备上指一个程序或应用</li>
+<li><strong>线程</strong>：CPU调度的最小单元，一种有限的系统资源</li>
+</ul></li>
+<li>为什么需要多进程？
+<ol>
+<li>一个应用因为某些原因需要采用多进程模式来实现。比如某些模块运行在单独进程中，或者为了更多的内存空间</li>
+<li>向其他应用获取数据</li>
+</ol></li>
+</ol>
+
+<h2 id="toc_1">2.2 Android中的多进程模式</h2>
+
+<h3 id="toc_2">2.2.1 开启多进程模式</h3>
+
+<p>指定<code>android:process</code>属性开启多进程模式：</p>
+
+<ul>
+<li>&quot;:&quot;：当前应用的私有进程，其他应用的组件不可以和它跑在一个进程中；</li>
+<li>&quot;.&quot;：全局进程，其他应用通过ShareUID方式可以和他跑在同一个进程中。</li>
+</ul>
+
+<p>Android系统会为每个应用分配一个唯一的UID，具有相同UID的应用才能共享数据。两个应用通过ShareUID跑在同一个进程，需要这两个应用有相同的ShareUID并且签名相同才可以。在这种情况下，它们可以互相访问对方的私有数据，比如data目录，组件信息等，不管他们是否跑在同一个进程中。如果在同一个进程中，还可以共享内存数据。</p>
+
+<h3 id="toc_3">2.2.2 多进程模式的运行机制</h3>
+
+<p>Android为每一个应用分配了独立的虚拟机，不同的虚拟机在内存分配上有不同的地址空间。</p>
+
+<p><strong>使用多进程会导致的问题：</strong></p>
+
+<ol>
+<li>静态成员和单例模式完全失效</li>
+<li>线程同步机制完全失效</li>
+<li>SharedPreferences的可靠性下降</li>
+<li>Application会创建多次</li>
+</ol>
+
+<h2 id="toc_4">2.3 IPC基础概念介绍</h2>
+
+<p>序列化：将对象的状态信息转换为可以存储或传输的形式的过程。</p>
+
+<h3 id="toc_5">2.3.1 Serializable接口</h3>
+
+<ul>
+<li><strong>serialVersionUID</strong>：
+<ul>
+<li>辅助序列化和反序列化</li>
+<li>serialVersionUID相同才能反序列化成功</li>
+</ul></li>
+<li>两种变量不参与序列化：
+<ul>
+<li>静态成员属于类，不属于对象</li>
+<li><code>transient</code>关键字标记的成员变量</li>
+</ul></li>
+<li>使用<code>ObjectOutputStream</code>和<code>ObjectInputStream</code>进行对象的序列化和反序列化。</li>
+<li>重写<code>writeObject()</code>和<code>readObject()</code>方法可以重写序列化和反序列化过程。</li>
+<li>反序列化失败的几种情况：未指定serialVersionUID；成员变量的数量、类型结构等变化时；非常规性改版：类名变化。</li>
+</ul>
+
+<h3 id="toc_6">2.3.2 Parcelable接口</h3>
+
+<p>Parcelable主页方法：</p>
+
+<ul>
+<li>writeToParcel：序列化</li>
+<li>CREATOR：read方法，反序列化</li>
+<li>describeContents：内容描述</li>
+</ul>
+
+<p>Serializable和Parcelable：</p>
+
+<ul>
+<li>两者都可以实现序列化并可用于intent间的数据传递</li>
+<li>Serializable使用简单，但是开销很大，推荐使用在存储设备或者网络传输；</li>
+<li>Parcelable效率很高，主要用在内存序列化上。</li>
+</ul>
+
+<h3 id="toc_7">2.3.3 Binder</h3>
+
+<p>Binder的理解：</p>
+
+<ul>
+<li>直观来说，Binder 是Android中的一个类，它实现了IBinder接口。</li>
+<li>从IPC角度来说，Binder是Android中的一种跨进程通信方式：
+<ul>
+<li>从Android Framework角度来说，Binder是ServiceManager连接各种Manager (ActivityManager、WindowManager， 等等)和相应ManagerService的桥梁;</li>
+<li>从Android应用层来说，Binder 是客户端和服务端进行通信的媒介，当bindService的时候，服务端会返回一个包含了服务端业务调用的Binder 对象，通过这个Binder对象，客户端就可以获取服务端提供的服务或者数据，这里的服务包括普通服务和基于AIDL的服务。</li>
+</ul></li>
+</ul>
+
+<p>Android开发中， Binder主要用在Service中，包括AIDL和Messenger。其中普通的Service的Binder不涉及进程间通讯；而Messenger的底层其实就是AIDL。</p>
+
+<ol>
+<li><p>新建一个AIDL示例，SDK会自动为我们生产AIDL所对应的Binder类。创建<code>Book.java</code>、<code>Book.aidl</code>、<code>IBookManager.aidl</code>，Build后生成<code>IBookManager.java</code>。</p></li>
+</ol>
+
+<ul>
+<li><p>Book.java</p>
+<pre><code class="language-text">public class Book implements Parcelable {
+    public int bookId;<br/>
+    public String bookName;<br/>
+    //...<br/>
+}
+</code></pre></li>
+<li><p>Book.aidl</p>
+<pre><code class="language-text">package com.wz.testaidl;
+import com.wz.testaidl.Book;<br/>
+parcelable Book ;
+</code></pre></li>
+<li><p>IBookManager.aidl</p>
+<pre><code class="language-text">package com.wz.testaidl;
+import com.wz.testaidl.Book;<br/>
+interface IBookManager{<br/>
+    List&lt;Book&gt; getBookList();<br/>
+    void addBook(in Book book);<br/>
+}
+</code></pre></li>
+</ul>
+
+<p>AIDL自动生成的java文件方法说明：</p>
+
+<ul>
+<li><strong>DESCRIPTOR</strong>：Binder的唯一标识，一般用当前Binder的类名表示。</li>
+<li><strong>asInterface</strong>：将服务端的Binder对象转换成客户端所需要的AIDL接口类型的对象；
+<ul>
+<li>客户端和服务端位于相同进程，那么此方法返回的就是服务端Stub对象本身；</li>
+<li>否则返回系统封装后的Stub.proxy对象。</li>
+</ul></li>
+<li><strong>asBinder</strong>：用于返回当前的Binder对象</li>
+<li><strong>onTransact</strong>：运行在服务端的Binder线程池中，当客户端发起跨进程通讯时，远程请求会通过系统底层封装交由此方法处理。</li>
+<li><strong>Proxy#[Method]</strong>：代理类中的接口方法。内部实现：
+<ol>
+<li>首先创建该方法所需要的输入型参数Parcel对象_data和输出型参数Parcel对象_reply；</li>
+<li>然后把参数写入_data中（如果有参数的话）；</li>
+<li>接着调用transact方法来发起RPC（远程过程调用）请求，同时当前线程挂起；</li>
+<li>然后服务端的onTransace方法会被调用直到RPC过程返回后，当前线程继续执行，并从_reply中取出RPC过程的返回结果；</li>
+<li>最后返回_reply中的数据。</li>
+</ol></li>
+</ul>
+
+<p>首先，当客户端发起远程请求时，由于当前线程会被挂起直至服务端进程返回数据，所以如果一个远程方法是很耗时的，那么<mark>不能在UI线程中发起此远程请求</mark>；其它，由于服务端的Binder方法运行在Binder的线程池中，所以Binder方法不管是否耗时都应该采用<mark>同步</mark>的方式去实现，因为它已经运行在一个线程中了。</p>
+
+<p><img src="media/15513690535659/15764863288077.jpg" alt=""/></p>
+
+<p><strong>Binder死亡通知</strong><br/>
+Binder的两个重要方法<code>linkToDeath</code>和<code>unlinkToDeath</code>。</p>
+
+<ul>
+<li>通过linkToDeath可以给Binder设置一个死亡代理，当Binder死亡时，我们就会收到通知，然后就可以重新发起连接请求。</li>
+<li><p>声明一个DeathRecipient对象，DeathRecipient是一个接口，其内部只有一个方法binderDied，实现这个方法后就可以在Binder死亡的时候收到通知了。</p>
+<pre><code class="language-text">private IBinder.DeathRecipient mDeathRecipient = new IBinder.DeathRecipient(){
+    @override<br/>
+    public void binderDied(){<br/>
+        if(mBookManager==null){<br/>
+            return;<br/>
+        }<br/>
+        mBookManager.asBinder().unlinkToDeath(mDeathRecipient，0);<br/>
+        mBookManager=null;<br/>
+        //TODO:重新绑定远程Service<br/>
+    }<br/>
+}
+</code></pre></li>
+<li><p>在客户端绑定远程服务成功后，给binder设置死亡代理:</p>
+<pre><code class="language-text">mService = IMessageBoxManager.Stub.asInterface(binder);
+binder.linkToDeath(mDeathRecipient，0);
+</code></pre></li>
+<li><p>另外，通过Binder的<code>isBinderAlive</code>方法，也可以判断Binder是否死亡。</p></li>
+<li><p><code>binderDied</code>和<code>onServiceDisconnected</code>区别：</p>
+<ul>
+<li>binderDied在客户端的Binder线程池中被回调</li>
+<li>onServiceDisconnected在UI线程中被回调</li>
+</ul></li>
+</ul>
+
+<h2 id="toc_8">2.4 Android中的IPC方式</h2>
+
+<h3 id="toc_9">2.4.1 使用Bundle</h3>
+
+<p>我们知道，四大组件中的三大组件( Activity、Service、 Receiver) 都是支持在Intent中传递Bundle数据的，由于Bundle实现了Parcelable 接口，所以它可以方便地在不同的进程间传输。基于这一点，当我们在<mark>一个进程中启动了另一个进程</mark>的Activity、 Service 和Receiver，我们就可以在Bundle 中附加我们需要传输给远程进程的信息并通过Intent 发送出去。当然，我们传输的数据必须能够被序列化，比如基本类型、实现了Parcellable 接口的对象、实现了Serializable 接口的对象以及一些Android支持的特殊对象，具体内容可以看Bundle这个类，就可以看到所有它支持的类型。Bundle不支持的类型我们无法通过它在进程间传递数据。</p>
+
+<p>除了直接传递数据这种典型的使用场景，它还有一种特殊的使用场景。比如<mark>A进程</mark>正在进行一个<mark>计算</mark>，计算完成后它要启动B进程的一个组件并<mark>把计算结果传递给B进程</mark>，可是遗憾的是这个计算结果不支持放入Bundle中，因此无法通过Intent来传输，这个时候如果我们用其他IPC方式就会略显复杂。可以考虑如下方式：我们通过Intent启动进程B的一个Service组件(比如IntentService)， 让Service在后台进行计算，计算完毕后再启动B进程中真正要启动的目标组件，由于Service也运行在B进程中，所以目标组件就可以直接获取计算结果，这样一来就轻松解决了跨进程的问题。这种方式的核心思想在于<mark>将原本需要在A进程的计算任务转移到B进程的后台Service中去执行</mark>，这样就成功地避免了进程间通信问题，而且只用了很小的代价。</p>
+
+<h3 id="toc_10">2.4.2 使用文件共享</h3>
+
+<p>通过文件共享这种方式来共享数据对文件格式是没有具体要求的，比如可以是文本文件，也可以是XML文件，只要读/写双方约定数据格式即可。通过文件共享的方式也是有局限性的，比如并发读/写的问题，如果并发读/写，那么我们读出的内容就有可能不是最新的，如果是并发写的话那就更严重了。因此我们要尽量避免并发写这种情况的发生或者考虑使用线程同步来限制多个线程的写操作。<strong>文件共享方式适合在对数据同步要求不高的进程之间进行通信，并且要妥善处理并发读/写的问题。</strong></p>
+
+<p>当然，SharedPreferences 是个特例，SharedPreferences 是Android中提供的轻量级存储方案，它通过键值对的方式来存储数据，在底层实现上它采用XML文件来存储键值对，每个应用的SharedPreferences文件都可以在当前包所在的data目录下查看到。一般来说， 它的目录位于/data/data/package name/shared_ prefs 目录下，其中package name表示的是当前应用的包名。从本质上来说，SharedPreferences 也属于文件的一种，但是由于<mark>系统对它的读/写有一定的缓存策略</mark>，即在内存中会有一份SharedPreferences文件的缓存，因此在多进程模式下，系统对它的读/写就变得不可靠，当面对高并发的读/写访问，Sharedpreferences有很大几率会丢失数据，因此，<strong>不建议在进程间通信中使用SharedPreferences</strong>。</p>
+
+<h3 id="toc_11">2.4.3 使用Messenger</h3>
+
+<ol>
+<li><p>构建服务端Service，运行在独立进程中：</p>
+<pre><code class="language-text">public class MessengerService extends Service {
+    private static final String TAG = &quot;MessengerService&quot;;<br/>
+    @Override<br/>
+    public IBinder onBind(Intent intent) {<br/>
+        return mMessenger.getBinder();<br/>
+    }<br/>
+    private final Messenger mMessenger = new Messenger(new MessengerHandler());<br/>
+    private static class MessengerHandler extends Handler {<br/>
+        @Override<br/>
+        public void handleMessage(@NonNull Message msg) {<br/>
+            Log.e(TAG， &quot;server receive msg: &quot; + msg.what);<br/>
+            final Messenger replyTo = msg.replyTo;<br/>
+            final Message replyMsg = Message.obtain();<br/>
+            replyMsg.what = 999;<br/>
+            try {<br/>
+                replyTo.send(replyMsg);<br/>
+            } catch (RemoteException e) {<br/>
+                e.printStackTrace();<br/>
+            }<br/>
+        }<br/>
+    }<br/>
+}
+</code></pre>
+<pre><code class="language-text">// AndroidManifext.xml
+&lt;service android:name=&quot;.MessengerService&quot;<br/>
+    android:process=&quot;:remote&quot;/&gt;
+</code></pre></li>
+<li><p>客户端：</p>
+<ol>
+<li>通过绑定服务端返回的binder创建Messenger对象，并通过这个Messenger对象向服务端发送消息。</li>
+<li>服务端给客户端回复消息：使用Message的<code>replyTo</code>参数。</li>
+</ol>
+<pre><code class="language-text">public class MainActivity extends AppCompatActivity {
+    private static final String TAG = &quot;MainActivity&quot;;<br/>
+    @Override<br/>
+    protected void onCreate(Bundle savedInstanceState) {<br/>
+        super.onCreate(savedInstanceState);<br/>
+        setContentView(R.layout.activity_main);<br/>
+        final Intent intent = new Intent(this， MessengerService.class);<br/>
+        bindService(intent， serviceConnection， Context.BIND_AUTO_CREATE);<br/>
+    }<br/>
+    private ServiceConnection serviceConnection = new ServiceConnection() {<br/>
+        @Override<br/>
+        public void onServiceConnected(ComponentName componentName， IBinder iBinder) {<br/>
+            Log.e(TAG， &quot;onServiceConnected: &quot;);<br/>
+            Messenger mServerMessenger = new Messenger(iBinder);<br/>
+            final Message msg = Message.obtain();<br/>
+            msg.what = 666;<br/>
+            //赋值replyTo，服务端才可以回复消息<br/>
+            msg.replyTo = mClientMessenger;<br/>
+            try {<br/>
+                mServerMessenger.send(msg);<br/>
+            } catch (RemoteException e) {<br/>
+                e.printStackTrace();<br/>
+            }<br/>
+        }<br/>
+        @Override<br/>
+        public void onServiceDisconnected(ComponentName componentName) {<br/>
+        }<br/>
+    };<br/>
+    private Messenger mClientMessenger = new Messenger(new MessengerHandler());<br/>
+    private static class MessengerHandler extends Handler {<br/>
+        @Override<br/>
+        public void handleMessage(@NonNull Message msg) {<br/>
+            Log.e(TAG， &quot;client receive msg: &quot; + msg.what);<br/>
+        }<br/>
+    }<br/>
+    @Override<br/>
+    protected void onDestroy() {<br/>
+        unbindService(serviceConnection);<br/>
+        super.onDestroy();<br/>
+    }<br/>
+}
+</code></pre>
+<p>流程图如下：<br/>
+<img src="media/15513690535659/15765748325024.jpg" alt=""/></p></li>
+</ol>
+
+<p><strong>总结：</strong></p>
+
+<ul>
+<li>Messenger 是以串行的方式处理客户端发来的消息，如果大量的消息同时发送到服务端，服务端仍然只能一个个处理，如果有大量的并发请求，那么用Messenger就不太合适了。</li>
+<li>Messenger的作用主要是为了传递消息，很多时候我们可能需要跨进程调用服务端的方法，这种情形用Messenger就无法做到了，但是我们可以使用AIDL来实现跨进程的方法调用。</li>
+</ul>
+
+<h3 id="toc_12">2.4.4 使用AIDL</h3>
+
+<p>使用AIDL来进行进程间通信的流程，分为服务端和客户端两个方面。</p>
+
+<ol>
+<li><p>服务端：</p>
+<ol>
+<li>创建一个AIDL文件，将暴露给客户端的接口在这个AIDL文件中声明(见2.3.3)</li>
+<li>创建一个Service用来监听客户端的连接请求，在Service中实现AIDL接口。</li>
+</ol>
+<pre><code class="language-text">public class BookMangerService extends Service {
+    private CopyOnWriteArrayList&lt;Book&gt; mBookList = new CopyOnWriteArrayList&lt;&gt;();<br/>
+    @Override<br/>
+    public IBinder onBind(Intent intent) {<br/>
+        return mBinder;<br/>
+    }<br/>
+    private IBinder mBinder = new IBookManager.Stub(){<br/>
+        @Override<br/>
+        public List&lt;Book&gt; getBookList() {<br/>
+            return mBookList;<br/>
+        }<br/>
+        @Override<br/>
+        public void addBook(Book book) {<br/>
+            mBookList.add(book);<br/>
+        }<br/>
+    };<br/>
+}
+</code></pre>
+<pre><code class="language-text">&lt;service android:name=&quot;.BookMangerService&quot;
+    android:process=&quot;:remote&quot;/&gt;
+</code></pre></li>
+<li><p>客户端</p>
+<ol>
+<li>首先需要绑定服务端的Service</li>
+<li>绑定成功后，将服务端返回的Binder对象转成AIDL接口所属的类型，接着就可以调用AIDL中的方法了。</li>
+</ol>
+<pre><code class="language-text">public class MainActivity extends AppCompatActivity {
+    private static final String TAG = &quot;MainActivity&quot;;<br/>
+    @Override<br/>
+    protected void onCreate(Bundle savedInstanceState) {<br/>
+        super.onCreate(savedInstanceState);<br/>
+        setContentView(R.layout.activity_main);<br/>
+        final Intent intent = new Intent(this， BookMangerService.class);<br/>
+        bindService(intent， serviceConnection， Context.BIND_AUTO_CREATE);<br/>
+    }<br/>
+    private ServiceConnection serviceConnection = new ServiceConnection() {<br/>
+        @Override<br/>
+        public void onServiceConnected(ComponentName componentName， IBinder iBinder) {<br/>
+            final IBookManager bookManager = IBookManager.Stub.asInterface(iBinder);<br/>
+            try {<br/>
+                Log.e(TAG， &quot;bookList.size()： &quot; + bookManager.getBookList().size());<br/>
+                bookManager.addBook(new Book());<br/>
+                bookManager.addBook(new Book());<br/>
+                Log.e(TAG， &quot;bookList.size()： &quot; + bookManager.getBookList().size());<br/>
+            } catch (RemoteException e) {<br/>
+                e.printStackTrace();<br/>
+            }<br/>
+        }<br/>
+        @Override<br/>
+        public void onServiceDisconnected(ComponentName componentName) {<br/>
+        }<br/>
+    };<br/>
+    @Override<br/>
+    protected void onDestroy() {<br/>
+        unbindService(serviceConnection);<br/>
+        super.onDestroy();<br/>
+    }<br/>
+}
+</code></pre></li>
+</ol>
+
+<p><strong>RemoteCallbackList</strong></p>
+
+<p>在解注册的过程中，服务端无法找到之前注册的那个listener，因为Binder会把客户端传递过来的对象重新转化并生成一个新的对象。</p>
+
+<p><code>RemoteCallbackList</code>是系统专门提供的用于删除跨进程listener的接口。Remote一CallbackList是一个泛型，支持管理任意的AIDL接口。内部有一个Map结构专门用来保存所有的AIDL回调，这个Map的key是IBinder类型，value 是Callback类型，如下所示。</p>
+
+<pre><code class="language-text">public class RemoteCallbackList&lt;E extends IInterface&gt;{
+    ArrayMap&lt;IBinder， Callback&gt; mCallbacks = new ArrayMap&lt;IBinder， Callback&gt;() ;
+}
+</code></pre>
+
+<p>其中Callback中封装了真正的远程listener。 当客户端注册listener 的时候，它会把这个listener的信息存入mCallbacks中，其中key和value分别通过下面的方式获得：</p>
+
+<pre><code class="language-text">IBinder key = listener.asBinder();
+Callback value = new Callback(listener，cookie);
+</code></pre>
+
+<p>当客户端解注册的时候，只要遍历服务端所有的listener，找出那个和解注册listener具有相同Binder对象的服务端listener并把它删除就可以了。当客户端进程终止后，RemoteCallbackList能够自动移除客户端所注册的listener。RemoteCallbackList内部自动实现了线程同步的功能，所以使用它来注册和解注册时，不需要做额外的线程同步工作。</p>
+
+<p>使用RemoteCallbackList，有一点需要注意。我们无法像操作List一样去操作它，尽管它的名字中也带个List，但是它并不是一个List。遍历RemoteCallbackList，必须要按照下面的方式进行，其中<code>beginBroadcast</code>和<code>finishBroadcast</code>必须配对使用，哪怕我们仅仅是想要获取RemoteCallbackList的元素个数。</p>
+
+<pre><code class="language-text">final int N = mListenerList.beginBroadcast();
+for(int i=0;i&lt;N;i++){   
+    IOnNewBookArrivedListener l = mListenerList.getBroadcastItem(i);
+    if(l!=null){
+        //TODO
+    }
+}
+mListenerList.finishBroadcast();
+</code></pre>
+
+<p><strong>如何在AIDL中使用权限验证功能？</strong></p>
+
+<ol>
+<li><p>第一种方法：可以在onBind中进行验证，验证不通过就直接返回null。然后在AndroidMenifest中声明所需的权限。</p>
+<pre><code class="language-text">public IBinder onBind(Intent intent){
+    int check = checkCallingOrSelfPermission(&quot;xx.xx.xx&quot;);<br/>
+    if(check==PackageManager.PERMISSION_DENIED){<br/>
+        return null;<br/>
+    }<br/>
+    return mBinder;<br/>
+}
+</code></pre>
+<pre><code class="language-text">&lt;uses-permission android:name=&quot;xx.xx.xx&quot;/&gt;
+</code></pre></li>
+<li><p>第二种方法：可以在服务端的onTransact中进行权限验证，如果验证失败，就直接返回false，这样服务端就不会终止执行AIDL中的方法从而达到保护服务端的效果。可以验证permission，也可以验证Uid和Pid。</p>
+<pre><code class="language-text">public boolean onTransact(int code,Parcel data,Parcel reply,int flags) throws RemoteException{
+    int check = checkCallingOrSelfPermission(&quot;xx.xx.xx&quot;);<br/>
+    if(check==PackageManager.PERMISSION_DENIED){<br/>
+        return false;<br/>
+    }<br/>
+    String packageName = null;<br/>
+    String[] packages = getPackageManager().getPackgesForUid(getCallingUid());<br/>
+    if(packages!=null&amp;&amp;packages.length&gt;0){<br/>
+        packageName = packages[0];<br/>
+    }<br/>
+    if(!packageName.startWith(&quot;xx.xx&quot;)){<br/>
+        return false;<br/>
+    }<br/>
+    return super.onTransact(code,data,reply,flags);<br/>
+}
+</code></pre></li>
+<li><p>还可以为Service指定<code>android:permission</code>属性等。</p></li>
+</ol>
+
+<h3 id="toc_13">2.4.5 使用ContentProvider</h3>
+
+<h3 id="toc_14">2.4.6 使用Socket</h3>
+
+<h2 id="toc_15">2.5 Binder连接池</h2>
+
+<p>随着AIDL数量的增加，我们不能无限制地增加Service，Service 是四大组件之一一，本身就是一种系统资源。针对上述问题，我们需要减少Service的数量，将所有的AIDL放在同一个Service中去管理。</p>
+
+<p>每个业务模块创建自己的AIDL接口并实现此接口，这个时候不同业务模块之间是不能有耦合的，所有实现细节我们要单独开来，然后向服务端提供自己的唯一标识和其对应的 Binder 对象；对于服务端来说，只需要一个 Service就可以了，服务端提供一个queryBinder 接口，这个接口能够根据业务模块的特征来返回相应的Binder对象给它们，不同的业务模块拿到所需的Binder对象后就可以进行远程方法调用了。由此可见，Binder连接池的主要作用就是将每个业务模块的Binder请求统一转发到远程Service中去执行，从而避免了重复创建Service的过程。</p>
+
+<h2 id="toc_16">2.6 选用合适的IPC方式</h2>
+
+<p><img src="media/15513690535659/15766526817701.jpg" alt="" style="width:614px;"/></p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15537009005767.html" 
+          title="Previous Post: 02 Android系统启动">&laquo; 02 Android系统启动</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15536971481970.html" 
+          title="Next Post: 02 Material Design">02 Material Design &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

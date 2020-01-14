@@ -1,0 +1,395 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  07 事件总线 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>07 事件总线</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/03/27</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html'>进阶之光</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>为了简化并且更加高质量地在Activity、Fragment、Thread和Service等之间的通信，同时解决组件之间 高耦合的同时仍能继续高效地通信，事件总线设计出现了。</p>
+
+<h2 id="toc_0">7.1　解析EventBus</h2>
+
+<p>EventBus是一款针对Android优化的发布-订阅事件总线。它简化了应用程序内各组件间、组件与后台线 程间的通信。其优点是开销小，代码更优雅，以及将发送者和接收者解耦。</p>
+
+<h3 id="toc_1">7.1.1　使用EventBus</h3>
+
+<p>EventBus的三要素如下。</p>
+
+<ul>
+<li>Event：事件。
+<ul>
+<li>可以是任意类型的对象。</li>
+</ul></li>
+<li>Subscriber：事件订阅者。
+<ul>
+<li>在 EventBus 3.0 之前消息处理的方法只能限定于 onEvent、 onEventMainThread、onEventBackgroundThread和onEventAsync，它们分别代表4种线程模型。</li>
+<li>而在EventBus 3.0之后，事件处理的方法可以随便取名，但是需要添加一个注解@Subscribe，并且要指定线程模型(默认 为POSTING)。4种线程模型下面会讲到。</li>
+</ul></li>
+<li>Publisher：事件发布者。
+<ul>
+<li>可以在任意线程任意位置发送事件， 直接调用 EventBus 的post(Object)方法。可以自己实例化EventBus对象，但一般使用 EventBus.getDefault()就可以。根据post函数参数的类型，会自动调用订阅相应类型事件的函数。</li>
+</ul></li>
+</ul>
+
+<p>EventBus的4种ThreadMode(线程模型)如下。</p>
+
+<ul>
+<li>POSTING(默认)：
+<ul>
+<li>如果使用事件处理函数指定了线程模型为POSTING，那么该事件是在哪个线程 发布出来的，事件处理函数就会在哪个线程中运行，也就是说发布事件和接收事件在同一个线程中。在线 程模型为POSTING的事件处理函数中尽量避免执行耗时操作，因为它会阻塞事件的传递，甚至有可能会引 起ANR。</li>
+</ul></li>
+<li>MAIN：
+<ul>
+<li>事件的处理会在UI线程中执行。事件处理的时间不能太长，长了会导致ANR。</li>
+</ul></li>
+<li>BACKGROUND：
+<ul>
+<li>如果事件是在UI线程中发布出来的，那么该事件处理函数就会在新的线程中运行; 如果事件本来就是在子线程中发布出来的，那么该事件处理函数直接在发布事件的线程中执行。在此事件 处理函数中禁止进行UI更新操作。</li>
+</ul></li>
+<li>ASYNC：
+<ul>
+<li>无论事件在哪个线程中发布，该事件处理函数都会在新建的子线程中执行;同样，此事件 处理函数中禁止进行UI更新操作。</li>
+</ul></li>
+</ul>
+
+<p><strong>EventBus基本用法</strong><br/>
+(1)自定义一个事件类<br/>
+(2)在需要订阅事件的地方注册事件<br/>
+<code>EventBus.getDefault().register(this);</code> <br/>
+(3)发送事件 <br/>
+<code>EventBus.getDefault().post(messageEvent);</code><br/>
+(4)处理事件<br/>
+(5)取消事件订阅<br/>
+<code>EventBus.getDefault().unregister(this);</code></p>
+
+<p><strong>EventBus的黏性事件</strong><br/>
+除了上面讲的普通事件外，EventBus还支持发送黏性事件，就是在发送事件之后再订阅该事件也能收到该事件，这跟黏性广播类似。<br/>
+(1)订阅者处理黏性事件 <code>sticky = true</code><br/>
+(2)发送黏性事件<br/>
+<code>EventBus.getDefault().postSticky(new MessageEvent (&quot;黏性事件&quot;)) ;</code></p>
+
+<h3 id="toc_2">7.1.2　源码解析EventBus</h3>
+
+<h2 id="toc_3">7.2　解析otto</h2>
+
+<h3 id="toc_4">7.2.1　使用otto</h3>
+
+<h3 id="toc_5">7.2.2　源码解析otto</h3>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15518627036171.html" 
+          title="Previous Post: 07 Android动画深入分析">&laquo; 07 Android动画深入分析</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15537009631998.html" 
+          title="Next Post: 07 理解WindowManager">07 理解WindowManager &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

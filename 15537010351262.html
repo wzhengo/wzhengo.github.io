@@ -1,0 +1,463 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  15 插件化技术 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>15 插件化技术</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/03/27</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html'>进阶解密</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>插件化技术和热修复技术都属于动态加载技术。</p>
+
+<h2 id="toc_0">15.1 动态加载技术</h2>
+
+<p>在Android传统开发中，一旦应用的代码被打包成APK并被上传到各个渠道市场，我们就不能修改应用的源码了，只能通过服务器来控制应用中预留的分支代码。但是很多时候我们无法提前预知需求和突然发生的情况，也就不能提前在应用代码中预留分支代码，这时就需要采用动态加载技术。</p>
+
+<p>在应用程序运行时，动态加载一些程序中原本不存在的可执行文件并运行这些文件里的代码逻辑。可执行文件总的来说分为两种，一种是动态链接库so，另一种是dex相关文件(dex 以及包含dex的jar/apk文件)。</p>
+
+<p>随着应用开发技术和业务的逐步发展，动态加载技术派生出两个技术，分别是热修复技术和插件化技术，其中热修复技术主要用来修复Bug, 插件化技术则主要用于解决应用越来越庞大以及功能模块的解耦。</p>
+
+<h2 id="toc_1">15.2 插件化的产生</h2>
+
+<h3 id="toc_2">15.2.1 应用开发的痛点和瓶颈</h3>
+
+<ol>
+<li>业务复杂，模块耦合</li>
+<li>应用间的接入</li>
+<li>65536限制，内存占用大</li>
+</ol>
+
+<h3 id="toc_3">15.2.2 插件化思想</h3>
+
+<h3 id="toc_4">15.2.3 插件化定义</h3>
+
+<p>插件化的客户端由宿主和插件两个部分组成。宿主就是指先被安装到手机中的APK,就是平常我们加载的普通APK。插件一般是指经过处理的APK.so和dex等文件，插件可以被宿主进行加载，有的插件也可以作为APK独立运行。</p>
+
+<p>讲到这里就可以引出插件化的定义：将一个应用按照插件的方式进行改造的过程就叫作插件化。</p>
+
+<p>在协作方面，插件可以由一个人或者一个小组来进行开发，这样各个插件之间，以及插件和宿主之间的耦合度会降低。应用间的接入和维护也变得便捷，每个应用团队只需要负责自己的那一部分就可以了。应用以及主dex的体积也会相应变小，间接地避免了65536限制。第一次加载到内存的只有淘宝主客户端，当使用到其他插件时才会加载相应插件到内存，这样就减少了内存的占用。</p>
+
+<h2 id="toc_5">15.3 插件化框架对比</h2>
+
+<h2 id="toc_6">15.4 Activity插件化</h2>
+
+<p>四大组件的插件化是插件化技术的核心知识点，而Activity 插件化更是重中之重，Activity插件化主要有3种实现方式，分别是反射实现、接口实现和Hook技术实现。反射实现会对性能有所影响，主流的插件化框架没有采用此方式，关于接口实现可以阅读dynamic-load-apk的源码，目前Hook技术实现是主流，因此本章主要介绍Hook技术实现。</p>
+
+<p>Hook技术实现主要有两种解决方案，一种是通过Hook IActivityManager来实现，另一种是Hook Instrumentation实现。在讲到这两个解决方案前,我们需要从整体上了解Activity的启动流程。</p>
+
+<h3 id="toc_7">15.4.1 Activity的启动过程回顾</h3>
+
+<p><img src="media/15537010351262/15777798479991.jpg" alt="" style="width:611px;"/></p>
+
+<p>首先Launcher进程向AMS请求创建根Activity, AMS会判断根Activity所需的应用程序进程是否存在并启动，如果不存在就会请求Zygote进程创建应用程序进程。应用程序进程启动后, AMS会请求应用程序进程创建并启动根Activity。</p>
+
+<p>普通Activity和根Activity的启动过程大同小异，不涉及应用程序进程的创建，与Launcher也没关系：</p>
+
+<p><img src="media/15537010351262/15777799240155.jpg" alt="" style="width:676px;"/></p>
+
+<p>在应用程序进程中的Activity 向AMS请求创建普通Activity (步骤1)，AMS会对这个Activity的生命周期和栈进行管理，校验Activity等。如果Activity 满足AMS的校验，AMS就会请求应用程序进程中的ActivityThread去创建并启动普通Activity (步骤2)。</p>
+
+<h3 id="toc_8">15.4.2 Hook IActivityManager方案实现</h3>
+
+<p>AMS存在于SystemServer 进程中,我们无法直接修改,只能在应用程序进程中做文章。可以采用预先占坑的方式来解决没有在AndroidManifest.xml 中显式声明的问题，具体做法就是先使用一个在AndroidManifest.xml中注册的Activity来进行占坑，用来通过AMS的校验。接着用插件Activity替换占坑的Activity。</p>
+
+<ol>
+<li>注册Activity进行占坑</li>
+<li>使用占坑Activity通过AMS验证</li>
+<li>还原插件Activity</li>
+<li>插件Activity的生命周期</li>
+</ol>
+
+<p><img src="media/15537010351262/15779367744180.jpg" alt="" style="width:697px;"/></p>
+
+<h3 id="toc_9">15.4.3 Hook Instrumentation方案实现</h3>
+
+<p>Hook Instrumentation 实现同样也需要用到占坑Activity,与Hook IActivityManager实现不同的是，用占坑Activity替换插件Activity以及还原插件Activity 的地方不同。</p>
+
+<p><img src="media/15537010351262/15779368438324.jpg" alt="" style="width:682px;"/></p>
+
+<h3 id="toc_10">15.4.4 总结</h3>
+
+<h2 id="toc_11">15.5 Service插件化</h2>
+
+<h3 id="toc_12">15.5.1 插件化方面Service与Activity的不同</h3>
+
+<p><img src="media/15537010351262/15779370174333.jpg" alt="" style="width:693px;"/></p>
+
+<p><img src="media/15537010351262/15779370330965.jpg" alt="" style="width:795px;"/></p>
+
+<p>我们需要了解在插件化方面Activity和Service有何不同：</p>
+
+<ul>
+<li>Activity是基于栈管理的，一个栈中的Activity的数量不会太多，因此插件化框架处理的插件Activity 数量是有限的，可以声明有限的占坑Activity 来实现。除去硬件和系统限制，插件化框架处理的插件Service的数量可以是近乎无限的，无法用有限的占坑Service来实现。</li>
+<li>在Standard模式下多次启动同一个占坑Activity 可以创建多个Activity 实例，但是多次启动占坑Service并不会创建多个Service实例。</li>
+<li>用户和界面的交互会影响到Activity 的生命周期，因此插件Activity 的生命周期需要交由系统来管理，Hook IActivityManager方案中还原插件Activity 就是为了这一点。Service的生命周期不受用户影响，可以由开发者管理生命周期，没有必要还原插件。</li>
+</ul>
+
+<h3 id="toc_13">15.5.2 代理分发实现</h3>
+
+<p>Activity插件化的重点在于要保证它的生命周期，而Service插件化的重点是保证它的优先级，这就需要用一个真正的Service 来实现，而不是像占坑Activity那样起一个占坑的作用。当启动插件Service时，就会先启动代理Service,当这个代理Service 运行起来之后，在它的onStartCommand等方法里面进行分发，执行插件TargetService 的onCreate等方法,这一方案就叫作代理分发。</p>
+
+<ol>
+<li>启动代理Service</li>
+<li>代理分发</li>
+</ol>
+
+<h2 id="toc_14">15.6 ContentProvider插件化</h2>
+
+<h3 id="toc_15">15.6.1 ContentProvider的启动过程回顾</h3>
+
+<p><img src="media/15537010351262/15779372880299.jpg" alt="" style="width:765px;"/></p>
+
+<h3 id="toc_16">15.6.2 VirtualApk的实现</h3>
+
+<ol>
+<li>VirtualApk 初始化</li>
+<li>启动代理ContentProvider</li>
+<li>代理分发</li>
+</ol>
+
+<h2 id="toc_17">15.7 BroadcastReceiver的插件化</h2>
+
+<h3 id="toc_18">15.7.1 广播插件化思路</h3>
+
+<p>IntentFilter的，讲到这里我们得到了一个新思路，那就是将静态注册的BroadcastReceiver全部转换为动态注册来处理，虽然静态和动态的BroadcastReceiver 的生命周期不同，但是为了实现插件化，这个缺点显然不是关键问题。</p>
+
+<h3 id="toc_19">15.7.2 VirtualApk的实现</h3>
+
+<h2 id="toc_20">15.8 资源的插件化</h2>
+
+<h3 id="toc_21">15.8.1 系统资源加载</h3>
+
+<h3 id="toc_22">15.8.2 VirtualApk实现</h3>
+
+<p>资源的插件化方案主要有两种:一种是合并资源方案，将插件的资源全部添加到宿主的Resources中，这种方案插件可以访问宿主的资源。另一 种是构建插件资源方案，每个插件都构造出独立的Resources，这种方案插件不可以访问宿主资源。VirtualApk 采用了以上两种方案。</p>
+
+<h2 id="toc_23">15.9 so的插件化</h2>
+
+<p>so热修复主要有两种方案:</p>
+
+<ul>
+<li>将so补丁插入到NativeLibraryElement数组的前部，让so补丁的路径先被返回和加载。</li>
+<li>调用System的load方法来接管so的加载入口。</li>
+</ul>
+
+<p>so的插件化的方案和so热修复第一种方案类似，简单来说就是将so插件插入到NativeLibraryElement数组中，并且将存储so插件的文件添加到nativeLibraryDirectories 集合中就可以了。</p>
+
+<h2 id="toc_24">15.10 本章小结</h2>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15518627896387.html" 
+          title="Previous Post: 15 性能优化">&laquo; 15 性能优化</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15537010402151.html" 
+          title="Next Post: 16 绘制优化">16 绘制优化 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

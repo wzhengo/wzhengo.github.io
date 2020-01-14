@@ -1,0 +1,481 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  11 Android的线程和线程池 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>11 Android的线程和线程池</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/03/06</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html'>开发艺术探索</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li>AsyncTask封装了线程池和Handler,它主要是为了方便开发者在子线程中更新UI。</li>
+<li>HandlerThread是一种具有消息循环的线程，在它的内部可以使用Handler。</li>
+<li>IntentService是一个服务，系统对其进行了封装使其可以更方便地执行后台任务，IntentService 内部采用HandlerThread来执行任务，当任务执行完毕后IntentService 会自动退出。 它不容易被系统杀死从而可以尽量保证任务的执行。</li>
+</ul>
+
+<h2 id="toc_0">11.1 主线程和子线程</h2>
+
+<ul>
+<li>主线程：进程所拥有的线程，主要处理界面交互相关的逻辑。</li>
+<li>子线程：除主线程之外都是子线程，主要用于执行耗时操作。</li>
+</ul>
+
+<h2 id="toc_1">11.2 Android中的线程形态</h2>
+
+<h3 id="toc_2">11.2.1 AsyncTask</h3>
+
+<p>轻量级的异步任务类，可以执行后台任务以及在子线程中进行UI操作。</p>
+
+<p><strong>主要方法：</strong></p>
+
+<ol>
+<li>onPreExecute()</li>
+<li>doInBackground(Params…params)：</li>
+<li>onProgressUpdate(Progress…values)</li>
+<li>onPostExecute(Result result)</li>
+<li>onCancelled()</li>
+<li>execute(Params...params)</li>
+</ol>
+
+<h3 id="toc_3">11.2.2 AsyncTask的工作原理</h3>
+
+<ol>
+<li>AsyncTask构造方法中：
+<ol>
+<li>实例化Handler，类型是InternalHandler，用于切换到主线程</li>
+<li>实例化mWorker，类型是WorkerRunnable，封装了Params和Result；</li>
+<li>实例化mFuture，类型是FutureTask，参数为mWorker。FutureTask是一个并发类，在这里它充当了Runnable的作用。</li>
+</ol></li>
+<li>执行任务
+<ol>
+<li><code>execute</code>方法会调用<code>executeOnExecutor(sDefaultExecutor, params)</code>。
+<ol>
+<li>参数sDefaultExecutor，类型为<strong>SerialExecutor</strong>，是一个串行的线程池，一个进程中所有的AsyncTask全部在这个串行的线程池中<mark>排队</mark>执行。</li>
+<li><strong>SerialExecutor#execute</strong>。(1) ArrayDeque.<strong>offer</strong>(Runnable)。把FutureTask对象插入到任务队列mTasks中；(2) <strong>scheduleNext()</strong>。如果没有正在活动的任务，或者当一个任务执行完后，会调用scheduleNext方法执行下一个任务，直到所有的任务都被执行。scheduleNext中，调用<strong>THREAD_POOL_EXECUTOR.execute()</strong>，<mark>真正地执行任务</mark>。</li>
+</ol></li>
+<li>executeOnExecutor
+<ol>
+<li>调用<code>onPreExecute()</code></li>
+<li><strong>exec.execute</strong>(mFuture);线程池执行。</li>
+</ol></li>
+</ol></li>
+<li>响应结果
+<ol>
+<li>mWorker的<strong>call()</strong>中调用<code>doInBackground(mParams)</code>和 <strong>postResult()</strong></li>
+<li>postResult中，Handler调用sendToTarget()发送消息。</li>
+<li>InternalHandler中，<code>onProgressUpdate</code>和<strong>finish</strong>。</li>
+</ol></li>
+<li><p>结束或取消<code>onCancelled</code>、<code>onPostExecute</code></p>
+<p>从Android 3.0 开始，默认情况下AsyncTask是串行执行的，可以调用<code>executeOnExecutor</code>方法并行执行。</p></li>
+</ol>
+
+<h3 id="toc_4">11.2.3 HandlerThread</h3>
+
+<ul>
+<li>HandlerThread本质上是一个线程类，它继承了Thread；</li>
+<li>HandlerThread有自己的内部Looper对象，可以进行looper循环；</li>
+<li>通过获取HandlerThread的looper对象传递给Handler对象，可以在handleMessage方法中执行异步任务。</li>
+<li>创建HandlerThread后必须先调用HandlerThread.start()方法，Thread会先调用run方法，创建Looper对象。</li>
+<li>当不需要HandlerThread时，通过HandlerThread.quit()/quitSafely()方法来终止线程的执行</li>
+</ul>
+
+<h3 id="toc_5">11.2.4 IntentService</h3>
+
+<p>可自动创建子线程来执行任务，且任务执行完毕后自动退出。</p>
+
+<ul>
+<li>在IntentService.onCreate()里创建一个Handle对象即HandlerThread，利用其内部的Looper会实例化一个ServiceHandler对象；</li>
+<li>任务请求的Intent会被封装到Message并通过ServiceHandler发送给Looper的MessageQueue，最终在HandlerThread中执行；</li>
+<li>在ServiceHandler.handleMessage()中会调用IntentService.onHandleIntent()，可在该方法中处理后台任务的逻辑。</li>
+</ul>
+
+<h2 id="toc_6">11.3  Android中的线程池</h2>
+
+<p>线程池的优点：</p>
+
+<ul>
+<li>重用线程池中的线程，避免线程的创建和销毁带来的性能消耗；</li>
+<li>有效控制线程池的最大并发数，避免大量的线程之间因互相抢占系统资源而导致阻塞现象；</li>
+<li>能够进行线程管理，提供定时/循环间隔执行等功能。</li>
+</ul>
+
+<p>Android中的线程池的概念来源于Java中的Executor, Executor是一个接口，真正的线程池的实现为ThreadPoolExecutor。ThreadPoolExecutor 提供了一系列参数来配置线程池，通过不同的参数可以创建不同的线程池。</p>
+
+<h3 id="toc_7">11.3.1 ThreadPoolExecutor</h3>
+
+<p>ThreadPoolExecutor构造方法：</p>
+
+<pre><code class="language-text">public ThreadPoolExecutor(
+    int corePoolSize,   //核心线程数
+    int maximumPoolSize,//最大线程数
+    long keepAliveTime,//非核心线程超时时间
+    TimeUnit unit,//keepAliveTime参数的时间单位
+    BlockingQueue&lt;Runnable&gt; workQueue,//任务队列
+    ThreadFactory threadFactory,//线程工厂，可创建新线程
+    RejectedExecutionHandler handler//饱和策略
+)
+</code></pre>
+
+<p>ThreadPoolExecutor的默认工作策略：</p>
+
+<ul>
+<li>如果线程池中的线程数量未达到核心线程数，则会直接启动一个核心线程执行任务。</li>
+<li>若线程池中的线程数量已达到或者超过核心线程数量，则任务会被插入到任务列表等待执行。</li>
+<li>若任务无法插入到任务列表中，往往由于任务列表已满，此时如果：
+<ul>
+<li>线程数量未达到线程池最大线程数，则会启动一个非核心线程执行任务；</li>
+<li>线程数量已达到线程池规定的最大值，则拒绝执行此任务</li>
+</ul></li>
+</ul>
+
+<p>如果条件为否：核心线程 &gt; 任务列表 &gt; 非核心线程 &gt; 拒接任务。</p>
+
+<p>AsyncTask的THREAD_POOL_EXECUTOR线程池配置参数：</p>
+
+<ul>
+<li>核心线程数：CPU_COUNT - 1，最小为2最大为4;</li>
+<li>线程池的最大线程数：CPU_COUNT * 2+ 1;</li>
+<li>核心线程无超时机制，非核心线程在闲置时的超时时间为30秒;</li>
+<li>任务队列的容量为128。</li>
+</ul>
+
+<h3 id="toc_8">11.3.2 线程池的分类</h3>
+
+<ul>
+<li>FixedThreadPool：
+<ul>
+<li>含义：线程数量固定的线程池，所有线程都是核心线程，当线程空闲时不会被回收。</li>
+<li>特点：能快速响应外界请求。</li>
+</ul></li>
+<li>CachedThreadPool：
+<ul>
+<li>含义：线程数量不定的线程池（最大线程数为Integer.MAX_VALUE），只有非核心线程，空闲线程有超时机制，60s超时回收。</li>
+<li>特点：适合于执行大量的耗时较少的任务</li>
+</ul></li>
+<li>ScheduledThreadPool：
+<ul>
+<li>含义：核心线程数量固定，非核心线程数量不定。</li>
+<li>特点：定时任务和固定周期的任务。</li>
+</ul></li>
+<li>SingleThreadExecutor：
+<ul>
+<li>含义：只有一个核心线程，可确保所有的任务都在同一个线程中按顺序执行。</li>
+<li>特点：无需处理线程同步问题。</li>
+</ul></li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15536971381446.html" 
+          title="Previous Post: 10 应用架构设计">&laquo; 10 应用架构设计</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15537010053206.html" 
+          title="Next Post: 11 Dalvik和ART">11 Dalvik和ART &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

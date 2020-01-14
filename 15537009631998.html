@@ -1,0 +1,437 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  07 理解WindowManager - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">开发艺术探索</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">进阶之光</a></li>
+        
+            <li><a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">进阶解密</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>07 理解WindowManager</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/03/27</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html'>进阶解密</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">7.1 Window、WindowManager和WMS</h2>
+
+<ul>
+<li>Window是一个抽象类，具体的实现类为PhoneWindow,它对View进行管理。</li>
+<li>WindowManager 是一个接口类，继承自接口ViewManager，它是用来管理Window的，它的实现类为WindowManagerImpl。如果我们]想要对Window (View)进行添加、更新和删除操作就可以使用WindowManager,。</li>
+<li>WindowManager 会将具体的工作交由WMS来处理，WindowManager 和WMS通过Binder来进行跨进程通信，WMS作为系统服务有很多API是不会暴露给WindowManager的，这一点与ActivityManager和AMS的关系有些类似。</li>
+</ul>
+
+<p><img src="media/15537009631998/15770744667327.jpg" alt="" style="width:494px;"/></p>
+
+<p>Window包含了View并对View进行管理，Window用虚线来表示是因为Window是一个抽象概念，用来描述一个窗口，并不是真实存在的，Window 的实体其实也是View。WindowManager用来管理Window,而WindowManager所提供的功能最终会由WMS进行处理。</p>
+
+<h2 id="toc_1">7.2 WindowManager的关联类</h2>
+
+<p><img src="media/15537009631998/15770829130238.jpg" alt="" style="width:874px;"/></p>
+
+<h2 id="toc_2">7.3 Window的属性</h2>
+
+<h3 id="toc_3">7.3.1 Window的类型和显示次序</h3>
+
+<p>Window的类型总体来说分为三大类：</p>
+
+<ul>
+<li>Application Window（应用程序窗口）</li>
+<li>Sub Window（子窗口）</li>
+<li>System Window（系统窗口）</li>
+</ul>
+
+<p><strong>应用程序窗口</strong></p>
+
+<pre><code class="language-text">public static final int FIRST_APPLICATION_WINDOW = 1;//1
+public static final int TYPE_BASE_APPLICATION   = 1;//窗口的基础值，其他的窗口值要大于这个值
+public static final int TYPE_APPLICATION        = 2;//普通的应用程序窗口类型
+public static final int TYPE_APPLICATION_STARTING = 3;//应用程序启动窗口类型，用于系统在应用程序窗口启动前显示的窗口。
+public static final int TYPE_DRAWN_APPLICATION = 4;
+public static final int LAST_APPLICATION_WINDOW = 99;//2
+</code></pre>
+
+<p>应用程序窗口的Type值范围为1到99。</p>
+
+<p><strong>子窗口</strong></p>
+
+<p>子窗口，不能独立的存在，需要附着在其他窗口才可以，PopupWindow就属于子窗口。子窗口的Type值范围为1000到1999。</p>
+
+<p><strong>系统窗口</strong><br/>
+Toast、输入法窗口、系统音量条窗口、系统错误窗口都属于系统窗口。系统窗口的类型定义如下所示：系统窗口的类型值有接近40个，这里只列出了一小部分， 系统窗口的Type值范围为2000到2999。</p>
+
+<p><strong>窗口显示次序</strong></p>
+
+<p>当一个进程向WMS申请一个窗口时，WMS会为窗口确定显示次序。为了方便窗口显示次序的管理，手机屏幕可以虚拟的用X、Y、Z轴来表示，其中Z轴垂直于屏幕，从屏幕内指向屏幕外，这样确定窗口显示次序也就是确定窗口在Z轴上的次序，这个次序称为Z-Oder。Type值是Z-Oder排序的依据，我们知道应用程序窗口的Type值范围为1到99，子窗口1000到1999 ，系统窗口 2000到2999，，一般情况下，Type值越大则Z-Oder排序越靠前，就越靠近用户。</p>
+
+<h3 id="toc_4">7.3.2 Window的标志</h3>
+
+<p>Window的标志也就是Flag，用于控制Window的显示，同样被定义在WindowManager的内部类LayoutParams中。</p>
+
+<p><img src="media/15537009631998/15770840899344.jpg" alt="" style="width:823px;"/></p>
+
+<p>设置Window的Flag有三种方法：</p>
+
+<ul>
+<li>第一种是通过Window的addFlags方法；</li>
+<li>第二种通过Window的setFlags方法；</li>
+<li>第三种则是给LayoutParams设置Flag，并通过WindowManager的addView方法进行添加。</li>
+</ul>
+
+<h3 id="toc_5">7.3.3 软键盘相关模式</h3>
+
+<p>为了使得软键盘窗口能够按照期望来显示，WindowManager的静态内部类LayoutParams中定义了软键盘相关模式：<br/>
+<img src="media/15537009631998/15770845654108.jpg" alt="" style="width:879px;"/></p>
+
+<p>设置SoftInputMode：</p>
+
+<ul>
+<li>AndroidManifest中Activity的属性android:windowSoftInputMode；</li>
+<li>Java代码<code>getWindow().setSoftInputMode</code>。</li>
+</ul>
+
+<h2 id="toc_6">7.4 Window的操作</h2>
+
+<p>对于Window的操作，最终都是交由WMS来进行处理。窗口的操作分为两大部分，一部分是WindowManager处理部分，另一部分是WMS处理部分。</p>
+
+<p><img src="media/15537009631998/15771763898405.jpg" alt="" style="width:392px;"/></p>
+
+<h3 id="toc_7">7.4.1 系统窗口的添加过程</h3>
+
+<p><img src="media/15537009631998/15771764592662.jpg" alt="" style="width:869px;"/></p>
+
+<h3 id="toc_8">7.4.2 Activity的添加过程</h3>
+
+<ol>
+<li>Activity 在启动过程中，如果Activity所在的进程不存在则会创建新的进程，创建新的进程之后就会运行代表主线程的实例ActivityThread；</li>
+<li>当界面要与用户进行交互时，会调用ActivityThread 的handleResumeActivity方法；</li>
+<li>performResumeActivity方法最终会调用Activity 的onResume方法；</li>
+<li>得到ViewManager类型的对象后，调用了ViewManager 的addView方法，而addView方法则是在WindowManagerImpl中实现的，addView方法的第一个参数为DecorView。</li>
+</ol>
+
+<h3 id="toc_9">7.4.3 Window的更新过程</h3>
+
+<p>Window的更新过程和Window的添加过程是类似的。</p>
+
+<ol>
+<li>调用ViewManager的updateViewLayout方法，updateViewLayout 方法在WindowManagerImpl 中实现，WindowManagerImpl的updateViewLayout方法会调用WindowManagerGlobal的updateViewI ayout方法</li>
+<li>更新的参数设置到View中，得到要更新的窗口在View列表中的索引在ViewRootImpl列表中根据索引得到窗口的ViewRootlmpl，更新布局参数列表，调用ViewRootImpl的setLayoutParams方法将更新的参数设置到ViewRootImpl 中，ViewRootImpl的setLayoutParams 方法在最后会调用ViewRootImpl的scheduleTraversals方法。</li>
+<li>在TraversalRunnable的run方法中调用了doTraversal方法，在doTraversal方法中又调用了performTraversals 方法，performTraversals 方法使得ViewTree开始View的工作流程：
+<ol>
+<li>relayoutWindow方法内部会调用IWindowSession 的relayout方法来更新Window视图，最终会调用WMS的relayoutWindow方法。</li>
+<li>performTraversals 方法分别调用performMeasure、performLayout和performDraw方法,它们的内部又会调用View的measure、layout和draw方法，这样就完成了View 的工作流程。</li>
+</ol></li>
+<li>在performTraversals方法中更新了Window视图，又执行Window中的View的工作流程，这样就完成了Window 的更新。</li>
+</ol>
+
+<h2 id="toc_10">7.5 本章小结</h2>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15536971035774.html" 
+          title="Previous Post: 07 事件总线">&laquo; 07 事件总线</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15536971152612.html" 
+          title="Next Post: 08 函数响应式编程">08 函数响应式编程 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>开发艺术探索</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>进阶之光</strong></a>
+        
+            <a href="%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>进阶解密</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15511960673056.html">01 Activity的生命周期和启动模式</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15536968610805.html">01 Android新特性</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>
