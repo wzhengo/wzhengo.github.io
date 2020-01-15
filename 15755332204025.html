@@ -1,0 +1,478 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  09 | Java线程（上）：Java线程的生命周期 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>09 | Java线程（上）：Java线程的生命周期</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/12/05</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html'>极客-Java并发实战</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li>通用的线程生命周期</li>
+<li>Java 中线程的生命周期
+<ol>
+<li>RUNNABLE 与 BLOCKED 的状态转换</li>
+<li>RUNNABLE 与 WAITING 的状态转换</li>
+<li>RUNNABLE 与 TIMED_WAITING 的状态转换</li>
+<li>从 NEW 到 RUNNABLE 状态</li>
+<li>从 RUNNABLE 到 TERMINATED 状态</li>
+</ol></li>
+</ul>
+
+<h3 id="toc_0">通用的线程生命周期</h3>
+
+<p>通用的线程生命周期基本上可以用下图这个“五态模型”来描述。这五态分别是：<strong>初始状态、可运行状态、运行状态、休眠状态和终止状态。</strong></p>
+
+<p><img src="media/15755332204025/15759596960027.jpg" alt=""/></p>
+
+<p>这“五态模型”的详细情况如下所示：</p>
+
+<ol>
+<li><strong>初始状态</strong>，指的是线程已经被创建，但是还不允许分配 CPU 执行。这个状态属于编程语言特有的，不过这里所谓的被创建，仅仅是在编程语言层面被创建，而在操作系统层面，真正的线程还没有创建。</li>
+<li><strong>可运行状态</strong>，指的是线程可以分配 CPU 执行。在这种状态下，真正的操作系统线程已经被成功创建了，所以可以分配 CPU 执行。</li>
+<li>当有空闲的 CPU 时，操作系统会将其分配给一个处于可运行状态的线程，被分配到 CPU 的线程的状态就转换成了<strong>运行状态</strong>。</li>
+<li>运行状态的线程如果调用一个阻塞的 API（例如以阻塞方式读文件）或者等待某个事件（例如条件变量），那么线程的状态就会转换到<strong>休眠状态</strong>，同时释放 CPU 使用权，休眠状态的线程永远没有机会获得 CPU 使用权。当等待的事件出现了，线程就会从休眠状态转换到可运行状态。</li>
+<li>线程执行完或者出现异常就会进入<strong>终止状态</strong>，终止状态的线程不会切换到其他任何状态，进入终止状态也就意味着线程的生命周期结束了。</li>
+</ol>
+
+<h3 id="toc_1">Java 中线程的生命周期</h3>
+
+<p>Java 语言中线程共有六种状态，分别是：</p>
+
+<ol>
+<li>NEW（初始化状态）</li>
+<li>RUNNABLE（可运行 / 运行状态）</li>
+<li>BLOCKED（阻塞状态）</li>
+<li>WAITING（无时限等待）</li>
+<li>TIMED_WAITING（有时限等待）</li>
+<li>TERMINATED（终止状态）</li>
+</ol>
+
+<p>在操作系统层面，Java 线程中的 BLOCKED、WAITING、TIMED_WAITING 是一种状态，即前面我们提到的<mark>休眠状态</mark>。也就是说<strong>只要 Java 线程处于这三种状态之一，那么这个线程就永远没有 CPU 的使用权</strong>。</p>
+
+<p><img src="media/15755332204025/15759598450498.jpg" alt=""/></p>
+
+<p><strong>1. RUNNABLE 与 BLOCKED 的状态转换</strong></p>
+
+<p>只有一种场景会触发这种转换，就是线程等待 synchronized 的隐式锁。</p>
+
+<p><strong>2. RUNNABLE 与 WAITING 的状态转换</strong></p>
+
+<p>总体来说，有三种场景会触发这种转换。</p>
+
+<ul>
+<li>第一种场景，获得 synchronized 隐式锁的线程，调用无参数的 Object.wait() 方法。</li>
+<li>第二种场景，调用无参数的 Thread.join() 方法。其中的 join() 是一种线程同步方法，例如有一个线程对象 thread A，当调用 A.join() 的时候，执行这条语句的线程会等待 thread A 执行完，而等待中的这个线程，其状态会从 RUNNABLE 转换到 WAITING。当线程 thread A 执行完，原来等待它的线程又会从 WAITING 状态转换到 RUNNABLE。</li>
+<li>第三种场景，调用 LockSupport.park() 方法。调用 LockSupport.park() 方法，当前线程会阻塞，线程的状态会从 RUNNABLE 转换到 WAITING。调用 LockSupport.unpark(Thread thread) 可唤醒目标线程，目标线程的状态又会从 WAITING 状态转换到 RUNNABLE。</li>
+</ul>
+
+<p><strong>3. RUNNABLE 与 TIMED_WAITING 的状态转换</strong></p>
+
+<p>有五种场景会触发这种转换：</p>
+
+<ol>
+<li>调用带超时参数的 Thread.<mark>sleep</mark>(long millis) 方法；</li>
+<li>获得 synchronized 隐式锁的线程，调用带超时参数的 Object.<mark>wait</mark>(long timeout) 方法；</li>
+<li>调用带超时参数的 Thread.<mark>join</mark>(long millis) 方法；</li>
+<li>调用带超时参数的 LockSupport.<mark>parkNanos</mark>(Object blocker, long deadline) 方法；</li>
+<li>调用带超时参数的 LockSupport.<mark>parkUntil</mark>(long deadline) 方法。</li>
+</ol>
+
+<p>这里你会发现 TIMED_WAITING 和 WAITING 状态的区别，仅仅是触发条件多了<mark>超时参数</mark>。</p>
+
+<p><strong>4. 从 NEW 到 RUNNABLE 状态</strong></p>
+
+<p>Java 刚创建出来的 Thread 对象就是 NEW 状态，而创建 Thread 对象主要有两种方法。一种是继承 Thread 对象，重写 run() 方法。</p>
+
+<p><strong>5. 从 RUNNABLE 到 TERMINATED 状态</strong></p>
+
+<p>线程执行完 run() 方法后，会自动转换到 TERMINATED 状态，当然如果执行 run() 方法的时候异常抛出，也会导致线程终止。有时候我们需要强制中断 run() 方法的执行，Java 的 Thread 类里面有个 stop() 方法，不过已经标记为 @Deprecated，所以不建议使用了。正确的姿势其实是调用 interrupt() 方法。</p>
+
+<p><strong>那 stop() 和 interrupt() 方法的主要区别是什么呢？</strong></p>
+
+<p>stop() 方法会真的杀死线程，不给线程喘息的机会，如果线程持有 ReentrantLock 锁，被 stop() 的线程并不会自动调用 ReentrantLock 的 unlock() 去释放锁，那其他线程就再也没机会获得 ReentrantLock 锁，这实在是太危险了。所以该方法就不建议使用了，类似的方法还有 suspend() 和 resume() 方法，这两个方法同样也都不建议使用了，所以这里也就不多介绍了。</p>
+
+<p>而 interrupt() 方法就温柔多了，interrupt() 方法仅仅是通知线程，线程有机会执行一些后续操作，同时也可以无视这个通知。被 interrupt 的线程，是怎么收到通知的呢？一种是异常，另一种是主动检测。</p>
+
+<h3 id="toc_2">总结</h3>
+
+<p>理解 Java 线程的各种状态以及生命周期对于诊断多线程 Bug 非常有帮助，多线程程序很难调试，出了 Bug 基本上都是靠日志，靠线程 dump 来跟踪问题，分析线程 dump 的一个基本功就是分析线程状态，大部分的死锁、饥饿、活锁问题都需要跟踪分析线程的状态。</p>
+
+<p>你可以通过 jstack 命令或者Java VisualVM这个可视化工具将 JVM 所有的线程栈信息导出来，完整的线程栈信息不仅包括线程的当前状态、调用栈，还包括了锁的信息。</p>
+
+<h3 id="toc_3">课后思考</h3>
+
+<p><strong>下面代码的本意是当前线程被中断之后，退出while(true)，你觉得这段代码是否正确呢？</strong></p>
+
+<pre><code class="language-text">Thread th = Thread.currentThread();
+while(true) {
+  if(th.isInterrupted()) {
+    break;
+  }
+  // 省略业务代码无数
+  try {
+    Thread.sleep(100);
+  }catch (InterruptedException e){
+    e.printStackTrace();
+  }
+}
+</code></pre>
+
+<blockquote>
+<p>答：可能出现无限循环，线程在sleep期间被打断了，抛出一个InterruptedException异常，try catch捕捉此异常，应该重置一下中断标示，因为抛出异常后，中断标示会自动清除掉！</p>
+</blockquote>
+
+<pre><code class="language-text">Thread th = Thread.currentThread();
+while(true) {
+  if(th.isInterrupted()) {
+    break;
+  }
+  // 省略业务代码无数
+  try {
+    Thread.sleep(100);
+  }catch (InterruptedException e)｛
+    Thread.currentThread().interrupt();
+    e.printStackTrace();
+  }
+}
+</code></pre>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15763062437148.html" 
+          title="Previous Post: 09 | JVM是怎么实现invokedynamic的？（下）">&laquo; 09 | JVM是怎么实现invokedynamic的？（下）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15518627494454.html" 
+          title="Next Post: 09 四大组件的工作过程">09 四大组件的工作过程 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

@@ -1,0 +1,428 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  28 | 堆和堆排序：为什么说堆排序没有快速排序快？ - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>28 | 堆和堆排序：为什么说堆排序没有快速排序快？</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/11/20</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html'>极客-数据结构与算法之美</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>堆（Heap），经常被用于堆排序。<br/>
+堆排序是一种原地的、时间复杂度为O(nlogn)的排序算法。</p>
+
+<h3 id="toc_0">如何理解堆？</h3>
+
+<p>堆是一种特殊的树。只要满足以下两点，就是一个堆：</p>
+
+<ul>
+<li>堆是一个完全二叉树。</li>
+<li>堆中每一个节点的值都必需大于等于（或小于等于）其子树中每个节点的值。</li>
+</ul>
+
+<p>节点大于子树节点的堆叫“大顶堆”，否则为“小顶堆”。</p>
+
+<p><img src="media/15742423511680/15751034746068.jpg" alt=""/></p>
+
+<p>1、2是大顶堆，3是小顶堆，4不是堆。</p>
+
+<h3 id="toc_1">如何实现一个堆？</h3>
+
+<p>要实现一个堆，我们先要知道，<strong>堆都支持哪些操作</strong>以及<strong>如何存储一个堆</strong>。</p>
+
+<p><strong>1.往堆中插入一个元素</strong></p>
+
+<p>如果我们把新插入的元素放到堆中，需要对堆进行调整，让其重新满足堆的特性，这个过程称之为<strong>堆化</strong>（heapify）。</p>
+
+<ul>
+<li>堆化实际上有两种，从下往上和从上往下。</li>
+<li>堆化就是顺着节点所在的路径，向上或者向下，对比，然后交换。</li>
+</ul>
+
+<p><strong>从下往上</strong>的堆化：<br/>
+<img src="media/15742423511680/15751038657781.jpg" alt=""/></p>
+
+<p><strong>2.删除堆顶元素</strong></p>
+
+<ol>
+<li>把最后一个节点放到堆顶，然后利用同样的父子节点对比方法。</li>
+<li>对于不满足父子节点大小关系的，互换两个节点，并且重复进行这个过程，直到父子节点之间满足大小关系为止。</li>
+</ol>
+
+<p><strong>从上往下</strong>的堆化：<br/>
+<img src="media/15742423511680/15751041351935.jpg" alt=""/></p>
+
+<p>一个包含 n 个节点的完全二叉树，树的高度不会超过 log2​n。堆化的过程是顺着节点所在路径比较交换的，所以堆化的时间复杂度跟树的高度成正比，也就是 O(logn)。插入数据和删除堆顶元素的主要逻辑就是堆化，所以，往堆中插入一个元素和删除堆顶元素的时间复杂度都是 O(logn)。</p>
+
+<h3 id="toc_2">如何基于堆实现排序？</h3>
+
+<p><strong>1.建堆</strong></p>
+
+<ol>
+<li>第一种是借助我们前面讲的，在堆中插入一个元素的思路。</li>
+<li>第二种实现思路，是从后往前处理数组，并且每个数据都是从上往下堆化。<br/>
+建堆的时间复杂度是O(n)。</li>
+</ol>
+
+<p><strong>2.排序</strong></p>
+
+<ol>
+<li>我们把堆顶元素跟最后一个元素交换，那最大元素就放到了下标为 n 的位置。</li>
+<li>然后再通过堆化的方法，将剩下的 n−1 个元素重新构建成堆。</li>
+<li>我们再取堆顶的元素，放到下标是 n−1 的位置，一直重复这个过程，直到最后堆中只剩下标为 1 的一个元素，排序工作就完成了。</li>
+</ol>
+
+<p>堆排序是原地排序算法。堆排序包括建堆和排序两个操作，建堆过程的时间复杂度是 O(n)，排序过程的时间复杂度是 O(nlogn)，所以，堆排序整体的时间复杂度是 O(nlogn)。堆排序不是稳定的排序算法。</p>
+
+<h3 id="toc_3">解答开篇</h3>
+
+<p><strong>在实际开发中，为什么快速排序要比堆排序性能好？</strong><br/>
+第一点，堆排序数据访问的方式没有快速排序友好。<br/>
+第二点，对于同样的数据，在排序过程中，堆排序算法的数据交换次数要多于快速排序。</p>
+
+<h3 id="toc_4">内容小结</h3>
+
+<p>今天我们讲了堆这种数据结构。堆是一种完全二叉树。它最大的特性是：每个节点的值都大于等于（或小于等于）其子树节点的值。因此，堆被分成了两类，大顶堆和小顶堆。</p>
+
+<p>堆中比较重要的两个操作是插入一个数据和删除堆顶元素。这两个操作都要用到堆化。插入一个数据的时候，我们把新插入的数据放到数组的最后，然后从下往上堆化；删除堆顶数据的时候，我们把数组中的最后一个元素放到堆顶，然后从上往下堆化。这两个操作时间复杂度都是 O(logn)。</p>
+
+<p>除此之外，我们还讲了堆的一个经典应用，堆排序。堆排序包含两个过程，建堆和排序。我们将下标从 n/2​ 到 1 的节点，依次进行从上到下的堆化操作，然后就可以将数组中的数据组织成堆这种数据结构。接下来，我们迭代地将堆顶的元素放到堆的末尾，并将堆的大小减一，然后再堆化，重复这个过程，直到堆中只剩下一个元素，整个数组中的数据就都有序排列了。</p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15763063587205.html" 
+          title="Previous Post: 28 | 基准测试框架JMH（上）">&laquo; 28 | 基准测试框架JMH（上）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15755333902715.html" 
+          title="Next Post: 29 | Copy-on-Write模式：不是延时策略的COW">29 | Copy-on-Write模式：不是延时策略的COW &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

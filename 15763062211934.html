@@ -1,0 +1,397 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  02 | Java的基本类型 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>02 | Java的基本类型</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/12/14</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html'>极客-深入拆解Java虚拟机</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li>Java 虚拟机的 boolean 类型</li>
+<li>Java 的基本类型</li>
+<li>Java 基本类型的大小</li>
+</ul>
+
+<h2 id="toc_0">Java 虚拟机的 boolean 类型</h2>
+
+<p>在 Java 虚拟机规范中，boolean 类型则被映射成 int 类型。具体来说，“true”被映射为整数 1，而“false”被映射为整数 0。</p>
+
+<h2 id="toc_1">Java 的基本类型</h2>
+
+<p>除了上面提到的 boolean 类型外，Java 的基本类型还包括整数类型 byte、short、char、int 和 long，以及浮点类型 float 和 double。</p>
+
+<p><img src="media/15763062211934/15766380416783.jpg" alt=""/></p>
+
+<p>Java 的基本类型都有对应的值域和默认值。可以看到，byte、short、int、long、float 以及 double 的值域依次扩大，而且前面的值域被后面的值域所包含。因此，从前面的基本类型转换至后面的基本类型，无需强制转换。另外一点值得注意的是，尽管他们的默认值看起来不一样，但在内存中都是 0。</p>
+
+<h2 id="toc_2">Java 基本类型的大小</h2>
+
+<p>在第一篇中我曾经提到，Java 虚拟机每调用一个 Java 方法，便会创建一个栈帧。为了方便理解，这里我只讨论供解释器使用的解释栈帧（interpreted frame）。</p>
+
+<p>这种栈帧有两个主要的组成部分，分别是<mark>局部变量区</mark>，以及<mark>字节码的操作数栈</mark>。这里的局部变量是广义的，除了普遍意义下的局部变量之外，它还包含实例方法的“this 指针”以及方法所接收的参数。</p>
+
+<p><strong>1.存储</strong></p>
+
+<p>在 Java 虚拟机规范中，局部变量区等价于一个数组，并且可以用正整数来索引。除了 long、double 值需要用两个数组单元来存储之外，其他基本类型以及引用类型的值均占用一个数组单元。</p>
+
+<p>也就是说，boolean、byte、char、short 这四种类型，在<mark>栈</mark>上占用的空间和 int 是一样的，和引用类型也是一样的。因此，在 32 位的 HotSpot 中，这些类型在栈上将占用 4 个字节；而在 64 位的 HotSpot 中，他们将占 8 个字节。</p>
+
+<p>当然，这种情况仅存在于局部变量，而并不会出现在存储于<mark>堆</mark>中的字段或者数组元素上。对于 byte、char 以及 short 这三种类型的字段或者数组单元，它们在堆上占用的空间分别为一字节、两字节，以及两字节，也就是说，跟这些类型的值域相吻合。</p>
+
+<p><strong>1.加载</strong><br/>
+讲完了存储，现在我来讲讲加载。Java 虚拟机的算数运算几乎全部依赖于操作数栈。也就是说，我们需要将堆中的 boolean、byte、char 以及 short 加载到操作数栈上，而后将栈上的值当成 int 类型来运算。</p>
+
+<p>对于 boolean、char 这两个无符号类型来说，加载伴随着<mark>零扩展</mark>。举个例子，char 的大小为两个字节。在加载时 char 的值会被复制到 int 类型的低二字节，而高二字节则会用 0 来填充。</p>
+
+<p>对于 byte、short 这两个类型来说，加载伴随着<mark>符号扩展</mark>。举个例子，short 的大小为两个字节。在加载时 short 的值同样会被复制到 int 类型的低二字节。如果该 short 值为非负数，即最高位为 0，那么该 int 类型的值的高二字节会用 0 来填充，否则用 1 来填充。</p>
+
+<h2 id="toc_3">总结与实践</h2>
+
+<p>今天我介绍了 Java 里的基本类型。</p>
+
+<p>其中，boolean 类型在 Java 虚拟机中被映射为整数类型：“true”被映射为 1，而“false”被映射为 0。Java 代码中的逻辑运算以及条件跳转，都是用整数相关的字节码来实现的。</p>
+
+<p>除 boolean 类型之外，Java 还有另外 7 个基本类型。它们拥有不同的值域，但默认值在内存中均为 0。这些基本类型之中，浮点类型比较特殊。基于它的运算或比较，需要考虑 +0.0F、-0.0F 以及 NaN 的情况。</p>
+
+<p>除 long 和 double 外，其他基本类型与引用类型在解释执行的方法栈帧中占用的大小是一致的，但它们在堆中占用的大小确不同。在将 boolean、byte、char 以及 short 的值存入字段或者数组单元时，Java 虚拟机会进行掩码操作。在读取时，Java 虚拟机则会将其扩展为 int 类型。</p>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15755331803780.html" 
+          title="Previous Post: 02 | Java内存模型：看Java如何解决可见性和有序性问题">&laquo; 02 | Java内存模型：看Java如何解决可见性和有序性问题</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15725934071878.html" 
+          title="Next Post: 02 单例模式">02 单例模式 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

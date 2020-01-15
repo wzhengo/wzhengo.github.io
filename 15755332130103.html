@@ -1,0 +1,441 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  07 | 安全性、活跃性以及性能问题 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>07 | 安全性、活跃性以及性能问题</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/12/05</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html'>极客-Java并发实战</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li>安全性问题</li>
+<li>活跃性问题</li>
+<li>性能问题</li>
+</ul>
+
+<p>并发编程中我们需要注意的问题有很多，主要有三个方面，分别是：安全性问题、活跃性问题和性能问题。</p>
+
+<h3 id="toc_0">安全性问题</h3>
+
+<p>什么是线程安全？其实本质上就是正确性，而正确性的含义就是<strong>程序按照我们期望的执行</strong>。</p>
+
+<p>那如何才能写出线程安全的程序呢？理论上线程安全的程序，就要避免出现原子性问题、可见性问题和有序性问题。</p>
+
+<p>那是不是所有的代码都需要认真分析一遍是否存在这三个问题呢？当然不是，其实只有一种情况需要：<strong>存在共享数据并且该数据会发生变化，通俗地讲就是有多个线程会同时读写同一数据。</strong></p>
+
+<p>当多个线程同时访问同一数据，并且至少有一个线程会写这个数据的时候，如果我们不采取防护措施，那么就会导致并发 Bug，对此还有一个专业的术语，叫做<strong>数据竞争</strong>（Data Race）。</p>
+
+<p><strong>竞态条件</strong>（Race Condition），<strong>指的是程序的执行结果依赖线程执行的顺序。</strong></p>
+
+<p>在并发场景中，程序的执行依赖于某个状态变量，当某个线程发现状态变量满足执行条件后，开始执行操作；可是就在这个线程执行操作的时候，其他线程同时修改了状态变量，导致状态变量不满足执行条件了。</p>
+
+<p>那面对数据竞争和竞态条件问题，又该如何保证线程的安全性呢？其实这两类问题，都可以用<strong>互斥</strong>这个技术方案，而实现互斥的方案有很多，CPU 提供了相关的互斥指令，操作系统、编程语言也会提供相关的 API。从逻辑上来看，我们可以统一归为：<strong>锁</strong>。</p>
+
+<h3 id="toc_1">活跃性问题</h3>
+
+<p>所谓活跃性问题，指的是某个操作无法执行下去。我们常见的<strong>“死锁”</strong>就是一种典型的活跃性问题，当然除了死锁外，还有两种情况，分别是<strong>“活锁”和“饥饿”</strong>。</p>
+
+<p><strong>有时线程虽然没有发生阻塞，但仍然会存在执行不下去的情况，这就是所谓的“活锁”。</strong>可以类比现实世界里的例子，路人甲从左手边出门，路人乙从右手边进门，两人为了不相撞，互相谦让，路人甲让路走右手边，路人乙也让路走左手边，结果是两人又相撞了。这种情况，基本上谦让几次就解决了，因为人会交流啊。</p>
+
+<p>解决“活锁”的方案很简单，谦让时，尝试等待一个随机的时间就可以了。</p>
+
+<p>那“饥饿”该怎么去理解呢？<strong>所谓“饥饿”指的是线程因无法访问所需资源而无法执行下去的情况。</strong>如果线程优先级“不均”，在 CPU 繁忙的情况下，优先级低的线程得到执行的机会很小，就可能发生线程“饥饿”；持有锁的线程，如果执行的时间过长，也可能导致“饥饿”问题。</p>
+
+<p>解决“饥饿”问题的方案很简单，有三种方案：一是保证资源充足，二是公平地分配资源，三就是避免持有锁的线程长时间执行。这三个方案中，方案一和方案三的适用场景比较有限，因为很多场景下，资源的稀缺性是没办法解决的，持有锁的线程执行的时间也很难缩短。倒是方案二的适用场景相对来说更多一些。</p>
+
+<p>那如何公平地分配资源呢？在并发编程里，主要是使用公平锁。所谓公平锁，是一种先来后到的方案，线程的等待是有顺序的，排在等待队列前面的线程会优先获得资源。</p>
+
+<h3 id="toc_2">性能问题</h3>
+
+<p>使用“锁”要非常小心，但是如果小心过度，也可能出“性能问题”。“锁”的过度使用可能导致串行化的范围过大，这样就不能够发挥多线程的优势了，而我们之所以使用多线程搞并发程序，为的就是提升性能。</p>
+
+<p>使用锁的时候一定要关注对性能的影响。 那怎么才能避免锁带来的性能问题呢？这个问题很复杂，Java SDK 并发包里之所以有那么多东西，有很大一部分原因就是要提升在某个特定领域的性能。</p>
+
+<p>不过从方案层面，我们可以这样来解决这个问题：</p>
+
+<p>第一，既然使用锁会带来性能问题，那最好的方案自然就是使用无锁的算法和数据结构了。在这方面有很多相关的技术，例如线程本地存储 (Thread Local Storage, TLS)、写入时复制 (Copy-on-write)、乐观锁等；Java 并发包里面的原子类也是一种无锁的数据结构；Disruptor 则是一个无锁的内存队列，性能都非常好……</p>
+
+<p>第二，减少锁持有的时间。互斥锁本质上是将并行的程序串行化，所以要增加并行度，一定要减少持有锁的时间。这个方案具体的实现技术也有很多，例如使用细粒度的锁，一个典型的例子就是 Java 并发包里的 ConcurrentHashMap，它使用了所谓分段锁的技术（这个技术后面我们会详细介绍）；还可以使用读写锁，也就是读是无锁的，只有写的时候才会互斥。</p>
+
+<p>性能方面的度量指标有很多，我觉得有三个指标非常重要，就是：吞吐量、延迟和并发量。</p>
+
+<ul>
+<li>吞吐量：指的是单位时间内能处理的请求数量。吞吐量越高，说明性能越好。</li>
+<li>延迟：指的是从发出请求到收到响应的时间。延迟越小，说明性能越好。</li>
+<li>并发量：指的是能同时处理的请求数量，一般来说随着并发量的增加、延迟也会增加。所以延迟这个指标，一般都会是基于并发量来说的。例如并发量是 1000 的时候，延迟是 50 毫秒。</li>
+</ul>
+
+<h3 id="toc_3">总结</h3>
+
+<p>并发编程是一个复杂的技术领域，微观上涉及到原子性问题、可见性问题和有序性问题，宏观则表现为安全性、活跃性以及性能问题。</p>
+
+<p>我们在设计并发程序的时候，主要是从宏观出发，也就是要重点关注它的安全性、活跃性以及性能。安全性方面要注意数据竞争和竞态条件，活跃性方面需要注意死锁、活锁、饥饿等问题，性能方面我们虽然介绍了两个方案，但是遇到具体问题，你还是要具体分析，根据特定的场景选择合适的数据结构和算法。</p>
+
+<h3 id="toc_4">课后思考</h3>
+
+<p><strong>Java 语言提供的 Vector 是一个线程安全的容器，有同学写了下面的代码，你看看是否存在并发问题呢？</strong></p>
+
+<pre><code class="language-text">void addIfNotExist(Vector v, 
+    Object o){
+  if(!v.contains(o)) {
+    v.add(o);
+  }
+}
+</code></pre>
+
+<blockquote>
+<p>答：vector是线程安全，指的是它方法单独执行的时候没有并发正确性问题，并不代表把它的<strong>操作组合</strong>在一起没有问题，而这个程序显然有老师讲的竞态条件问题。<br/>
+老师：你需要将共享变量 v 封装在对象的内部，而后控制并发访问的路径，这样就能有效防止对 Vector v 变量的滥用，从而导致并发问题。</p>
+</blockquote>
+
+<pre><code class="language-text">class SafeVector{
+  private Vector v; 
+  // 所有公共方法增加同步控制
+  synchronized 
+  void addIfNotExist(Object o){
+    if(!v.contains(o)) {
+      v.add(o);
+    }
+  }
+}
+</code></pre>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15763062381104.html" 
+          title="Previous Post: 07 | JVM是如何实现反射的？">&laquo; 07 | JVM是如何实现反射的？</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15536971035774.html" 
+          title="Next Post: 07 事件总线">07 事件总线 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

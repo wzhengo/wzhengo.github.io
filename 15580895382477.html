@@ -1,0 +1,510 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  12 排序下：如何用快排思想在O(n)内查找第K大元素？ - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>12 排序下：如何用快排思想在O(n)内查找第K大元素？</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/05/17</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html'>极客-数据结构与算法之美</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <p>归并排序和快速排序都用到了分治思想。</p>
+
+<h4 id="toc_0">归并排序的原理</h4>
+
+<p>如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
+
+<p><img src="media/15580895382477/15725218517564.jpg" alt=""/></p>
+
+<p>归并排序使用的就是<strong>分治思想</strong>。分治，顾名思义，就是分而治之，将一个大问题分解成小的子问题来解决。小的子问题解决了，大问题也就解决了。</p>
+
+<p>分治算法一般都是用递归来实现的。<strong>分治是一种解决问题的处理思想，递归是一种编程技巧。</strong></p>
+
+<p>归并排序的递推公式和终止条件：</p>
+
+<pre><code class="language-text">递推公式：
+merge_sort(p…r) = merge(merge_sort(p…q), merge_sort(q+1…r))
+
+终止条件：
+p &gt;= r 不用再继续分解
+</code></pre>
+
+<p>伪代码：</p>
+
+<pre><code class="language-text">// 归并排序算法, A是数组，n表示数组大小
+merge_sort(A, n) {
+  merge_sort_c(A, 0, n-1)
+}
+
+// 递归调用函数
+merge_sort_c(A, p, r) {
+  // 递归终止条件
+  if p &gt;= r  then return
+
+  // 取p到r之间的中间位置q
+  q = (p+r) / 2
+  // 分治递归
+  merge_sort_c(A, p, q)
+  merge_sort_c(A, q+1, r)
+  // 将A[p...q]和A[q+1...r]合并为A[p...r]
+  merge(A[p...r], A[p...q], A[q+1...r])
+}
+</code></pre>
+
+<p>merge()函数过程和伪代码</p>
+
+<p><img src="media/15580895382477/15725262135069.jpg" alt=""/></p>
+
+<pre><code class="language-text">merge(A[p...r], A[p...q], A[q+1...r]) {
+  var i := p，j := q+1，k := 0 // 初始化变量i, j, k
+  var tmp := new array[0...r-p] // 申请一个大小跟A[p...r]一样的临时数组
+  while i&lt;=q AND j&lt;=r do {
+    if A[i] &lt;= A[j] {
+      tmp[k++] = A[i++] // i++等于i:=i+1
+    } else {
+      tmp[k++] = A[j++]
+    }
+  }
+  
+  // 判断哪个子数组中有剩余的数据
+  var start := i，end := q
+  if j&lt;=r then start := j, end:=r
+  
+  // 将剩余的数据拷贝到临时数组tmp
+  while start &lt;= end do {
+    tmp[k++] = A[start++]
+  }
+  
+  // 将tmp中的数组拷贝回A[p...r]
+  for i:=0 to r-p do {
+    A[p+i] = tmp[i]
+  }
+}
+</code></pre>
+
+<h4 id="toc_1">归并排序的性能分析</h4>
+
+<ul>
+<li>归并排序是一个稳定的排序算法</li>
+<li>归并排序的时间复杂度是O(nlogn)</li>
+<li>归并排序的空间复杂度是O(n)</li>
+</ul>
+
+<p>缺点：归并排序不是原地排序算法。</p>
+
+<h4 id="toc_2">快速排序的原理</h4>
+
+<p>如果要排序数组中下标从 p 到 r 之间的一组数据，我们选择 p 到 r 之间的任意一个数据作为 pivot（分区点）。我们遍历 p 到 r 之间的数据，将小于 pivot 的放到左边，将大于 pivot 的放到右边，将 pivot 放到中间。</p>
+
+<p>根据分治、递归的处理思想，我们可以用递归排序下标从 p 到 q-1 之间的数据和下标从 q+1 到 r 之间的数据，直到区间缩小为 1，就说明所有的数据都有序了。</p>
+
+<p><img src="media/15580895382477/15726007685737.jpg" alt=""/></p>
+
+<p>递推公式和终止条件：</p>
+
+<pre><code class="language-text">递推公式：
+quick_sort(p…r) = quick_sort(p…q-1) + quick_sort(q+1… r)
+
+终止条件：
+p &gt;= r
+</code></pre>
+
+<p>伪代码：</p>
+
+<pre><code class="language-text">// 快速排序，A是数组，n表示数组的大小
+quick_sort(A, n) {
+  quick_sort_c(A, 0, n-1)
+}
+// 快速排序递归函数，p,r为下标
+quick_sort_c(A, p, r) {
+  if p &gt;= r then return
+  
+  q = partition(A, p, r) // 获取分区点
+  quick_sort_c(A, p, q-1)
+  quick_sort_c(A, q+1, r)
+}
+</code></pre>
+
+<p>原地分区函数partition()伪代码：</p>
+
+<pre><code class="language-text">partition(A, p, r) {
+  pivot := A[r]
+  i := p
+  for j := p to r-1 do {
+    if A[j] &lt; pivot {
+      swap A[i] with A[j]
+      i := i+1
+    }
+  }
+  swap A[i] with A[r]
+  return i
+</code></pre>
+
+<p>过程如图：</p>
+
+<p><img src="media/15580895382477/15726017538109.jpg" alt=""/></p>
+
+<h4 id="toc_3">快速排序的性能分析</h4>
+
+<ul>
+<li>快排是一种原地、不稳定的排序算法。</li>
+<li>时间复杂度最差情况：T(n) = O(n2)；平均情况：T(n) = O(nlogn)。</li>
+</ul>
+
+<h4 id="toc_4">归并排序和快速排序的异同：</h4>
+
+<p><img src="media/15580895382477/15728621133857.jpg" alt=""/></p>
+
+<ul>
+<li>归并排序的处理过程是<strong>由下到上</strong>的，先处理子问题，然后再合并。</li>
+<li>而快排正好相反，它的处理过程是<strong>由上到下</strong>的，先分区，然后再处理子问题。</li>
+<li>归并排序虽然是稳定的、时间复杂度为 O(nlogn) 的排序算法，但是它是非原地排序算法。</li>
+<li>快速排序通过设计巧妙的原地分区函数，可以实现原地排序，解决了归并排序占用太多内存的问题。</li>
+</ul>
+
+<h4 id="toc_5">内容小结</h4>
+
+<ul>
+<li>归并排序和快速排序是两种稍微复杂的排序算法，它们用的都是分治的思想，代码都通过递归来实现，过程非常相似。理解归并排序的重点是理解递推公式和 merge() 合并函数。同理，理解快排的重点也是理解递推公式，还有 partition() 分区函数。</li>
+<li>归并排序算法是一种在任何情况下时间复杂度都比较稳定的排序算法，这也使它存在致命的缺点，即归并排序不是原地排序算法，空间复杂度比较高，是 O(n)。正因为此，它也没有快排应用广泛。</li>
+<li>快速排序算法虽然最坏情况下的时间复杂度是 O(n2)，但是平均情况下时间复杂度都是 O(nlogn)。不仅如此，快速排序算法时间复杂度退化到 O(n2) 的概率非常小，我们可以通过合理地选择 pivot 来避免这种情况。</li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15755332325700.html" 
+          title="Previous Post: 12 | 如何用面向对象思想写好并发程序？">&laquo; 12 | 如何用面向对象思想写好并发程序？</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15537010145803.html" 
+          title="Next Post: 12 理解ClassLoader">12 理解ClassLoader &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

@@ -1,0 +1,1367 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  Java知识点归类 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Java知识点归类</a></li>
+        
+            <li><a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Android知识点归类</a></li>
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html">极客-设计模式之美</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+	$(function(){
+		$('#menu_item_index').addClass('is_active');
+	});
+</script>
+<div class="row">
+	<div class="large-8 medium-8 columns">
+		<div class="markdown-body home-categories">
+		
+			<div class="article">
+                <a class="clearlink" href="15742140411366.html">
+                
+                  <h1>反射</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 三种获取Class对象的方式</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 获取构造器实例化对象与属性信息</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 包信息和方法</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Hook技术动态编程</li>
+</ul>
+
+<h3 id="toc_0">什么是反射？反射的原理</h3>
+
+<ul>
+<li>反射是为了能够动态的加载一个类、调用方法、访问属性等动态要求而设计的。</li>
+<li>JVM会为每个类创建一个java.lang.Class类的实例，通过该对象可以获取这个类的信息，然后通过使用java.lang.reflect包下得API以达到各种动态需求。</li>
+<li>反射机制是在运行状态中：
+<ul>
+<li>对于任意一个类，都能够知道这个类的所有属性和方法；</li>
+<li>对于任意一个对象，都能够调用它的任意一个方法和属性。</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_1">如何使用反射</h3>
+
+<p><strong>获得类对象</strong></p>
+
+<p>Class person =</p>
+
+<ul>
+<li><code>Class.forName(&quot;com.aaa.Person&quot;);</code></li>
+<li><code>Person.class;</code></li>
+<li><code>person.getClass();</code> </li>
+</ul>
+
+<p><strong>获得变量、方法等</strong></p>
+
+<ul>
+<li>java.lang.Class.java
+<ul>
+<li> <code>getField</code>、<code>getMethod</code>...</li>
+</ul></li>
+<li>java.lang.reflect.Field.java
+<ul>
+<li><code>get()</code>、<code>set()</code></li>
+</ul></li>
+<li>java.lang.reflect.Method.java
+<ul>
+<li>invoke()</li>
+</ul></li>
+<li>java.lang.reflect.Constructor.java
+<ul>
+<li>newInstance()`</li>
+</ul></li>
+</ul>
+
+<p>注意：</p>
+
+<ul>
+<li>私有变量或方法
+<ul>
+<li><code>getDeclaredField</code>、<code>getDeclaredMethod</code></li>
+<li><code>setAccessible(true)</code></li>
+</ul></li>
+<li>静态变量或方法使用<code>get(null)</code>、<code>invoke(null,...)</code></li>
+</ul>
+
+<h3 id="toc_2">反射的应用</h3>
+
+<p><strong>反射的用途</strong></p>
+
+<p>官方解释：反射被广泛地用于那些需要在运行时检测或修改程序行为的程序中。</p>
+
+<p><strong>应用场景</strong></p>
+
+<ul>
+<li>需要访问隐藏属性或者调用方法改变程序原来的逻辑，使用没有系统并没有开放一些接口出来</li>
+<li>自定义注解，注解就是在运行时利用反射机制来获取的</li>
+<li>在开发中动态加载类，比如在Android中的动态加载解决65k问题等等，模块化和插件化等</li>
+</ul>
+
+<h3 id="toc_3">扩展：编译时vs运行时</h3>
+
+<ol>
+<li><p>编译时vs运行时</p>
+<ul>
+<li>编译时：将Java代码编译成.class文件的过程</li>
+<li>运行时：Java虚拟机执行.class文件的过程</li>
+</ul></li>
+<li><p>编译时类型vs运行时类型</p>
+<ul>
+<li>编译时类型：编译时类型由声明该变量时的类型决定</li>
+<li>运行时类型：运行时类型由实际赋给该变量的类型决定</li>
+</ul>
+<pre><code class="language-text">//Animal是编译时类型，Dog是运行时类型
+Animal animal = new Dog();
+</code></pre></li>
+<li><p>动态绑定-调用引用实例的方法</p>
+<ol>
+<li>编译时，是调用声明类型的成员方法，即编译时类型的方法</li>
+<li>运行时，调用的是实际的类型的成员方法，即运行时类型的方法。</li>
+<li>对于调用引用实例的<mark>成员变量</mark>，无论是编译时还是运行时，均是调用<mark>编译时</mark>类型的成员变量</li>
+</ol></li>
+</ol>
+
+<blockquote>
+<h2 id="toc_4">面试题</h2>
+</blockquote>
+
+<p><strong>反射的原理是什么？有哪些途径获取到Class对象，Class类的含义和作用是什么？什么是class类？</strong></p>
+
+<ul>
+<li>Class文件：是由一个.java文件通过编译过程生成的.class文件。</li>
+<li>Class对象：当Java虚拟机加载一个.class文件到内存时，都会生成一个对应的Class对象，注意的是这个Class对象有且只有一个存在于内存当中。</li>
+</ul>
+
+<hr/>
+
+<p><strong>有哪些方式可以提高反射效率？为何反射消耗性能？究竟是怎么影响的，举例说明？</strong></p>
+
+<p>提高反射效率：</p>
+
+<ul>
+<li>适当使用缓存，比如，需要多次动态创建一个类的实例的时候，有缓存的写法会比没有缓存要快很多。</li>
+</ul>
+
+<p>为何反射消耗性能？</p>
+
+<ol>
+<li>由于是本地方法调用，让JVM无法优化(还有JIT)。</li>
+<li>反射方法调用还有验证过程和参数问题，参数需要装箱拆箱、需要组装成Object[]形式、异常的包装等等问题。</li>
+</ol>
+
+<p>如何优化？</p>
+
+<ol>
+<li>JIT</li>
+<li>ReflectASM反射库</li>
+</ol>
+
+<hr/>
+
+<p><strong>java反射机制提供了什么功能？反射具有暴力访问权限，如何防止反射序列化攻击单例？</strong></p>
+
+<p>防止反射序列化攻击单例：</p>
+
+<ul>
+<li>枚举</li>
+<li>abstract</li>
+</ul>
+
+<hr/>
+
+<p><strong>通过反射获得泛型的实际类型参数？反射获取构造方法，变量，方法的方法是哪些？</strong></p>
+
+<ul>
+<li>Method类的<code>getGenericParameterTypes</code></li>
+<li>ParameterizedType类的<code>getRawType</code>、<code>getActualTypeArguments</code>。</li>
+</ul>
+
+<hr/>
+
+<p><strong>getGenericParameterTypes 与 getParameterTypes区别？</strong></p>
+
+<p>都是<code>java.lang.reflect.Executable</code>的方法。</p>
+
+<pre><code class="language-text">//Executable.java
+public Type[] getGenericParameterTypes() {
+    if (hasGenericInformation())
+        return getGenericInfo().getParameterTypes();
+    else
+        return getParameterTypes();
+}
+</code></pre>
+
+<hr/>
+
+<p><strong>反射有什么作用和应用？反射和注解相比，为何反射消耗性能，有什么优缺点？</strong></p>
+
+<h3 id="toc_5">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《Java核心技术 卷1》5.7</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://time.geekbang.org/course/intro/181">极客时间-零基础学Java</a> 89</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/108">极客时间-深入拆解Java虚拟机</a> 7</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a> 10-12</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15742139479606.html">
+                
+                  <h1>并发</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li>线程共享和协作
+<ol>
+<li>CPU核心数、线程数、时间片轮转机制解读</li>
+<li>synchronized、Lock、volatile、ThreadLocal如何实现线程共享</li>
+</ol></li>
+<li>CAS
+<ol>
+<li>CAS的原理</li>
+<li>CAS带来的ABA问题</li>
+<li>原子操作类的正确使用实战</li>
+</ol></li>
+<li>线程池
+<ol>
+<li>Callable、Future和Future Task源码解读</li>
+<li>线程底层实现分析</li>
+<li>线程池牌堆机制</li>
+<li>手写线程池实战</li>
+<li>Executor框架解读</li>
+</ol></li>
+<li>Android AsyncTask</li>
+</ol>
+
+<h3 id="toc_0">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《Java核心技术 卷1》14</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《Java编程思想第4版》21</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《深入理解Java虚拟机》12</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/159">极客时间-Java并发编程实战</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/82">极客时间-Java核心技术面试精讲</a>19</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a>4-7</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://coding.imooc.com/class/317.html">慕课-大厂资深面试官 带你破解Android高级面试</a>4-1</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15742140021924.html">
+                
+                  <h1>数据传输与序列化</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ol>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Serializable</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Parcelable</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Json</li>
+</ol>
+
+<h3 id="toc_0">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://sjsdfg.github.io/effective-java-3rd-chinese/#/">《Effective Java第三版》</a> 85</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a> 3-18</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15742139049825.html">
+                
+                  <h1>泛型</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">什么是泛型？</h3>
+
+<p>泛型是一种语法糖。Java中最常用的语法糖主要有泛型、变长参数、条件编译、自动拆装箱、内部类等。</p>
+
+<h3 id="toc_1">泛型有什么作用？</h3>
+
+<ul>
+<li>告诉编译器帮我们检查类型是否匹配；</li>
+<li>使用时自动类型转换，避免<code>ClassCastException</code>。</li>
+</ul>
+
+<h3 id="toc_2">泛型的使用</h3>
+
+<ul>
+<li>泛型类和泛型接口</li>
+<li>泛型方法</li>
+<li>泛型构造器</li>
+</ul>
+
+<p>泛型派生子类时不能再包含类型形参，需要传入具体的类型。</p>
+
+<pre><code class="language-text">//定义接口时指定了一个类型形参，该形参名为E
+public interface List&lt;E&gt; extends Collection&lt;E&gt; {
+   //在该接口里，E可以作为类型使用
+   public E get(int index) {}
+   public void add(E e) {} 
+}
+
+//定义类时指定了一个类型形参，该形参名为E
+public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt; {
+   //在该类里，E可以作为类型使用
+   public void set(E e) {
+   ...
+   }
+}
+
+//泛型构造器
+public class Person {
+    public &lt;T&gt; Person(T t) {
+    System.out.println(t);
+    }
+}
+</code></pre>
+
+<h3 id="toc_3">什么是类型擦除</h3>
+
+<ul>
+<li>编译期进行类型擦除，变为原始类型。</li>
+<li>虚拟机没有泛型类型对象，所有对象都是普通类。</li>
+</ul>
+
+<h3 id="toc_4">通配符上下边界</h3>
+
+<ul>
+<li>&lt;? extends T&gt; 上界通配符 所有的类都继承T</li>
+<li>&lt;? super T&gt; 下界通配符 所有的类都是T的父类</li>
+<li>&lt;?&gt; 无界通配符 任意类型，不能是Object，只能是null</li>
+</ul>
+
+<h3 id="toc_5">泛型的限制</h3>
+
+<ul>
+<li>泛型不能是基本类型</li>
+<li>运行时类型查询instanceof只能查到原始类型</li>
+<li>不能创建参数化类型的数组</li>
+<li>不能构造泛型数组</li>
+<li>泛型类的静态变量无效</li>
+<li>不能创建泛型异常类 </li>
+</ul>
+
+<h3 id="toc_6">RxJava中的泛型</h3>
+
+<p><strong>慕课-<a href="https://coding.imooc.com/lesson/317.html#mid=22292">Java泛型的实现机制是怎样的？</a></strong></p>
+
+<ul>
+<li>使用类型擦除实现，类型编译时被擦除为Object</li>
+<li>类型擦除有哪些好处？
+<ul>
+<li>运行时内存负担小，虚拟机中只有一种类型</li>
+<li>兼容性好，Java1.5才推出</li>
+</ul></li>
+<li>类型擦除有哪些限制？
+<ul>
+<li>基本类型无法作为泛型实参</li>
+<li>泛型类型无法用作方法重载，因为类型被擦除了</li>
+<li>泛型类型无法当做真实类型使用
+<ul>
+<li>Gson.fromJson为什么需要传入Class？因为类型被擦除了</li>
+</ul></li>
+<li>静态方法无法引用类泛型参数</li>
+<li>类型强转的运行时开销</li>
+</ul></li>
+<li>附加的签名信息
+<ul>
+<li>混淆时要保留签名信息</li>
+<li>使用泛型签名的两个实例
+<ul>
+<li>Gson的TypeToken&lt;&gt;</li>
+<li>Retrofit进行网络请求的Call&lt;&gt;</li>
+</ul></li>
+<li>Kotlin反射的实现原理，用注解实现和泛型 </li>
+</ul></li>
+</ul>
+
+<blockquote>
+<h2 id="toc_7">面试题</h2>
+</blockquote>
+
+<p><strong>为什么要用通配符？上界通配符和下界通配符注意要点？什么是无界通配符？如何理解泛型编译器类型检查？</strong></p>
+
+<hr/>
+
+<p><strong>什么是泛型擦除，能否通过开发中实际案例说下？如何获取泛型的具体的类型【反射】？</strong></p>
+
+<p>通过反射获得具体类型，<code>getGenericParameterTypes</code>。</p>
+
+<hr/>
+
+<h3 id="toc_8">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《Java核心技术 卷1》第8章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《Java编程思想第4版》第15章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://sjsdfg.github.io/effective-java-3rd-chinese/#/">《Effective Java第三版》</a> 29</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《深入理解Java虚拟机》10.3.1</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://coding.imooc.com/class/317.html">慕课-大厂资深面试官 带你破解Android高级面试</a></li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15742139407156.html">
+                
+                  <h1>注解</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<h3 id="toc_0">什么是注解</h3>
+
+<ul>
+<li>注解是代码里的特殊标记，这些标记可以在编译、类加载、运行时被读取，并执行相应的处理。</li>
+<li>通过使用注解，开发人员可以在不改变原有逻辑的情况下，在源文件中嵌入一些补充的信息。 </li>
+<li>注解只是一种 metadata(元数据)传递的渠道，本身并没有实现功能。</li>
+</ul>
+
+<h3 id="toc_1">注解分类</h3>
+
+<p><strong>1.标准注解</strong></p>
+
+<p>@Override、@Deprecated（反对）、@SuppressWarnings（抑制警告）、@SafeVarargs（可变长度参数）</p>
+
+<p><strong>2.元注解</strong></p>
+
+<ul>
+<li>@Targe（目标，可用范围）</li>
+<li>@Inherited（被继承）</li>
+<li>@Documented（文档）</li>
+<li>@Retention（保留策略）
+<ul>
+<li>RetentionPolicy.SOURCE：Java文件</li>
+<li>RetentionPolicy.CLASS：Class文件</li>
+<li>RetentionPolicy.RUNTIME：JVM中</li>
+</ul></li>
+<li>@Repeatable（允许多次使用）</li>
+</ul>
+
+<h3 id="toc_2">Android Annotation</h3>
+
+<ul>
+<li>Nullness注解
+<ul>
+<li>@NonNull 不可空</li>
+<li>@Nullable 可为空</li>
+</ul></li>
+<li>Resource Type注解
+<ul>
+<li>@StringRes</li>
+<li>@IntRes</li>
+</ul></li>
+<li>Threading 注解
+<ul>
+<li>@UiThread</li>
+<li>@WorkThread</li>
+</ul></li>
+<li> Overriding Methods注解
+<ul>
+<li>@CallSuper</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_3">自定义注解</h3>
+
+<p><strong>1.基本定义</strong></p>
+
+<p>用<code>@interface</code>定义注解：</p>
+
+<pre><code class="language-text">public @interface SpiderMan{
+}
+</code></pre>
+
+<p>使用注解：</p>
+
+<pre><code class="language-text">public class AnnotationTest{
+    @SpiderMan
+    public void test(){
+        ...
+    }
+}
+</code></pre>
+
+<p><strong>2.定义成员变量</strong></p>
+
+<p>定义成员变量：</p>
+
+<pre><code class="language-text">public @interface SpiderMan{
+    String name();
+    int age() default 18;
+}
+</code></pre>
+
+<p>使用：</p>
+
+<pre><code class="language-text">public class AnnotationTest{
+    @SpiderMan(name = &quot;abc&quot;)
+    public void test(){
+        ...
+    }
+}
+</code></pre>
+
+<p><strong>3.定义运行时注解</strong></p>
+
+<pre><code class="language-text">@Retention(RetentionPolicy.RUNTIME)
+public @interface SpiderMan{
+    ...
+}
+</code></pre>
+
+<p><strong>4.定义编译时注解</strong></p>
+
+<pre><code class="language-text">@Retention(RetentionPolicy.class)
+public @interface SpiderMan{
+    ...
+}
+</code></pre>
+
+<h3 id="toc_4">注解处理器</h3>
+
+<p><strong>1.运行时注解处理器</strong><br/>
+通过反射获得Field、Method等信息，调用<code>getAnnotation()</code>方法即可获得注解信息。</p>
+
+<p><strong>2.编译时注解处理器</strong><br/>
+(1)定义注解<br/>
+(2)编写注解处理器<br/>
+(3)注册注解处理器<br/>
+(4)应用注解<br/>
+(5)使用android-apt插件</p>
+
+<h3 id="toc_5">注解的使用</h3>
+
+<p><strong>1.反射，运行时动态获取注解信息</strong><br/>
+<strong>2.APT，编译时注解处理器</strong><br/>
+<strong>3.插桩，编译后处理筛选</strong></p>
+
+<p>Android中：</p>
+
+<ul>
+<li>运行时注解：retrofit</li>
+<li>编译时注解：Dagger2, ButterKnife, EventBus3</li>
+</ul>
+
+<blockquote>
+<h2 id="toc_6">面试题</h2>
+</blockquote>
+
+<p><strong>什么是注解？它和注释的区别？注解的工作机制是什么？</strong></p>
+
+<hr/>
+
+<h3 id="toc_7">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《Java编程思想第4版》第20章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://sjsdfg.github.io/effective-java-3rd-chinese/#/">《Effective Java第三版》</a> 39</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《深入理解Java虚拟机》10.2.3</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《Android进阶之光》第9章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://time.geekbang.org/course/intro/181">极客时间-零基础学Java</a> 123</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a> 10-7</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15744048418362.html">
+                
+                  <h1>类加载</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="15537010145803.md">Android进阶解密-理解ClassLoader</a><br/>
+<a href="15749243874057.md">深入理解JVM-虚拟机类加载机制</a></p>
+
+<p><strong>Java内存模型里包含什么？程序计数器的作用是什么？常量池的作用是什么？</strong><br/>
+<strong>什么是类加载器？类加载器工作机制是什么？类加载器种类？什么是双亲委派机制？</strong><br/>
+<strong>什么时候发生类初始化？类初始化后对类的做了什么，加载变量，常量，方法都内存那个位置？</strong><br/>
+<strong>通过下面一个代码案例理解类加载顺序？当遇到 类名.变量 加载时，只加载变量所在类吗？</strong><br/>
+<strong>看下面这段代码，说一下准备阶段和初始化阶段常量变化的原理？变量初始化过程？</strong><br/>
+<strong>说收垃圾回收机制？为什么引用计数器判定对象是否回收不可行？有哪些引用类型？</strong><br/>
+<strong>谈谈Java的类加载过程？加载做了什么？验证做了什么？准备做了什么？解析做了什么？初始化做了什么？</strong></p>
+
+<h3 id="toc_0">相关资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《深入理解Java虚拟机》第7章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《Android进阶解密》第12章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/82">极客时间-Java核心技术面试精讲</a>第23讲</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a> 10-10</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/22</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15742140332552.html">
+                
+                  <h1>虚拟机</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<p><a href="15537010008552.md">Android进阶解密-Java虚拟机</a><br/>
+<a href="15749243069668.md">深入理解JVM-Java内存区</a></p>
+
+<blockquote>
+<h2 id="toc_0">虚拟机</h2>
+</blockquote>
+
+<p><strong>运行时数据区域有哪些？Java虚拟机栈是做什么的？本地方法栈又是做什么的？</strong><br/>
+<strong>对象的内存布局？对象的访问定位方式有哪些？使用指针访问和使用句柄访问各具有何优势？</strong><br/>
+<strong>说一下对象的创建过程？变量创建过程种放在虚拟机哪里？</strong><br/>
+<strong>OutOfMemoryError异常在哪些数据区域中可能会出现？分别说一下这个数据区域出现OOM的场景和缘由？</strong><br/>
+<strong>Java中堆和栈的区别？分别写出堆内存溢出与栈内存溢出的程序？</strong><br/>
+<strong>如果对象的引用被置为null，垃圾收集器是否会立即释放对象占用的内存？</strong><br/>
+<strong>java中垃圾收集的方法有哪些？</strong><br/>
+<strong>如和判断一个对象是否存活?引用计数法和可达性算法哪个更加好？如何理解一个对象不一定会被回收？</strong></p>
+
+<blockquote>
+<h2 id="toc_1">类加载</h2>
+</blockquote>
+
+<h3 id="toc_2">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《深入理解Java虚拟机》</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《Android进阶解密》10</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/108">极客时间-深入拆解Java虚拟机</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/82">极客时间-Java核心技术面试精讲</a>第25讲</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+			<div class="article">
+                <a class="clearlink" href="15742140504594.html">
+                
+                  <h1>高效IO</h1>
+                  <div class="a-content">
+                      
+                      <div class="a-content-text">
+                        
+                        	<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  Java IO
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 装饰者模式</li>
+</ul></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> InputStream和OutputStream
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> Reader与Writer</li>
+</ul></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> [ ] File文件操作
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> FileChannel </li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 内存映射</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> IO操作Dex加密</li>
+</ul></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> NIO</li>
+</ul>
+
+<h3 id="toc_0">I/O</h3>
+
+<p>Java 中有三代 IO 框架：</p>
+
+<ol>
+<li>第一代的流式阻塞 IO (Blocking IO)；</li>
+<li>第二代的 NIO (New IO)是非阻塞的，java 1.4引入。提供了 Channel、Selector、Buffer 等新的抽象，可以构建多路复用的、同步非阻塞 IO 程序，同时提供了更接近操作系统底层的高性能数据操作方式。</li>
+<li>第三代 NIO2(有些地方叫做AIO，即 async IO) 又进一步支持了异步 IO，java 1.7引入。异步 IO 操作基于事件和回调机制，应用操作直接返回，而不会阻塞在那里，当后台处理完成，操作系统会通知相应线程进行后续工作。</li>
+</ol>
+
+<h3 id="toc_1">字节与字符</h3>
+
+<p><strong>字节与字符</strong></p>
+
+<ul>
+<li>每个字节(byte)有8bit组成，每种数据类型又几个字节组成等。</li>
+<li>字符：代表一个汉字或者英文字母。字符流 = 字节流 + 编码表。</li>
+</ul>
+
+<p><strong>字节流和字符流的区别：</strong></p>
+
+<ul>
+<li>读写单位不同：字节流以字节（8bit）为单位，字符流以字符为单位，根据码表映射字符，一次可能读多个字节。</li>
+<li>处理对象不同：字节流能处理所有类型的数据（如图片、avi等），而字符流只能处理字符类型的数据，比如文本内容。</li>
+</ul>
+
+<h3 id="toc_2">常量流分类</h3>
+
+<ol>
+<li>InputStream字节输入流</li>
+<li>OutputStream字节输出流</li>
+<li>Reader字符输入流</li>
+<li>Writer字符输出流</li>
+</ol>
+
+<p><img src="media/15742140504594/15747387975462.jpg" alt=""/></p>
+
+<h3 id="toc_3">NIO</h3>
+
+<p>标准的IO基于字节流和字符流进行操作的，而NIO是基于通道(Channel)和缓冲区(Buffer)进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入通道也类似。</p>
+
+<p><strong>Buffer</strong></p>
+
+<p>利用Buffer读写数据，通常遵循四个步骤：</p>
+
+<ol>
+<li>把数据写入buffer；</li>
+<li>调用flip；</li>
+<li>从Buffer中读取数据；</li>
+<li><p>调用buffer.clear()</p></li>
+</ol>
+
+<ul>
+<li>Buffer有三个重要属性：容量，位置，上限（Buffer Capacity, Position and Limit）</li>
+<li>分配Buffer：<code>allocate()</code></li>
+</ul>
+
+<p><strong>Channel</strong></p>
+
+<p>Java NIO Channel通道和流非常相似，主要有以下几点区别：</p>
+
+<ul>
+<li>通道是双向的，可以读也可以写；流一般来说是单向的，只能读或者写。</li>
+<li>通道可以异步读写。</li>
+<li>通道总是基于缓冲区Buffer来读写。</li>
+</ul>
+
+<p>Channel的实现类有：</p>
+
+<ul>
+<li>FileChannel</li>
+<li>DatagramChannel</li>
+<li>SocketChannel</li>
+<li>ServerSocketChannel</li>
+</ul>
+
+<p><strong>区分同步/异步 和 阻塞/非阻塞</strong></p>
+
+<ul>
+<li>同步与异步（synchronous/asynchronous）
+<ul>
+<li>同步是一种可靠的有序运行机制，当我们进行同步操作时，后续的任务是等待当前调用返回，才会进行下一步；</li>
+<li>而异步则相反，其他任务不需要等待当前调用返回，通常依靠事件、回调等机制来实现任务间次序关系。</li>
+</ul></li>
+<li>阻塞与非阻塞（blocking/non-blocking）
+<ul>
+<li>在进行阻塞操作时，当前线程会处于阻塞状态，无法从事其他任务，只有当条件就绪才能继续，比如 ServerSocket 新连接建立完毕，或数据读取、写入操作完成；</li>
+<li>而非阻塞则是不管 IO 操作是否结束，直接返回，相应操作在后台继续处理。</li>
+</ul></li>
+</ul>
+
+<p><strong>Selector</strong></p>
+
+<ol>
+<li>首先，通过 Selector.open() 创建一个 Selector，作为类似调度员的角色。</li>
+<li>然后，创建一个 ServerSocketChannel，并且向 Selector 注册，通过指定 SelectionKey.OP_ACCEPT，告诉调度员，它关注的是新的连接请求。<strong>注意</strong>，为什么我们要明确配置非阻塞模式呢？这是因为阻塞模式下，注册操作是不允许的，会抛出 IllegalBlockingModeException 异常。</li>
+<li>Selector 阻塞在 select 操作，当有 Channel 发生接入请求，就会被唤醒。</li>
+<li>在 sayHelloWorld 方法中，通过 SocketChannel 和 Buffer 进行数据操作，在本例中是发送了一段字符串。</li>
+</ol>
+
+<pre><code class="language-text">
+public class NIOServer extends Thread {
+    public void run() {
+        try (Selector selector = Selector.open();
+             ServerSocketChannel serverSocket = ServerSocketChannel.open();) {// 创建Selector和Channel
+            serverSocket.bind(new InetSocketAddress(InetAddress.getLocalHost(), 8888));
+            serverSocket.configureBlocking(false);
+            // 注册到Selector，并说明关注点
+            serverSocket.register(selector, SelectionKey.OP_ACCEPT);
+            while (true) {
+                selector.select();// 阻塞等待就绪的Channel，这是关键点之一
+                Set&lt;SelectionKey&gt; selectedKeys = selector.selectedKeys();
+                Iterator&lt;SelectionKey&gt; iter = selectedKeys.iterator();
+                while (iter.hasNext()) {
+                    SelectionKey key = iter.next();
+                   // 生产系统中一般会额外进行就绪状态检查
+                    sayHelloWorld((ServerSocketChannel) key.channel());
+                    iter.remove();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sayHelloWorld(ServerSocketChannel server) throws IOException {
+        try (SocketChannel client = server.accept();) {          client.write(Charset.defaultCharset().encode(&quot;Hello world!&quot;));
+        }
+    }
+   // 省略了与前面类似的main
+}
+</code></pre>
+
+<h3 id="toc_4">深拷贝和浅拷贝</h3>
+
+<p><strong>浅拷贝</strong></p>
+
+<ul>
+<li>浅拷贝是按位拷贝对象，它会创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。</li>
+<li>如果属性是基本类型，拷贝的就是基本类型的值；</li>
+<li>如果属性是内存地址（引用类型），拷贝的就是内存地址。</li>
+</ul>
+
+<p>实现浅拷贝：<br/>
+实现了Clonable接口并重写Object类的clone()方法，然后在方法内部调用super.clone()方法。</p>
+
+<pre><code class="language-text">public Object clone() {
+    //浅拷贝
+    try {
+        // 直接调用父类的clone()方法
+        return super.clone();
+    } catch (CloneNotSupportedException e) {
+        return null;
+    }
+}
+</code></pre>
+
+<p><strong>深拷贝</strong></p>
+
+<p>深拷贝会拷贝所有的属性,并拷贝属性指向的动态分配的内存。当对象和它所引用的对象一起拷贝时即发生深拷贝。深拷贝相比于浅拷贝速度较慢并且花销较大。</p>
+
+<p>实现深拷贝：<br/>
+实现了Clonable接口并重写Object类的clone()方法，然后创建拷贝类的一个新对象。</p>
+
+<pre><code class="language-text">public Object clone() { 
+   // 深拷贝，创建拷贝类的一个新对象，这样就和原始对象相互独立
+   Student s = new Student(name, subj.getName()); 
+   return s; 
+} 
+</code></pre>
+
+<p><strong>序列化深拷贝</strong></p>
+
+<p>实现：实现<code>Serializable</code>接口。Android中还可以实现<code>Parcelable</code>接口。</p>
+
+<blockquote>
+<h2 id="toc_5">面试</h2>
+</blockquote>
+
+<p><strong>说一下Java IO里面的常见类，字节流，字符流、接口、实现类、方法阻塞？</strong><br/>
+<strong>什么是比特(Bit),什么是字节(Byte),什么是字符(Char),它们长度是多少,各有什么区别？</strong><br/>
+<strong>字符流和字节流有什么区别？如何选择字节流或者字符流？什么是缓冲区，有什么作用？</strong><br/>
+<strong>IO流中用到哪些模式？谈一谈IO流中用到的适配器模式和装饰者模式的作用优势？</strong><br/>
+<strong>说一下对NIO的理解？NIO和IO的主要区别？NIO和IO如何影响应用程序的设计?</strong><br/>
+<strong>如何实现对象克隆？克隆有哪些方式？深克隆和浅克隆有何区别？深克隆和浅克隆分别说的是什么意思？</strong><br/>
+<strong>浅拷贝会创建新的对象吗？对于基本类型拷贝的是什么？怎么样实现浅拷贝，浅拷贝前后对象地址值会一样吗？</strong><br/>
+<strong>对字节流进行大量的从硬盘读取,要用那个流,为什么？有什么需要注意的问题？</strong></p>
+
+<h3 id="toc_6">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《Java编程思想   第4版 》18</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://time.geekbang.org/course/intro/181">极客时间-零基础学Java</a>128</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/82">极客时间-Java核心技术面试精讲</a> 11</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a> 10-1</li>
+</ul>
+
+                        
+                      </div>
+                  </div>
+                </a>
+                <div class="read-more clearfix">
+                  <div class="more-left left">
+                  
+                    <span class="date">2019/11/20</span>
+                    <span>posted in&nbsp;</span> 
+          				  
+          					    <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+          				   
+                    
+
+                  </div>
+                  <div class="more-right right">
+                  <span class="comments">
+                      
+
+                       
+                  </span>
+                  </div>
+                </div>
+              </div><!-- article -->
+        
+              
+
+
+			<div class="row">
+			  <div class="large-6 columns">
+			  <p class="text-left" style="padding-top:25px;">
+			   
+			  </p>
+			  </div>
+			  <div class="large-6 columns">
+			<p class="text-right" style="padding-top:25px;">
+			
+			</p>
+			  </div>
+			</div>
+		</div>
+	</div><!-- large 8 -->
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Java知识点归类</strong></a>
+        
+            <a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Android知识点归类</strong></a>
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html"><strong>极客-设计模式之美</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

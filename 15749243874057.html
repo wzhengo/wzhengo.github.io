@@ -1,0 +1,477 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  07 虚拟机类加载机制 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>07 虚拟机类加载机制</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/11/28</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html'>深入理解虚拟机</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h2 id="toc_0">7.1 概述</h2>
+
+<p>虚拟机如何加载Class文件？Class文件中的信息进入虚拟机中会发生什么变化？</p>
+
+<p>虚拟机把描述类的数据从Class文件加载到内存，并对内存进行校验、转换解析和初始化，最终形成可以被虚拟机直接使用的java类型，这就是虚拟机的类加载机制。</p>
+
+<p>Java语言中，类型的加载、连接和初始化过程都是在程序运行期间完成的。Java可以动态扩展语言特性就是依赖运行期动态加载和动态连接实现的。</p>
+
+<h2 id="toc_1">7.2 类加载的时机</h2>
+
+<p><img src="media/15749243874057/15753546681258.jpg" alt="" style="width:475px;"/></p>
+
+<p>类的生命周期：加载、验证、准备、解析、初始化、使用、卸载。<br/>
+验证、准备、解析三个阶段称为连接。<br/>
+其中，加载、验证、准备、初始化和卸载5个阶段是确定的，<code>解析</code>阶段则不一定：这是为了支持Java语言的运行时绑定。</p>
+
+<p>对于初始化节点，虚拟机规范严格规定了有且只有5种情况必须对类进行“初始化”（加载、验证、准备自然在此之前开始）：</p>
+
+<ol>
+<li>遇到new，getstatic，putstatic或invokestatic这4条字节码指令</li>
+<li>使用java.lang.reflect包的方法对类进行反射调用</li>
+<li>当初始化一个类的时候，发现其父类还没有进行过初始化，则需要先出发父类的初始化。</li>
+<li>当虚拟机启动时，用户需要指定一个要执行的主类（包含main()方法的那个类），虚拟机会先初始化这个主类。</li>
+<li>当使用JDK1.7的动态语言支持时，如果一个java.lang.invoke.MethodHandle实例最后的解析结果REF_getStatic,REF_putStatic,REF_invokeStatic的方法句柄，并且这个方法句柄所对应的类没有进行初始化，则需要先出发初始化。</li>
+</ol>
+
+<p>以上5种触发类初始化的行为成为主动引用，除此之外，所有引用类的方式都不会触发初始化，称为被动引用。</p>
+
+<h2 id="toc_2">7.3 类加载的过程</h2>
+
+<h3 id="toc_3">7.3.1 加载</h3>
+
+<ol>
+<li>通过一个类的全限定名来获取定义此类的二进制字节流</li>
+<li>将这个字节流所代表的静态存储结构转换为方法区内的运行时数据结构</li>
+<li>在内存中生成一个代表这个类的java.lang.Class对象，作为方法区这个类的各种数据的访问入口。</li>
+</ol>
+
+<h3 id="toc_4">7.3.2 验证</h3>
+
+<p>验证是连接阶段的第一步，目的是为了确保Class文件的字节流中包含的信息符合当前虚拟机的要求，并且不会危害虚拟机自身的安全。</p>
+
+<ol>
+<li>文件格式验证
+<ul>
+<li>验证字节流是否符合Class文件格式的规范，并且能被当前版本的虚拟机处理。</li>
+</ul></li>
+<li>元数据验证
+<ul>
+<li>对字节码描述的信息进行语义分析，以保证其描述的信息符合Java语言规范要求。例如是否有父类、是否继承了不允许继承的类、是否实现了父类或接口中要求实现的所有方法等。</li>
+</ul></li>
+<li>字节码验证
+<ul>
+<li>最复杂，通过数据流和控制流分析，确定程序语义是合法的、符合逻辑的。上个阶段校验数据类型，这个分析类的方法体，确保方法运行时不会危害虚拟机。例如操作栈放置int使用时却按long加载入本地变量表中等 。</li>
+</ul></li>
+<li>符号引用验证
+<ul>
+<li>发生在虚拟机将<code>符号引用</code>转换为<code>直接引用</code>的时候，这个转换动作将在连接的第三个阶段——解析阶段中发生。</li>
+</ul></li>
+</ol>
+
+<h3 id="toc_5">7.3.3 准备</h3>
+
+<p>准备阶段是正式为类变量<code>分配内存</code>并设置类变量<code>初始值</code>的阶段。这些变量所使用的内存都将在方法区中分配。注意：内存分配仅包括类变量（static修饰）。<br/>
+如果类字段的字段属性表中存在<code>ConstantValue</code>属性，那么在准备阶段变量的值就会被初始化为ConstantValue属性所指定的值。</p>
+
+<h3 id="toc_6">7.3.4 解析</h3>
+
+<p>解析阶段是虚拟机将常量池内的符号引用替换为直接引用的过程。</p>
+
+<ul>
+<li>符号引用：以一组符号来描述所引用的目标,可以是任何形式的字面量,只要使用时能无歧义地定位到目标即可。</li>
+<li>直接引用：可以是直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。</li>
+</ul>
+
+<p>虚拟机规范并未规定解析阶段发生的具体时间，所以虚拟机可以根据需要来判断到底是在类被加载器加载时就对常量池中的符号进行解决，还是等到一个符号引用被使用前才解析它。</p>
+
+<p>invokedynamic指令用于支持动态语言支持，即程序运行到这条指令时，解析动作才能进行。</p>
+
+<p>解析动作主要针对接口、字段、类方法、接口方法、方法类型、方法句柄和调用点限定符7类符号引用进行。</p>
+
+<h3 id="toc_7">7.3.5 初始化</h3>
+
+<p>初始化阶段，才真正开始执行类中定义的Java程序代码。<br/>
+初始化阶段，根据程序员通过程序制定的主观计划，去初始化变量和其他资源。初始化阶段是执行类构造器&lt;clinit&gt;()方法的过程：</p>
+
+<ul>
+<li>&lt;clinit&gt;()方法是由编译器自动收集类中的所有类变量的赋值动作和静态语句块中的语句合并产生的。</li>
+<li>&lt;clinit&gt;()与类的构造函数不同，它不需要显示地调用父类构造器，虚拟机会保证在子类的&lt;clinit&gt;()方法执行之前，父类的&lt;clinit&gt;()方法已经执行完毕。</li>
+<li>由于父类的&lt;clinit&gt;()方法先执行，也就意味着父类中定义的静态语句块要优于子类的变量赋值操作。</li>
+<li>&lt;clinit&gt;()方法对于类或接口并不是必须的。</li>
+<li>虚拟机会保证一个类的&lt;clinit&gt;()方法在多线程环境中被正确地加锁、同步。</li>
+</ul>
+
+<h2 id="toc_8">7.4 类加载器</h2>
+
+<p>类加载器：通过一个类的全限定名来获取描述此类的二进制字节流。</p>
+
+<h3 id="toc_9">7.4.1 类与类加载器</h3>
+
+<p>对于任意一个类，都需要由加载它的类加载器和这个类本身一同确定其在Java虚拟机中的唯一性，每一个类加载器，都拥有一个独立的类名称空间。即比较两个类是否“相等”，只有在这两个类是由同一个类加载器加载的前提下才有意义。类加载器不同，类必定不相等。</p>
+
+<h3 id="toc_10">7.4.2 双亲委派模型</h3>
+
+<ul>
+<li>系统类加载器
+<ul>
+<li>Bootstrap ClassLoader</li>
+<li>Extensions ClassLoader</li>
+<li>Application ClassLoader</li>
+</ul></li>
+<li>自定义类加载器</li>
+</ul>
+
+<p><strong>双亲委派模型</strong>：如果一个类加载器收到了类加载请求，它首先不会自己去尝试加载这个类，而是把这个请问委派给父类加载器去完成，每一个层次的类加载器都是如此，因此所有的加载请求最终 都应该传送到顶层的启动类加载器中，只有当 父加载器反馈自己无法完成这个加载请求时（它的搜索范围中没有找到所需的类），子加载器才会尝试自己去加载。</p>
+
+<p>双亲委派模型的好处：Java类随着它的类加载器一起具备了一种带有优先级的层次关系。<br/>
+双亲委派模型的实现：java.lang.ClassLoader的loadClass()方法。</p>
+
+<h3 id="toc_11">7.4.3 破坏双亲委派模型</h3>
+
+<ol>
+<li>JDK1.2之前使用loadClass()，之后使用findClass()</li>
+<li>基础类调用用户的代码。如JDBC。解决：线程上下文类加载器（Thread Context  ClassLoader）。</li>
+<li>用户追求动态性，如代码热替换，模块热部署等。</li>
+</ol>
+
+<h2 id="toc_12">7.5 本章小结</h2>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15725949110112.html" 
+          title="Previous Post: 07 策略模式">&laquo; 07 策略模式</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15541289575584.html" 
+          title="Next Post: 07 链表下：如何轻松写出正确的链表代码？">07 链表下：如何轻松写出正确的链表代码？ &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

@@ -1,0 +1,489 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  泛型 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Java知识点归类</a></li>
+        
+            <li><a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Android知识点归类</a></li>
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html">极客-设计模式之美</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>泛型</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/11/20</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <h3 id="toc_0">什么是泛型？</h3>
+
+<p>泛型是一种语法糖。Java中最常用的语法糖主要有泛型、变长参数、条件编译、自动拆装箱、内部类等。</p>
+
+<h3 id="toc_1">泛型有什么作用？</h3>
+
+<ul>
+<li>告诉编译器帮我们检查类型是否匹配；</li>
+<li>使用时自动类型转换，避免<code>ClassCastException</code>。</li>
+</ul>
+
+<h3 id="toc_2">泛型的使用</h3>
+
+<ul>
+<li>泛型类和泛型接口</li>
+<li>泛型方法</li>
+<li>泛型构造器</li>
+</ul>
+
+<p>泛型派生子类时不能再包含类型形参，需要传入具体的类型。</p>
+
+<pre><code class="language-text">//定义接口时指定了一个类型形参，该形参名为E
+public interface List&lt;E&gt; extends Collection&lt;E&gt; {
+   //在该接口里，E可以作为类型使用
+   public E get(int index) {}
+   public void add(E e) {} 
+}
+
+//定义类时指定了一个类型形参，该形参名为E
+public class ArrayList&lt;E&gt; extends AbstractList&lt;E&gt; implements List&lt;E&gt; {
+   //在该类里，E可以作为类型使用
+   public void set(E e) {
+   ...
+   }
+}
+
+//泛型构造器
+public class Person {
+    public &lt;T&gt; Person(T t) {
+    System.out.println(t);
+    }
+}
+</code></pre>
+
+<h3 id="toc_3">什么是类型擦除</h3>
+
+<ul>
+<li>编译期进行类型擦除，变为原始类型。</li>
+<li>虚拟机没有泛型类型对象，所有对象都是普通类。</li>
+</ul>
+
+<h3 id="toc_4">通配符上下边界</h3>
+
+<ul>
+<li>&lt;? extends T&gt; 上界通配符 所有的类都继承T</li>
+<li>&lt;? super T&gt; 下界通配符 所有的类都是T的父类</li>
+<li>&lt;?&gt; 无界通配符 任意类型，不能是Object，只能是null</li>
+</ul>
+
+<h3 id="toc_5">泛型的限制</h3>
+
+<ul>
+<li>泛型不能是基本类型</li>
+<li>运行时类型查询instanceof只能查到原始类型</li>
+<li>不能创建参数化类型的数组</li>
+<li>不能构造泛型数组</li>
+<li>泛型类的静态变量无效</li>
+<li>不能创建泛型异常类 </li>
+</ul>
+
+<h3 id="toc_6">RxJava中的泛型</h3>
+
+<p><strong>慕课-<a href="https://coding.imooc.com/lesson/317.html#mid=22292">Java泛型的实现机制是怎样的？</a></strong></p>
+
+<ul>
+<li>使用类型擦除实现，类型编译时被擦除为Object</li>
+<li>类型擦除有哪些好处？
+<ul>
+<li>运行时内存负担小，虚拟机中只有一种类型</li>
+<li>兼容性好，Java1.5才推出</li>
+</ul></li>
+<li>类型擦除有哪些限制？
+<ul>
+<li>基本类型无法作为泛型实参</li>
+<li>泛型类型无法用作方法重载，因为类型被擦除了</li>
+<li>泛型类型无法当做真实类型使用
+<ul>
+<li>Gson.fromJson为什么需要传入Class？因为类型被擦除了</li>
+</ul></li>
+<li>静态方法无法引用类泛型参数</li>
+<li>类型强转的运行时开销</li>
+</ul></li>
+<li>附加的签名信息
+<ul>
+<li>混淆时要保留签名信息</li>
+<li>使用泛型签名的两个实例
+<ul>
+<li>Gson的TypeToken&lt;&gt;</li>
+<li>Retrofit进行网络请求的Call&lt;&gt;</li>
+</ul></li>
+<li>Kotlin反射的实现原理，用注解实现和泛型 </li>
+</ul></li>
+</ul>
+
+<blockquote>
+<h2 id="toc_7">面试题</h2>
+</blockquote>
+
+<p><strong>为什么要用通配符？上界通配符和下界通配符注意要点？什么是无界通配符？如何理解泛型编译器类型检查？</strong></p>
+
+<hr/>
+
+<p><strong>什么是泛型擦除，能否通过开发中实际案例说下？如何获取泛型的具体的类型【反射】？</strong></p>
+
+<p>通过反射获得具体类型，<code>getGenericParameterTypes</code>。</p>
+
+<hr/>
+
+<h3 id="toc_8">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《Java核心技术 卷1》第8章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《Java编程思想第4版》第15章</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://sjsdfg.github.io/effective-java-3rd-chinese/#/">《Effective Java第三版》</a> 29</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《深入理解Java虚拟机》10.3.1</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://coding.imooc.com/class/317.html">慕课-大厂资深面试官 带你破解Android高级面试</a></li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15742140021924.html" 
+          title="Previous Post: 数据传输与序列化">&laquo; 数据传输与序列化</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15742139407156.html" 
+          title="Next Post: 注解">注解 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Java知识点归类</strong></a>
+        
+            <a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Android知识点归类</strong></a>
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html"><strong>极客-设计模式之美</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

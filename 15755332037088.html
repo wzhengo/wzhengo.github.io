@@ -1,0 +1,539 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  05 | 一不小心就死锁了，怎么办？ - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>05 | 一不小心就死锁了，怎么办？</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/12/05</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html'>极客-Java并发实战</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li>向现实世界要答案</li>
+<li>没有免费的午餐</li>
+<li>如何预防死锁
+<ol>
+<li>破坏占用且等待条件</li>
+<li>破坏不可抢占条件</li>
+<li>破坏循环等待条件</li>
+</ol></li>
+</ul>
+
+<p>在上一篇文章中，我们用 Account.class 作为互斥锁，来解决银行业务里面的转账问题，虽然这个方案不存在并发问题，但是所有账户的转账操作都是串行的，性能太差。</p>
+
+<h3 id="toc_0">向现实世界要答案</h3>
+
+<p>其实用两把锁就实现了，转出账本一把，转入账本另一把。在 transfer() 方法内部，我们首先尝试锁定转出账户 this（先把转出账本拿到手），然后尝试锁定转入账户 target（再把转入账本拿到手），只有当两者都成功时，才执行转账操作。这个逻辑可以图形化为下图这个样子。</p>
+
+<p><img src="media/15755332037088/15756196793198.jpg" alt=""/></p>
+
+<pre><code class="language-text">class Account {
+  private int balance;
+  // 转账
+  void transfer(Account target, int amt){
+    // 锁定转出账户
+    synchronized(this) {              
+      // 锁定转入账户
+      synchronized(target) {           
+        if (this.balance &gt; amt) {
+          this.balance -= amt;
+          target.balance += amt;
+        }
+      }
+    }
+  } 
+}
+</code></pre>
+
+<h3 id="toc_1">没有免费的午餐</h3>
+
+<p>相对于用 Account.class 作为互斥锁，锁定的范围太大，我们锁定两个账户范围就小多了，这样的锁，上一章我们介绍过，叫<strong>细粒度锁</strong>。<mark>使用细粒度锁可以提高并行度，是性能优化的一个重要手段</mark>。</p>
+
+<p>使用细粒度锁是有代价的，这个代价就是可能会导致<strong>死锁</strong>。</p>
+
+<p><img src="media/15755332037088/15756198699495.jpg" alt=""/></p>
+
+<p>死锁的一个比较专业的定义是：<strong>一组互相竞争资源的线程因互相等待，导致“永久”阻塞的现象</strong>。</p>
+
+<h3 id="toc_2">如何预防死锁</h3>
+
+<p>要避免死锁就需要分析死锁发生的条件，只有以下这四个条件<mark>都发生</mark>时才会出现死锁：</p>
+
+<ol>
+<li>互斥，共享资源 X 和 Y 只能被一个线程占用；</li>
+<li>占有且等待，线程 T1 已经取得共享资源 X，在等待共享资源 Y 的时候，不释放共享资源 X；</li>
+<li>不可抢占，其他线程不能强行抢占线程 T1 占有的资源；</li>
+<li>循环等待，线程 T1 等待线程 T2 占有的资源，线程 T2 等待线程 T1 占有的资源，就是循环等待。</li>
+</ol>
+
+<p>也就是说只要我们破坏其中一个，就可以成功避免死锁的发生。其中，互斥这个条件我们没有办法破坏，因为我们用锁为的就是互斥，不过其他三个条件都是有办法破坏掉的。</p>
+
+<ol>
+<li>对于“占用且等待”这个条件，我们可以<mark>一次性申请所有的资源</mark>，这样就不存在等待了。</li>
+<li>对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果<mark>申请不到，可以主动释放它占有的资源</mark>，这样不可抢占这个条件就破坏掉了。</li>
+<li>对于“循环等待”这个条件，可以靠<mark>按序申请</mark>资源来预防。所谓按序申请，是指资源是有线性顺序的，申请的时候可以先申请资源序号小的，再申请资源序号大的，这样线性化后自然就不存在循环了。</li>
+</ol>
+
+<p><strong>1. 破坏占用且等待条件</strong></p>
+
+<p>对于“占用且等待”这个条件，我们可以<mark>一次性申请所有的资源</mark>，这样就不存在等待了。</p>
+
+<p>可以增加一个账本管理员，然后只允许账本管理员从文件架上拿账本，只有账本 A 和 B 都在的时候才会给账本申请者。</p>
+
+<p>对应到编程领域，“同时申请”这个操作是一个临界区，我们也需要一个角色（Java 里面的类）来管理这个临界区，我们就把这个角色定为 Allocator。它有两个重要功能，分别是：同时申请资源 apply() 和同时释放资源 free()。</p>
+
+<p>账户 Account 类里面持有一个 Allocator 的单例（必须是单例，只能由一个人来分配资源）。</p>
+
+<p>当账户 Account 在执行转账操作的时候：</p>
+
+<ol>
+<li>首先向 Allocator 同时申请转出账户和转入账户这两个资源，成功后再锁定这两个资源；</li>
+<li>当转账操作执行完，释放锁之后，我们需通知 Allocator 同时释放转出账户和转入账户这两个资源。</li>
+</ol>
+
+<p>具体的代码实现如下：</p>
+
+<pre><code class="language-text">class Allocator {
+  private List&lt;Object&gt; als =
+    new ArrayList&lt;&gt;();
+  // 一次性申请所有资源
+  synchronized boolean apply(
+    Object from, Object to){
+    if(als.contains(from) ||
+         als.contains(to)){
+      return false;  
+    } else {
+      als.add(from);
+      als.add(to);  
+    }
+    return true;
+  }
+  // 归还资源
+  synchronized void free(
+    Object from, Object to){
+    als.remove(from);
+    als.remove(to);
+  }
+}
+
+class Account {
+  // actr应该为单例
+  private Allocator actr;
+  private int balance;
+  // 转账
+  void transfer(Account target, int amt){
+    // 一次性申请转出账户和转入账户，直到成功
+    while(!actr.apply(this, target))
+      ；
+    try{
+      // 锁定转出账户
+      synchronized(this){              
+        // 锁定转入账户
+        synchronized(target){           
+          if (this.balance &gt; amt){
+            this.balance -= amt;
+            target.balance += amt;
+          }
+        }
+      }
+    } finally {
+      actr.free(this, target)
+    }
+  } 
+}
+</code></pre>
+
+<p><strong>2. 破坏不可抢占条件</strong></p>
+
+<p>对于“不可抢占”这个条件，占用部分资源的线程进一步申请其他资源时，如果<mark>申请不到，可以主动释放它占有的资源</mark>，这样不可抢占这个条件就破坏掉了。</p>
+
+<p>破坏不可抢占条件看上去很简单，核心是要能够主动释放它占有的资源，这一点 synchronized 是做不到的。原因是 synchronized 申请资源的时候，如果申请不到，线程直接进入阻塞状态了，而线程进入阻塞状态，啥都干不了，也释放不了线程已经占有的资源。</p>
+
+<p>后续 java.util.concurrent 这个包下面提供的 Lock 是可以解决这个问题的。</p>
+
+<p><strong>3. 破坏循环等待条件</strong></p>
+
+<p>对于“循环等待”这个条件，可以靠<mark>按序申请</mark>资源来预防。所谓按序申请，是指资源是有线性顺序的，申请的时候可以先申请资源序号小的，再申请资源序号大的，这样线性化后自然就不存在循环了。</p>
+
+<p>这个实现非常简单，我们假设每个账户都有不同的属性 id，这个 id 可以作为排序字段，申请的时候，我们可以按照从小到大的顺序来申请。比如下面代码中，①~⑥处的代码对转出账户（this）和转入账户（target）排序，然后按照序号从小到大的顺序锁定账户。</p>
+
+<pre><code class="language-text">class Account {
+  private int id;
+  private int balance;
+  // 转账
+  void transfer(Account target, int amt){
+    Account left = this        ①
+    Account right = target;    ②
+    if (this.id &gt; target.id) { ③
+      left = target;           ④
+      right = this;            ⑤
+    }                          ⑥
+    // 锁定序号小的账户
+    synchronized(left){
+      // 锁定序号大的账户
+      synchronized(right){ 
+        if (this.balance &gt; amt){
+          this.balance -= amt;
+          target.balance += amt;
+        }
+      }
+    }
+  } 
+}
+</code></pre>
+
+<h3 id="toc_3">总结</h3>
+
+<p>我们今天这一篇文章主要讲了<strong>用细粒度锁来锁定多个资源时，要注意死锁的问题</strong>。这个就需要你能把它强化为一个思维定势，遇到这种场景，马上想到可能存在死锁问题。当你知道风险之后，才有机会谈如何预防和避免，因此，<strong>识别出风险很重要。</strong></p>
+
+<p>预防死锁主要是破坏三个条件中的一个，有了这个思路后，实现就简单了。但仍需注意的是，有时候预防死锁成本也是很高的。例如上面转账那个例子，我们破坏占用且等待条件的成本就比破坏循环等待条件的成本高，破坏占用且等待条件，我们也是锁了所有的账户，而且还是用了死循环 while(!actr.apply(this, target));方法，不过好在 apply() 这个方法基本不耗时。 在转账这个例子中，破坏循环等待条件就是成本最低的一个方案。</p>
+
+<p>所以我们在选择具体方案的时候，还需要<mark>评估一下操作成本</mark>，从中选择一个成本最低的方案。</p>
+
+<h3 id="toc_4">课后思考</h3>
+
+<p><strong>我们上面提到：破坏占用且等待条件，我们也是锁了所有的账户，而且还是用了死循环 while(!actr.apply(this, target));这个方法，那它比 synchronized(Account.class) 有没有性能优势呢？</strong></p>
+
+<blockquote>
+<p>synchronized(Account.class) 锁了Account类相关的所有操作。while死循环的方式只锁定了当前操作的两个相关的对象。两种影响到的范围不同。<br/>
+while循环可以加个timeout，避免一直阻塞下去。</p>
+</blockquote>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15763062310298.html" 
+          title="Previous Post: 05 | JVM是如何执行方法调用的？（下）">&laquo; 05 | JVM是如何执行方法调用的？（下）</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15725948812168.html" 
+          title="Next Post: 05 工厂模式">05 工厂模式 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

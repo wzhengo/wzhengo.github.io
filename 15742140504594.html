@@ -1,0 +1,572 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  高效IO - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Java知识点归类</a></li>
+        
+            <li><a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Android知识点归类</a></li>
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html">极客-设计模式之美</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>高效IO</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/11/20</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  Java IO
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 装饰者模式</li>
+</ul></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> InputStream和OutputStream
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> Reader与Writer</li>
+</ul></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> [ ] File文件操作
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> FileChannel </li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> 内存映射</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> IO操作Dex加密</li>
+</ul></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> NIO</li>
+</ul>
+
+<h3 id="toc_0">I/O</h3>
+
+<p>Java 中有三代 IO 框架：</p>
+
+<ol>
+<li>第一代的流式阻塞 IO (Blocking IO)；</li>
+<li>第二代的 NIO (New IO)是非阻塞的，java 1.4引入。提供了 Channel、Selector、Buffer 等新的抽象，可以构建多路复用的、同步非阻塞 IO 程序，同时提供了更接近操作系统底层的高性能数据操作方式。</li>
+<li>第三代 NIO2(有些地方叫做AIO，即 async IO) 又进一步支持了异步 IO，java 1.7引入。异步 IO 操作基于事件和回调机制，应用操作直接返回，而不会阻塞在那里，当后台处理完成，操作系统会通知相应线程进行后续工作。</li>
+</ol>
+
+<h3 id="toc_1">字节与字符</h3>
+
+<p><strong>字节与字符</strong></p>
+
+<ul>
+<li>每个字节(byte)有8bit组成，每种数据类型又几个字节组成等。</li>
+<li>字符：代表一个汉字或者英文字母。字符流 = 字节流 + 编码表。</li>
+</ul>
+
+<p><strong>字节流和字符流的区别：</strong></p>
+
+<ul>
+<li>读写单位不同：字节流以字节（8bit）为单位，字符流以字符为单位，根据码表映射字符，一次可能读多个字节。</li>
+<li>处理对象不同：字节流能处理所有类型的数据（如图片、avi等），而字符流只能处理字符类型的数据，比如文本内容。</li>
+</ul>
+
+<h3 id="toc_2">常量流分类</h3>
+
+<ol>
+<li>InputStream字节输入流</li>
+<li>OutputStream字节输出流</li>
+<li>Reader字符输入流</li>
+<li>Writer字符输出流</li>
+</ol>
+
+<p><img src="media/15742140504594/15747387975462.jpg" alt=""/></p>
+
+<h3 id="toc_3">NIO</h3>
+
+<p>标准的IO基于字节流和字符流进行操作的，而NIO是基于通道(Channel)和缓冲区(Buffer)进行操作，数据总是从通道读取到缓冲区中，或者从缓冲区写入通道也类似。</p>
+
+<p><strong>Buffer</strong></p>
+
+<p>利用Buffer读写数据，通常遵循四个步骤：</p>
+
+<ol>
+<li>把数据写入buffer；</li>
+<li>调用flip；</li>
+<li>从Buffer中读取数据；</li>
+<li><p>调用buffer.clear()</p></li>
+</ol>
+
+<ul>
+<li>Buffer有三个重要属性：容量，位置，上限（Buffer Capacity, Position and Limit）</li>
+<li>分配Buffer：<code>allocate()</code></li>
+</ul>
+
+<p><strong>Channel</strong></p>
+
+<p>Java NIO Channel通道和流非常相似，主要有以下几点区别：</p>
+
+<ul>
+<li>通道是双向的，可以读也可以写；流一般来说是单向的，只能读或者写。</li>
+<li>通道可以异步读写。</li>
+<li>通道总是基于缓冲区Buffer来读写。</li>
+</ul>
+
+<p>Channel的实现类有：</p>
+
+<ul>
+<li>FileChannel</li>
+<li>DatagramChannel</li>
+<li>SocketChannel</li>
+<li>ServerSocketChannel</li>
+</ul>
+
+<p><strong>区分同步/异步 和 阻塞/非阻塞</strong></p>
+
+<ul>
+<li>同步与异步（synchronous/asynchronous）
+<ul>
+<li>同步是一种可靠的有序运行机制，当我们进行同步操作时，后续的任务是等待当前调用返回，才会进行下一步；</li>
+<li>而异步则相反，其他任务不需要等待当前调用返回，通常依靠事件、回调等机制来实现任务间次序关系。</li>
+</ul></li>
+<li>阻塞与非阻塞（blocking/non-blocking）
+<ul>
+<li>在进行阻塞操作时，当前线程会处于阻塞状态，无法从事其他任务，只有当条件就绪才能继续，比如 ServerSocket 新连接建立完毕，或数据读取、写入操作完成；</li>
+<li>而非阻塞则是不管 IO 操作是否结束，直接返回，相应操作在后台继续处理。</li>
+</ul></li>
+</ul>
+
+<p><strong>Selector</strong></p>
+
+<ol>
+<li>首先，通过 Selector.open() 创建一个 Selector，作为类似调度员的角色。</li>
+<li>然后，创建一个 ServerSocketChannel，并且向 Selector 注册，通过指定 SelectionKey.OP_ACCEPT，告诉调度员，它关注的是新的连接请求。<strong>注意</strong>，为什么我们要明确配置非阻塞模式呢？这是因为阻塞模式下，注册操作是不允许的，会抛出 IllegalBlockingModeException 异常。</li>
+<li>Selector 阻塞在 select 操作，当有 Channel 发生接入请求，就会被唤醒。</li>
+<li>在 sayHelloWorld 方法中，通过 SocketChannel 和 Buffer 进行数据操作，在本例中是发送了一段字符串。</li>
+</ol>
+
+<pre><code class="language-text">
+public class NIOServer extends Thread {
+    public void run() {
+        try (Selector selector = Selector.open();
+             ServerSocketChannel serverSocket = ServerSocketChannel.open();) {// 创建Selector和Channel
+            serverSocket.bind(new InetSocketAddress(InetAddress.getLocalHost(), 8888));
+            serverSocket.configureBlocking(false);
+            // 注册到Selector，并说明关注点
+            serverSocket.register(selector, SelectionKey.OP_ACCEPT);
+            while (true) {
+                selector.select();// 阻塞等待就绪的Channel，这是关键点之一
+                Set&lt;SelectionKey&gt; selectedKeys = selector.selectedKeys();
+                Iterator&lt;SelectionKey&gt; iter = selectedKeys.iterator();
+                while (iter.hasNext()) {
+                    SelectionKey key = iter.next();
+                   // 生产系统中一般会额外进行就绪状态检查
+                    sayHelloWorld((ServerSocketChannel) key.channel());
+                    iter.remove();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    private void sayHelloWorld(ServerSocketChannel server) throws IOException {
+        try (SocketChannel client = server.accept();) {          client.write(Charset.defaultCharset().encode(&quot;Hello world!&quot;));
+        }
+    }
+   // 省略了与前面类似的main
+}
+</code></pre>
+
+<h3 id="toc_4">深拷贝和浅拷贝</h3>
+
+<p><strong>浅拷贝</strong></p>
+
+<ul>
+<li>浅拷贝是按位拷贝对象，它会创建一个新对象，这个对象有着原始对象属性值的一份精确拷贝。</li>
+<li>如果属性是基本类型，拷贝的就是基本类型的值；</li>
+<li>如果属性是内存地址（引用类型），拷贝的就是内存地址。</li>
+</ul>
+
+<p>实现浅拷贝：<br/>
+实现了Clonable接口并重写Object类的clone()方法，然后在方法内部调用super.clone()方法。</p>
+
+<pre><code class="language-text">public Object clone() {
+    //浅拷贝
+    try {
+        // 直接调用父类的clone()方法
+        return super.clone();
+    } catch (CloneNotSupportedException e) {
+        return null;
+    }
+}
+</code></pre>
+
+<p><strong>深拷贝</strong></p>
+
+<p>深拷贝会拷贝所有的属性,并拷贝属性指向的动态分配的内存。当对象和它所引用的对象一起拷贝时即发生深拷贝。深拷贝相比于浅拷贝速度较慢并且花销较大。</p>
+
+<p>实现深拷贝：<br/>
+实现了Clonable接口并重写Object类的clone()方法，然后创建拷贝类的一个新对象。</p>
+
+<pre><code class="language-text">public Object clone() { 
+   // 深拷贝，创建拷贝类的一个新对象，这样就和原始对象相互独立
+   Student s = new Student(name, subj.getName()); 
+   return s; 
+} 
+</code></pre>
+
+<p><strong>序列化深拷贝</strong></p>
+
+<p>实现：实现<code>Serializable</code>接口。Android中还可以实现<code>Parcelable</code>接口。</p>
+
+<blockquote>
+<h2 id="toc_5">面试</h2>
+</blockquote>
+
+<p><strong>说一下Java IO里面的常见类，字节流，字符流、接口、实现类、方法阻塞？</strong><br/>
+<strong>什么是比特(Bit),什么是字节(Byte),什么是字符(Char),它们长度是多少,各有什么区别？</strong><br/>
+<strong>字符流和字节流有什么区别？如何选择字节流或者字符流？什么是缓冲区，有什么作用？</strong><br/>
+<strong>IO流中用到哪些模式？谈一谈IO流中用到的适配器模式和装饰者模式的作用优势？</strong><br/>
+<strong>说一下对NIO的理解？NIO和IO的主要区别？NIO和IO如何影响应用程序的设计?</strong><br/>
+<strong>如何实现对象克隆？克隆有哪些方式？深克隆和浅克隆有何区别？深克隆和浅克隆分别说的是什么意思？</strong><br/>
+<strong>浅拷贝会创建新的对象吗？对于基本类型拷贝的是什么？怎么样实现浅拷贝，浅拷贝前后对象地址值会一样吗？</strong><br/>
+<strong>对字节流进行大量的从硬盘读取,要用那个流,为什么？有什么需要注意的问题？</strong></p>
+
+<h3 id="toc_6">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  《Java编程思想   第4版 》18</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://time.geekbang.org/course/intro/181">极客时间-零基础学Java</a>128</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/82">极客时间-Java核心技术面试精讲</a> 11</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a> 10-1</li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15742140332552.html" 
+          title="Previous Post: 虚拟机">&laquo; 虚拟机</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Java知识点归类</strong></a>
+        
+            <a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Android知识点归类</strong></a>
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html"><strong>极客-设计模式之美</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>

@@ -1,0 +1,545 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+    
+  反射 - 
+  
+  </title>
+  
+  
+  <link href="atom.xml" rel="alternate" title="" type="application/atom+xml">
+    <link rel="stylesheet" href="asset/css/foundation.min.css" />
+    <link rel="stylesheet" href="asset/css/docs.css" />
+    <script src="asset/js/vendor/modernizr.js"></script>
+    <script src="asset/js/vendor/jquery.js"></script>
+  <script src="asset/highlightjs/highlight.pack.js"></script>
+  <link href="asset/highlightjs/styles/github.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script>hljs.initHighlightingOnLoad();</script>
+<script type="text/javascript">
+  function before_search(){
+    var searchVal = 'site: ' + document.getElementById('search_input').value;
+    document.getElementById('search_q').value = searchVal;
+    return true;
+  }
+</script>
+  </head>
+  <body class="antialiased hide-extras">
+    
+    <div class="marketing off-canvas-wrap" data-offcanvas>
+      <div class="inner-wrap">
+
+
+<nav class="top-bar docs-bar hide-for-small" data-topbar>
+
+
+  <section class="top-bar-section">
+  <div class="row">
+      <div style="position: relative;width:100%;"><div style="position: absolute; width:100%;">
+        <ul id="main-menu" class="left">
+        
+        <li id=""><a target="self" href="index.html">Home</a></li>
+        
+        <li id=""><a target="_self" href="archives.html">Archives</a></li>
+        
+        </ul>
+
+        <ul class="right" id="search-wrap">
+          <li>
+<form target="_blank" onsubmit="return before_search();" action="https://google.com/search" method="get">
+    <input type="hidden" id="search_q" name="q" value="" />
+    <input tabindex="1" type="search" id="search_input"  placeholder="Search"/>
+</form>
+</li>
+          </ul>
+      </div></div>
+  </div>
+  </section>
+
+</nav>
+
+        <nav class="tab-bar show-for-small">
+  <a href="javascript:void(0)" class="left-off-canvas-toggle menu-icon">
+    <span> &nbsp; </span>
+  </a>
+</nav>
+
+<aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        
+        <li><a target="self" href="index.html">Home</a></li>
+        
+        <li><a target="_self" href="archives.html">Archives</a></li>
+        
+
+    <li><label>Categories</label></li>
+
+        
+            <li><a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Java知识点归类</a></li>
+        
+            <li><a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html">Android知识点归类</a></li>
+        
+            <li><a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html">Android开发艺术探索</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html">Android进阶之光</a></li>
+        
+            <li><a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html">Android进阶解密</a></li>
+        
+            <li><a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html">Java核心技术</a></li>
+        
+            <li><a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html">深入理解虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html">极客-Java并发实战</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html">极客-深入拆解Java虚拟机</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html">极客-数据结构与算法之美</a></li>
+        
+            <li><a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html">菜鸟-设计模式</a></li>
+        
+            <li><a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html">极客-设计模式之美</a></li>
+         
+
+      </ul>
+    </aside>
+
+<a class="exit-off-canvas" href="#"></a>
+
+
+        <section id="main-content" role="main" class="scroll-container">
+        
+       
+
+ <script type="text/javascript">
+  $(function(){
+    $('#menu_item_index').addClass('is_active');
+  });
+</script>
+<div class="row">
+  <div class="large-8 medium-8 columns">
+      <div class="markdown-body article-wrap">
+       <div class="article">
+          
+          <h1>反射</h1>
+     
+        <div class="read-more clearfix">
+          <span class="date">2019/11/20</span>
+
+          <span>posted in&nbsp;</span> 
+          
+              <span class="posted-in"><a href='Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html'>Java知识点归类</a></span>
+           
+         
+          <span class="comments">
+            
+
+            
+          </span>
+
+        </div>
+      </div><!-- article -->
+
+      <div class="article-content">
+      <ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 三种获取Class对象的方式</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 获取构造器实例化对象与属性信息</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked /> 包信息和方法</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" /> Hook技术动态编程</li>
+</ul>
+
+<h3 id="toc_0">什么是反射？反射的原理</h3>
+
+<ul>
+<li>反射是为了能够动态的加载一个类、调用方法、访问属性等动态要求而设计的。</li>
+<li>JVM会为每个类创建一个java.lang.Class类的实例，通过该对象可以获取这个类的信息，然后通过使用java.lang.reflect包下得API以达到各种动态需求。</li>
+<li>反射机制是在运行状态中：
+<ul>
+<li>对于任意一个类，都能够知道这个类的所有属性和方法；</li>
+<li>对于任意一个对象，都能够调用它的任意一个方法和属性。</li>
+</ul></li>
+</ul>
+
+<h3 id="toc_1">如何使用反射</h3>
+
+<p><strong>获得类对象</strong></p>
+
+<p>Class person =</p>
+
+<ul>
+<li><code>Class.forName(&quot;com.aaa.Person&quot;);</code></li>
+<li><code>Person.class;</code></li>
+<li><code>person.getClass();</code> </li>
+</ul>
+
+<p><strong>获得变量、方法等</strong></p>
+
+<ul>
+<li>java.lang.Class.java
+<ul>
+<li> <code>getField</code>、<code>getMethod</code>...</li>
+</ul></li>
+<li>java.lang.reflect.Field.java
+<ul>
+<li><code>get()</code>、<code>set()</code></li>
+</ul></li>
+<li>java.lang.reflect.Method.java
+<ul>
+<li>invoke()</li>
+</ul></li>
+<li>java.lang.reflect.Constructor.java
+<ul>
+<li>newInstance()`</li>
+</ul></li>
+</ul>
+
+<p>注意：</p>
+
+<ul>
+<li>私有变量或方法
+<ul>
+<li><code>getDeclaredField</code>、<code>getDeclaredMethod</code></li>
+<li><code>setAccessible(true)</code></li>
+</ul></li>
+<li>静态变量或方法使用<code>get(null)</code>、<code>invoke(null,...)</code></li>
+</ul>
+
+<h3 id="toc_2">反射的应用</h3>
+
+<p><strong>反射的用途</strong></p>
+
+<p>官方解释：反射被广泛地用于那些需要在运行时检测或修改程序行为的程序中。</p>
+
+<p><strong>应用场景</strong></p>
+
+<ul>
+<li>需要访问隐藏属性或者调用方法改变程序原来的逻辑，使用没有系统并没有开放一些接口出来</li>
+<li>自定义注解，注解就是在运行时利用反射机制来获取的</li>
+<li>在开发中动态加载类，比如在Android中的动态加载解决65k问题等等，模块化和插件化等</li>
+</ul>
+
+<h3 id="toc_3">扩展：编译时vs运行时</h3>
+
+<ol>
+<li><p>编译时vs运行时</p>
+<ul>
+<li>编译时：将Java代码编译成.class文件的过程</li>
+<li>运行时：Java虚拟机执行.class文件的过程</li>
+</ul></li>
+<li><p>编译时类型vs运行时类型</p>
+<ul>
+<li>编译时类型：编译时类型由声明该变量时的类型决定</li>
+<li>运行时类型：运行时类型由实际赋给该变量的类型决定</li>
+</ul>
+<pre><code class="language-text">//Animal是编译时类型，Dog是运行时类型
+Animal animal = new Dog();
+</code></pre></li>
+<li><p>动态绑定-调用引用实例的方法</p>
+<ol>
+<li>编译时，是调用声明类型的成员方法，即编译时类型的方法</li>
+<li>运行时，调用的是实际的类型的成员方法，即运行时类型的方法。</li>
+<li>对于调用引用实例的<mark>成员变量</mark>，无论是编译时还是运行时，均是调用<mark>编译时</mark>类型的成员变量</li>
+</ol></li>
+</ol>
+
+<blockquote>
+<h2 id="toc_4">面试题</h2>
+</blockquote>
+
+<p><strong>反射的原理是什么？有哪些途径获取到Class对象，Class类的含义和作用是什么？什么是class类？</strong></p>
+
+<ul>
+<li>Class文件：是由一个.java文件通过编译过程生成的.class文件。</li>
+<li>Class对象：当Java虚拟机加载一个.class文件到内存时，都会生成一个对应的Class对象，注意的是这个Class对象有且只有一个存在于内存当中。</li>
+</ul>
+
+<hr/>
+
+<p><strong>有哪些方式可以提高反射效率？为何反射消耗性能？究竟是怎么影响的，举例说明？</strong></p>
+
+<p>提高反射效率：</p>
+
+<ul>
+<li>适当使用缓存，比如，需要多次动态创建一个类的实例的时候，有缓存的写法会比没有缓存要快很多。</li>
+</ul>
+
+<p>为何反射消耗性能？</p>
+
+<ol>
+<li>由于是本地方法调用，让JVM无法优化(还有JIT)。</li>
+<li>反射方法调用还有验证过程和参数问题，参数需要装箱拆箱、需要组装成Object[]形式、异常的包装等等问题。</li>
+</ol>
+
+<p>如何优化？</p>
+
+<ol>
+<li>JIT</li>
+<li>ReflectASM反射库</li>
+</ol>
+
+<hr/>
+
+<p><strong>java反射机制提供了什么功能？反射具有暴力访问权限，如何防止反射序列化攻击单例？</strong></p>
+
+<p>防止反射序列化攻击单例：</p>
+
+<ul>
+<li>枚举</li>
+<li>abstract</li>
+</ul>
+
+<hr/>
+
+<p><strong>通过反射获得泛型的实际类型参数？反射获取构造方法，变量，方法的方法是哪些？</strong></p>
+
+<ul>
+<li>Method类的<code>getGenericParameterTypes</code></li>
+<li>ParameterizedType类的<code>getRawType</code>、<code>getActualTypeArguments</code>。</li>
+</ul>
+
+<hr/>
+
+<p><strong>getGenericParameterTypes 与 getParameterTypes区别？</strong></p>
+
+<p>都是<code>java.lang.reflect.Executable</code>的方法。</p>
+
+<pre><code class="language-text">//Executable.java
+public Type[] getGenericParameterTypes() {
+    if (hasGenericInformation())
+        return getGenericInfo().getParameterTypes();
+    else
+        return getParameterTypes();
+}
+</code></pre>
+
+<hr/>
+
+<p><strong>反射有什么作用和应用？反射和注解相比，为何反射消耗性能，有什么优缺点？</strong></p>
+
+<h3 id="toc_5">学习资料</h3>
+
+<ul>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  《Java核心技术 卷1》5.7</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://github.com/yangchong211/YCBlogs">Github-yangchong211/YCBlogs</a></li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" checked />  <a href="https://time.geekbang.org/course/intro/181">极客时间-零基础学Java</a> 89</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://time.geekbang.org/column/intro/108">极客时间-深入拆解Java虚拟机</a> 7</li>
+<li class="task-list-item"><input disabled="disabled" type="checkbox" />  <a href="https://coding.imooc.com/class/101.html">慕课-BAT大咖助力 全面升级Android面试</a> 10-12</li>
+</ul>
+
+
+    
+
+      </div>
+
+      <div class="row">
+        <div class="large-6 columns">
+        <p class="text-left" style="padding:15px 0px;">
+      
+          <a href="15760311550284.html" 
+          title="Previous Post: View相关">&laquo; View相关</a>
+      
+        </p>
+        </div>
+        <div class="large-6 columns">
+      <p class="text-right" style="padding:15px 0px;">
+      
+          <a  href="15760312867359.html" 
+          title="Next Post: 四大组件等基础">四大组件等基础 &raquo;</a>
+      
+      </p>
+        </div>
+      </div>
+      <div class="comments-wrap">
+        <div class="share-comments">
+          
+
+          
+
+          
+        </div>
+      </div>
+    </div><!-- article-wrap -->
+  </div><!-- large 8 -->
+
+
+
+
+ <div class="large-4 medium-4 columns">
+  <div class="hide-for-small">
+    <div id="sidebar" class="sidebar">
+          <div id="site-info" class="site-info">
+            
+                <h1></h1>
+                <div class="site-des"></div>
+                <div class="social">
+
+
+
+
+
+
+
+
+
+
+
+  <a target="_blank" class="rss" href="atom.xml" title="RSS">RSS</a>
+                
+              	 </div>
+          	</div>
+
+             
+
+              <div id="site-categories" class="side-item ">
+                <div class="side-header">
+                  <h2>Categories</h2>
+                </div>
+                <div class="side-content">
+
+      	<p class="cat-list">
+        
+            <a href="Java%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Java知识点归类</strong></a>
+        
+            <a href="Android%E7%9F%A5%E8%AF%86%E7%82%B9%E5%BD%92%E7%B1%BB.html"><strong>Android知识点归类</strong></a>
+        
+            <a href="Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.html"><strong>Android开发艺术探索</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.html"><strong>Android进阶之光</strong></a>
+        
+            <a href="Android%E8%BF%9B%E9%98%B6%E8%A7%A3%E5%AF%86.html"><strong>Android进阶解密</strong></a>
+        
+            <a href="Java%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF.html"><strong>Java核心技术</strong></a>
+        
+            <a href="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>深入理解虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-Java%E5%B9%B6%E5%8F%91%E5%AE%9E%E6%88%98.html"><strong>极客-Java并发实战</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%B7%B1%E5%85%A5%E6%8B%86%E8%A7%A3Java%E8%99%9A%E6%8B%9F%E6%9C%BA.html"><strong>极客-深入拆解Java虚拟机</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95%E4%B9%8B%E7%BE%8E.html"><strong>极客-数据结构与算法之美</strong></a>
+        
+            <a href="%E8%8F%9C%E9%B8%9F-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F.html"><strong>菜鸟-设计模式</strong></a>
+        
+            <a href="%E6%9E%81%E5%AE%A2-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E4%B9%8B%E7%BE%8E.html"><strong>极客-设计模式之美</strong></a>
+         
+        </p>
+
+
+                </div>
+              </div>
+
+              <div id="site-categories" class="side-item">
+                <div class="side-header">
+                  <h2>Recent Posts</h2>
+                </div>
+                <div class="side-content">
+                <ul class="posts-list">
+	      
+		      
+			      <li class="post">
+			        <a href="15789721660565.html">0 Android开发艺术探索-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789731325545.html">0 Android进阶之光-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15789733843338.html">0 Android进阶解密-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15790568493890.html">0 Java核心技术-目录</a>
+			      </li>
+		     
+		  
+		      
+			      <li class="post">
+			        <a href="15749250659113.html">0 深入理解Java虚拟机-目录</a>
+			      </li>
+		     
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		  
+		      
+		   
+		  		</ul>
+                </div>
+              </div>
+        </div><!-- sidebar -->
+      </div><!-- hide for small -->
+</div><!-- large 4 -->
+
+</div><!-- row -->
+
+ <div class="page-bottom clearfix">
+  <div class="row">
+   <p class="copyright">Copyright &copy; 2015
+Powered by <a target="_blank" href="http://www.mweb.im">MWeb</a>,&nbsp; 
+Theme used <a target="_blank" href="http://github.com">GitHub CSS</a>.</p>
+  </div>
+</div>
+
+        </section>
+      </div>
+    </div>
+
+  
+    
+
+    <script src="asset/js/foundation.min.js"></script>
+    <script>
+      $(document).foundation();
+      function fixSidebarHeight(){
+        var w1 = $('.markdown-body').height();
+          var w2 = $('#sidebar').height();
+          if (w1 > w2) { $('#sidebar').height(w1); };
+      }
+      $(function(){
+        fixSidebarHeight();
+      })
+      $(window).load(function(){
+          fixSidebarHeight();
+      });
+     
+    </script>
+
+    
+
+
+
+  </body>
+</html>
