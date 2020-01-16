@@ -146,11 +146,11 @@
 
 <p>Instant Run是Android Studio 2.0以后新增的一个运行机制， 能够显著减少开发人员第二次及以后的构建和部署时间。在没有使用Instant Run前，我们编译部署应用程序的流程如图所示。</p>
 
-<p><img src="media/15537010271155/15777597312743.jpg" alt="" style="width:608px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010271155/15777597312743.jpg" alt="" style="width:608px;"/></p>
 
 <p>从图13一1可以看出,传统的编译部署需要重新安装App和重启App,这显然会很耗时,Instant Run会避免这一情况， 如图所示。</p>
 
-<p><img src="media/15537010271155/15777597727284.jpg" alt="" style="width:879px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010271155/15777597727284.jpg" alt="" style="width:879px;"/></p>
 
 <p>从上图可以看出InstantRun的构建和部署都是基于更改的部分的。InstantRun部署有三种方式，Instant Run会根据代码的情况来决定采用哪种部署方式，无论哪种方式都不需要重新安装App,这一点就已经提高了不少的效率。</p>
 
@@ -215,7 +215,7 @@
 <p>多个Element组成了有序的Element数组dexElements。当要查找类时，会在注释1处遍历Element数组dexElements（相当于遍历dex文件数组），注释2处调用Element的findClass方法，其方法内部会调用DexFile的loadClassBinaryName方法查找类。如果在Element中（dex文件）找到了该类就返回，如果没有找到就接着在下一个Element中进行查找。<br/>
 根据上面的查找流程，我们将有bug的类Key.class进行修改，再将Key.class打包成包含dex的补丁包Patch.jar，放在Element数组dexElements的第一个元素，这样会首先找到Patch.dex中的Key.class去替换之前存在bug的Key.class，排在数组后面的dex文件中的存在bug的Key.class根据ClassLoader的双亲委托模式就不会被加载，这就是类加载方案，如下图所示。</p>
 
-<p><img src="media/15537010271155/15777610942927.jpg" alt="" style="width:641px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010271155/15777610942927.jpg" alt="" style="width:641px;"/></p>
 
 <p>类加载方案需要重启App后让ClassLoader重新加载新的类，为什么需要重启呢？这是因为类是无法被卸载的，因此要想重新加载新的类就需要重启App，因此采用类加载方案的热修复框架是不能即时生效的。<br/>
 虽然很多热修复框架采用了类加载方案，但具体的实现细节和步骤还是有一些区别的：</p>
@@ -320,7 +320,7 @@ Instant Run在第一次构建apk时，使用ASM在每一个方法中注入了类
 <li>查找JNI_OnLoad 的函数指针，根据不同情况设置was_successful 的值，最终返回该was_successful。</li>
 </ol>
 
-<p><img src="media/15537010271155/15777663637419.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010271155/15777663637419.jpg" alt=""/></p>
 
 <p>讲到这里总结一下so修复主要有两个方案:</p>
 

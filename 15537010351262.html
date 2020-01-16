@@ -176,13 +176,13 @@
 
 <h3 id="toc_7">15.4.1 Activity的启动过程回顾</h3>
 
-<p><img src="media/15537010351262/15777798479991.jpg" alt="" style="width:611px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010351262/15777798479991.jpg" alt="" style="width:611px;"/></p>
 
 <p>首先Launcher进程向AMS请求创建根Activity, AMS会判断根Activity所需的应用程序进程是否存在并启动，如果不存在就会请求Zygote进程创建应用程序进程。应用程序进程启动后, AMS会请求应用程序进程创建并启动根Activity。</p>
 
 <p>普通Activity和根Activity的启动过程大同小异，不涉及应用程序进程的创建，与Launcher也没关系：</p>
 
-<p><img src="media/15537010351262/15777799240155.jpg" alt="" style="width:676px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010351262/15777799240155.jpg" alt="" style="width:676px;"/></p>
 
 <p>在应用程序进程中的Activity 向AMS请求创建普通Activity (步骤1)，AMS会对这个Activity的生命周期和栈进行管理，校验Activity等。如果Activity 满足AMS的校验，AMS就会请求应用程序进程中的ActivityThread去创建并启动普通Activity (步骤2)。</p>
 
@@ -197,13 +197,13 @@
 <li>插件Activity的生命周期</li>
 </ol>
 
-<p><img src="media/15537010351262/15779367744180.jpg" alt="" style="width:697px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010351262/15779367744180.jpg" alt="" style="width:697px;"/></p>
 
 <h3 id="toc_9">15.4.3 Hook Instrumentation方案实现</h3>
 
 <p>Hook Instrumentation 实现同样也需要用到占坑Activity,与Hook IActivityManager实现不同的是，用占坑Activity替换插件Activity以及还原插件Activity 的地方不同。</p>
 
-<p><img src="media/15537010351262/15779368438324.jpg" alt="" style="width:682px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010351262/15779368438324.jpg" alt="" style="width:682px;"/></p>
 
 <h3 id="toc_10">15.4.4 总结</h3>
 
@@ -211,9 +211,9 @@
 
 <h3 id="toc_12">15.5.1 插件化方面Service与Activity的不同</h3>
 
-<p><img src="media/15537010351262/15779370174333.jpg" alt="" style="width:693px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010351262/15779370174333.jpg" alt="" style="width:693px;"/></p>
 
-<p><img src="media/15537010351262/15779370330965.jpg" alt="" style="width:795px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010351262/15779370330965.jpg" alt="" style="width:795px;"/></p>
 
 <p>我们需要了解在插件化方面Activity和Service有何不同：</p>
 
@@ -236,7 +236,7 @@
 
 <h3 id="toc_15">15.6.1 ContentProvider的启动过程回顾</h3>
 
-<p><img src="media/15537010351262/15779372880299.jpg" alt="" style="width:765px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010351262/15779372880299.jpg" alt="" style="width:765px;"/></p>
 
 <h3 id="toc_16">15.6.2 VirtualApk的实现</h3>
 

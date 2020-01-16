@@ -135,9 +135,9 @@
 10 应用架构设计<br/>
 11 系统架构与MediaPlayer框架</p>
 
-<p><a href="media/15789731325545/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.xmind">Android进阶之光.xmind</a></p>
+<p><a href="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15789731325545/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.xmind">Android进阶之光.xmind</a></p>
 
-<p><img src="media/15789731325545/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.png" alt="Android进阶之光"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15789731325545/Android%E8%BF%9B%E9%98%B6%E4%B9%8B%E5%85%89.png" alt="Android进阶之光"/></p>
 
                         
                       </div>
@@ -360,7 +360,7 @@
 <li> <strong>Terminated</strong>：终止状态。表示当前线程已经执行完毕。导致线程终止有两种情况：第一种就是run方法执行完毕正常退出；第二种就是因为一个没有捕获的异常而终止了run方法，导致线程进入终止状态。</li>
 </ul>
 
-<p><img src="media/15536970568598/15774178989655.jpg" alt="" style="width:811px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774178989655.jpg" alt="" style="width:811px;"/></p>
 
 <h3 id="toc_3">4.1.3　创建线程</h3>
 
@@ -473,7 +473,7 @@ public void method() {
 
 <p>Java中的堆内存用来存储对象实例，堆内存是被所有线程共享的运行时内存区域，因此，它存在内存可见性的问题。而局部变量、方法定义的参数则不会在线程之间共享，它们不会有内存可见性问题，也不受内存模型的影响。Java 内存模型定义了线程和主存之间的抽象关系：线程之间的共享变量存储在主存中， 每个线程都有一个私有的本地内存，本地内存中存储了该线程共享变量的副本。需要注意的是本地内存是 Java内存模型的一个抽象概念，其并不真实存在，它涵盖了缓存、写缓冲区、寄存器等区域。Java内存模型控制线程之间的通信，它决定一个线程对主存共享变量的写入何时对另一个线程可见。</p>
 
-<p><img src="media/15536970568598/15774323929212.jpg" alt="" style="width:525px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774323929212.jpg" alt="" style="width:525px;"/></p>
 
 <p>线程A与线程B之间若要通信的话，必须要经历下面两个步骤：</p>
 
@@ -612,9 +612,9 @@ public void doWork() {<br/>
 
 <h3 id="toc_18">4.4.2　线程池的处理流程和原理</h3>
 
-<p><img src="media/15536970568598/15774373999521.jpg" alt="" style="width:361px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774373999521.jpg" alt="" style="width:361px;"/></p>
 
-<p><img src="media/15536970568598/15774374381979.jpg" alt="" style="width:652px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774374381979.jpg" alt="" style="width:652px;"/></p>
 
 <h3 id="toc_19">4.4.3　线程池的种类</h3>
 
@@ -624,7 +624,7 @@ public void doWork() {<br/>
 
 <p>FixedThreadPool 是可重用固定线程数的线程池。</p>
 
-<p><img src="media/15536970568598/15774375675934.jpg" alt="" style="width:597px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774375675934.jpg" alt="" style="width:597px;"/></p>
 
 <p>FixedThreadPool就是一个有固定数量核心线程的线程池，并且这些核心线程不会被回收。当线程数超过 corePoolSize 时，就将任务存储在任务队列中;当线程池有空闲线程时，则从任务队列中去取任务执行。</p>
 
@@ -632,19 +632,19 @@ public void doWork() {<br/>
 
 <p>CachedThreadPool是一个根据需要创建线程的线程池。CachedThreadPool 比较适于大量的需要立即处理并且耗时较少的任务。</p>
 
-<p><img src="media/15536970568598/15774377191970.jpg" alt="" style="width:592px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774377191970.jpg" alt="" style="width:592px;"/></p>
 
 <p><strong>3.SingleThreadExecutor</strong></p>
 
 <p>SingleThreadExecutor是使用单个工作线程的线程池。能确保所有的任务在一个线程中按照顺序逐一执行。</p>
 
-<p><img src="media/15536970568598/15774381710086.jpg" alt="" style="width:604px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774381710086.jpg" alt="" style="width:604px;"/></p>
 
 <p><strong>4.ScheduledThreadPool</strong></p>
 
 <p>ScheduledThreadPool是一个能实现定时和周期性任务的线程池。</p>
 
-<p><img src="media/15536970568598/15774382268529.jpg" alt="" style="width:650px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774382268529.jpg" alt="" style="width:650px;"/></p>
 
 <h2 id="toc_20">4.5　AsyncTask的原理</h2>
 
@@ -687,7 +687,7 @@ public void doWork() {<br/>
 
 <p>网络分层就是将网络节点所要完成的数据的发送或转发、打包或拆包，以及控制信息的加载或拆出等 工作，分别由不同的硬件和软件模块来完成。这样可以将通信和网络互联这一复杂的问题变得较为简单。 网络分层有不同的模型，有的模型分7层，有的模型分5层。这里介绍分5层的，因为它更好理解。网络分层 的每一层都是为了完成一种功能而设的。为了实现这些功能，就需要遵守共同的规则，这个规则叫作“协议”。</p>
 
-<p><img src="media/15536970792185/15780247720754.jpg" alt="" style="width:253px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15780247720754.jpg" alt="" style="width:253px;"/></p>
 
 <p>如图5-1所示，网络分层从上到下分别是应用层、传输层、网络层、数据链路层和物理层。越靠下的层越接近硬件。接下来我们从下而上来分别了解这些分层。</p>
 
@@ -708,7 +708,7 @@ public void doWork() {<br/>
 
 <p>通常我们进行HTTP连接网络的时候会进行TCP的三次握手，然后传输数据，之后再释放连接。</p>
 
-<p><img src="media/15536970792185/15780249369715.jpg" alt="" style="width:769px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15780249369715.jpg" alt="" style="width:769px;"/></p>
 
 <p>TCP三次握手的过程如下。</p>
 
@@ -727,11 +727,11 @@ public void doWork() {<br/>
 <li>第四次挥手：客户端收到服务端发送的FIN报文段，向服务端发送ACK报文段，然后客户端进入TIME_WAIT状态。服务端收到客户端的ACK报文段以后，就关闭连接。此时，客户端等待2MSL (最大报文段生存时间)后依然没有收到回复，则说明服务端已正常关闭，这样客户端也可以关闭连接了。</li>
 </ul>
 
-<p><img src="media/15536970792185/15782948994350.jpg" alt="" style="width:377px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15782948994350.jpg" alt="" style="width:377px;"/></p>
 
 <p>如果有大量的连接，每次在连接、关闭时都要经历三次握手、四次挥手，这很显然会造成性能低下。 因此，HTTP有一种叫作keepalive connections的机制，它可以在传输数据后仍然保持连接，当客户端需要再次获取数据时，直接使用刚刚空闲下来的连接而无须再次握手。</p>
 
-<p><img src="media/15536970792185/15782949498354.jpg" alt="" style="width:776px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15782949498354.jpg" alt="" style="width:776px;"/></p>
 
 <h2 id="toc_2">5.3　HTTP协议原理</h2>
 
@@ -774,7 +774,7 @@ public void doWork() {<br/>
 
 <p>HTTP 报文是面向文本的，报文中的每一个字段都是一些ASCII码串，各个字段的长度是不确定的。一 般一个HTTP请求报文由请求行、请求报头、空行和请求数据4个部分组成。</p>
 
-<p><img src="media/15536970792185/15782958444029.jpg" alt="" style="width:533px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15782958444029.jpg" alt="" style="width:533px;"/></p>
 
 <ol>
 <li><p>请求行<br/>
@@ -803,7 +803,7 @@ GET <a href="http://blog.csdn.net/itachi85">http://blog.csdn.net/itachi85</a> HT
 <h3 id="toc_5">5.3.3　HTTP响应报文</h3>
 
 <p>响应报文的一般格式：<br/>
-<img src="media/15536970792185/15782964755327.jpg" alt="" style="width:536px;"/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15782964755327.jpg" alt="" style="width:536px;"/></p>
 
 <p>HTTP 的响应报文由状态行、响应报头、空行、响应正文组成。响应正文是服务器返回的资源的内容。我们先来看看状态行。 <br/>
 状态行格式如下所示:<br/>
@@ -895,7 +895,7 @@ HTTP-Version表示服务器HTTP协议的版本;Status-Code表示服务器发回�
 <p>1.从RequestQueue入手<br/>
 2.CacheDispatcher缓存调度线程<br/>
 3.NetworkDispatcher网络调度线程<br/>
-<img src="media/15536970792185/15782975620837.jpg" alt="" style="width:734px;"/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15782975620837.jpg" alt="" style="width:734px;"/></p>
 
 <h2 id="toc_14">5.6　解析OkHttp</h2>
 
@@ -915,7 +915,7 @@ HTTP-Version表示服务器HTTP协议的版本;Status-Code表示服务器发回�
 <li>失败重连</li>
 </ol>
 
-<p><img src="media/15536970792185/15782990572087.jpg" alt="" style="width:358px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970792185/15782990572087.jpg" alt="" style="width:358px;"/></p>
 
 <p><strong>2. OkHttp的复用连接池</strong></p>
 

@@ -161,13 +161,13 @@
 
 <p>在单核时代，所有的线程都是在一颗 CPU 上执行，CPU 缓存与内存的数据一致性容易解决。因为所有线程都是操作同一个 CPU 的缓存，一个线程对缓存的写，对另外一个线程来说一定是可见的。</p>
 
-<p><img src="media/15755331524883/15755429758709.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755331524883/15755429758709.jpg" alt=""/></p>
 
 <p>一个线程对共享变量的修改，另外一个线程能够立刻看到，我们称为<strong>可见性</strong>。</p>
 
 <p>多核时代，每颗 CPU 都有自己的缓存，这时 CPU 缓存与内存的数据一致性就没那么容易解决了，当多个线程在不同的 CPU 上执行时，这些线程操作的是不同的 CPU 缓存。</p>
 
-<p><img src="media/15755331524883/15755430331349.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755331524883/15755430331349.jpg" alt=""/></p>
 
 <h3 id="toc_2">源头之二：线程切换带来的原子性问题</h3>
 
@@ -183,7 +183,7 @@
 
 <p>操作系统做任务切换，可以发生在任何一条 <mark>CPU 指令</mark>执行完。</p>
 
-<p><img src="media/15755331524883/15755448506477.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755331524883/15755448506477.jpg" alt=""/></p>
 
 <p><strong>我们把一个或者多个操作在 CPU 执行的过程中不被中断的特性称为原子性。</strong>CPU 能保证的原子操作是 CPU 指令级别的，而不是高级语言的操作符。因此，很多时候我们需要在高级语言层面保证操作的原子性。</p>
 
@@ -225,7 +225,7 @@
 
 <p>优化后会导致什么问题呢？我们假设线程 A 先执行 getInstance() 方法，当执行完指令 2 时恰好发生了线程切换，切换到了线程 B 上；如果此时线程 B 也执行 getInstance() 方法，那么线程 B 在执行第一个判断时会发现 instance != null ，所以直接返回 instance，而此时的 instance 是没有初始化过的，如果我们这个时候访问 instance 的成员变量就可能触发空指针异常。</p>
 
-<p><img src="media/15755331524883/15756025312634.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755331524883/15756025312634.jpg" alt=""/></p>
 
 <h3 id="toc_4">总结</h3>
 

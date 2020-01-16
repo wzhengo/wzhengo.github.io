@@ -140,13 +140,13 @@
 
 <h3 id="toc_1">6.1.1 Android 7.0的AMS家族</h3>
 
-<p><img src="media/15537009469734/15768310861282.jpg" alt="" style="width:788px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15768310861282.jpg" alt="" style="width:788px;"/></p>
 
-<p><img src="media/15537009469734/15768311034814.jpg" alt="" style="width:790px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15768311034814.jpg" alt="" style="width:790px;"/></p>
 
 <h3 id="toc_2">6.1.2 Android 8.0的AMS家族</h3>
 
-<p><img src="media/15537009469734/15768311293526.jpg" alt="" style="width:730px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15768311293526.jpg" alt="" style="width:730px;"/></p>
 
 <h2 id="toc_3">6.2 AMS的启动过程</h2>
 
@@ -165,7 +165,7 @@
 
 <p>ActivityRecord内部记录了Activity 的所有信息，因此它用来描述一个Activity， 它是在启动Activity 时被创建的，具体是在ActivityStarter 的startActivity方法中被创建的，具体可以查看4.1.2节。ActivityRecord 的部分重要成员变量如表6一1所示。</p>
 
-<p><img src="media/15537009469734/15768331492510.jpg" alt="" style="width:883px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15768331492510.jpg" alt="" style="width:883px;"/></p>
 
 <p>从表中可以看出ActivityRecord的作用，其内部存储了Activity 的所有信息，包括AMS的引用、AndroidManifest 节点信息、Activity 状态、Activity 资源信息和Activity 进程相关信息等，需要注意的是其中含有该ActivityRecord 所在的TaskRecord， 这就将ActivityRecord和TaskRecord关联在一起，它们是Activity 任务栈模型的重要成员，我们接着来查看TaskRecord。</p>
 
@@ -173,8 +173,8 @@
 
 <p>从表中可以发现TaskRecord的作用，其内部存储了任务栈的所有信息，包括任务栈的唯一标识符、任务栈的倾向性、任务栈中的Activity记录和AMS的引用等，需要注意的是其中含有ActivityStack,也就是当前Activity 任务栈所归属的ActivityStack,我们接着来查看ActivityStack。</p>
 
-<p><img src="media/15537009469734/15768333354799.jpg" alt="" style="width:876px;"/><br/>
-<img src="media/15537009469734/15768333476066.jpg" alt="" style="width:859px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15768333354799.jpg" alt="" style="width:876px;"/><br/>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15768333476066.jpg" alt="" style="width:859px;"/></p>
 
 <h3 id="toc_8">6.4.3 解析ActivityStack</h3>
 
@@ -235,7 +235,7 @@ ActivityRecord mTranslucentActivityWaiting = null;//传递给convertToTranslucen
 <li>ActivityStack中维护了很多ArrayList，这些ArrayList中的元素类型主要有ActivityRecord和TaskRecord，其中TaskRecord用来记录Activity的Task。</li>
 </ul>
 
-<p><img src="media/15537009469734/15768324062971.jpg" alt="" style="width:716px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15768324062971.jpg" alt="" style="width:716px;"/></p>
 
 <h2 id="toc_9">6.5 Activity栈管理</h2>
 
@@ -243,7 +243,7 @@ ActivityRecord mTranslucentActivityWaiting = null;//传递给convertToTranslucen
 
 <h3 id="toc_10">6.5.1 Activity任务栈模型</h3>
 
-<p><img src="media/15537009469734/15770729871003.jpg" alt="" style="width:335px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15770729871003.jpg" alt="" style="width:335px;"/></p>
 
 <ul>
 <li>ActivityRecord用来记录一个Activity 的所有信息</li>
@@ -282,7 +282,7 @@ ActivityRecord mTranslucentActivityWaiting = null;//传递给convertToTranslucen
 <li>taskAffinity与allowTaskReparenting配合。如果allowTaskReparenting为true，说明Activity具有转移的能力。</li>
 </ul>
 
-<p><img src="media/15537009469734/15770737826060.jpg" alt="" style="width:567px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009469734/15770737826060.jpg" alt="" style="width:567px;"/></p>
 
 <h2 id="toc_14">6.6 本章小结</h2>
 

@@ -144,13 +144,13 @@
 <li>WindowManager 会将具体的工作交由WMS来处理，WindowManager 和WMS通过Binder来进行跨进程通信，WMS作为系统服务有很多API是不会暴露给WindowManager的，这一点与ActivityManager和AMS的关系有些类似。</li>
 </ul>
 
-<p><img src="media/15537009631998/15770744667327.jpg" alt="" style="width:494px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009631998/15770744667327.jpg" alt="" style="width:494px;"/></p>
 
 <p>Window包含了View并对View进行管理，Window用虚线来表示是因为Window是一个抽象概念，用来描述一个窗口，并不是真实存在的，Window 的实体其实也是View。WindowManager用来管理Window,而WindowManager所提供的功能最终会由WMS进行处理。</p>
 
 <h2 id="toc_1">7.2 WindowManager的关联类</h2>
 
-<p><img src="media/15537009631998/15770829130238.jpg" alt="" style="width:874px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009631998/15770829130238.jpg" alt="" style="width:874px;"/></p>
 
 <h2 id="toc_2">7.3 Window的属性</h2>
 
@@ -191,7 +191,7 @@ Toast、输入法窗口、系统音量条窗口、系统错误窗口都属于系
 
 <p>Window的标志也就是Flag，用于控制Window的显示，同样被定义在WindowManager的内部类LayoutParams中。</p>
 
-<p><img src="media/15537009631998/15770840899344.jpg" alt="" style="width:823px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009631998/15770840899344.jpg" alt="" style="width:823px;"/></p>
 
 <p>设置Window的Flag有三种方法：</p>
 
@@ -204,7 +204,7 @@ Toast、输入法窗口、系统音量条窗口、系统错误窗口都属于系
 <h3 id="toc_5">7.3.3 软键盘相关模式</h3>
 
 <p>为了使得软键盘窗口能够按照期望来显示，WindowManager的静态内部类LayoutParams中定义了软键盘相关模式：<br/>
-<img src="media/15537009631998/15770845654108.jpg" alt="" style="width:879px;"/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009631998/15770845654108.jpg" alt="" style="width:879px;"/></p>
 
 <p>设置SoftInputMode：</p>
 
@@ -217,11 +217,11 @@ Toast、输入法窗口、系统音量条窗口、系统错误窗口都属于系
 
 <p>对于Window的操作，最终都是交由WMS来进行处理。窗口的操作分为两大部分，一部分是WindowManager处理部分，另一部分是WMS处理部分。</p>
 
-<p><img src="media/15537009631998/15771763898405.jpg" alt="" style="width:392px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009631998/15771763898405.jpg" alt="" style="width:392px;"/></p>
 
 <h3 id="toc_7">7.4.1 系统窗口的添加过程</h3>
 
-<p><img src="media/15537009631998/15771764592662.jpg" alt="" style="width:869px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009631998/15771764592662.jpg" alt="" style="width:869px;"/></p>
 
 <h3 id="toc_8">7.4.2 Activity的添加过程</h3>
 

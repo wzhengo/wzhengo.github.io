@@ -282,7 +282,7 @@ interface IBookManager{<br/>
 
 <p>首先，当客户端发起远程请求时，由于当前线程会被挂起直至服务端进程返回数据，所以如果一个远程方法是很耗时的，那么<mark>不能在UI线程中发起此远程请求</mark>；其它，由于服务端的Binder方法运行在Binder的线程池中，所以Binder方法不管是否耗时都应该采用<mark>同步</mark>的方式去实现，因为它已经运行在一个线程中了。</p>
 
-<p><img src="media/15513690535659/15764863288077.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15513690535659/15764863288077.jpg" alt=""/></p>
 
 <p><strong>Binder死亡通知</strong><br/>
 Binder的两个重要方法<code>linkToDeath</code>和<code>unlinkToDeath</code>。</p>
@@ -407,7 +407,7 @@ binder.linkToDeath(mDeathRecipient，0);
 }
 </code></pre>
 <p>流程图如下：<br/>
-<img src="media/15513690535659/15765748325024.jpg" alt=""/></p></li>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15513690535659/15765748325024.jpg" alt=""/></p></li>
 </ol>
 
 <p><strong>总结：</strong></p>
@@ -565,7 +565,7 @@ mListenerList.finishBroadcast();
 
 <h2 id="toc_16">2.6 选用合适的IPC方式</h2>
 
-<p><img src="media/15513690535659/15766526817701.jpg" alt="" style="width:614px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15513690535659/15766526817701.jpg" alt="" style="width:614px;"/></p>
 
 
     

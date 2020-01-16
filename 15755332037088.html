@@ -153,7 +153,7 @@
 
 <p>其实用两把锁就实现了，转出账本一把，转入账本另一把。在 transfer() 方法内部，我们首先尝试锁定转出账户 this（先把转出账本拿到手），然后尝试锁定转入账户 target（再把转入账本拿到手），只有当两者都成功时，才执行转账操作。这个逻辑可以图形化为下图这个样子。</p>
 
-<p><img src="media/15755332037088/15756196793198.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755332037088/15756196793198.jpg" alt=""/></p>
 
 <pre><code class="language-text">class Account {
   private int balance;
@@ -179,7 +179,7 @@
 
 <p>使用细粒度锁是有代价的，这个代价就是可能会导致<strong>死锁</strong>。</p>
 
-<p><img src="media/15755332037088/15756198699495.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755332037088/15756198699495.jpg" alt=""/></p>
 
 <p>死锁的一个比较专业的定义是：<strong>一组互相竞争资源的线程因互相等待，导致“永久”阻塞的现象</strong>。</p>
 

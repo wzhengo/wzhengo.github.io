@@ -179,7 +179,7 @@ Java 中的实现类为 ExtClassLoader，因此可以简称为ExtClassLoader，�
 
 <h3 id="toc_2">12.1.2 ClassLoader的继承关系</h3>
 
-<p><img src="media/15537010145803/15753436684706.jpg" alt="" style="width:383px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010145803/15753436684706.jpg" alt="" style="width:383px;"/></p>
 
 <h3 id="toc_3">12.1.3 双亲委托模式</h3>
 
@@ -189,7 +189,7 @@ Java 中的实现类为 ExtClassLoader，因此可以简称为ExtClassLoader，�
 <li>首先判断该Class是否已经加载，如果没有则委托父加载器进行查找</li>
 <li>依次进行递归，直到委托到最顶层的Bootstrap ClassLoader</li>
 <li>如果Bootstrap ClassLoader找到了该Class，直接返回；如果没有找到，则继续依次向下查找，如果还没找到最后交由自身去查找。
-<img src="media/15537010145803/15753458406302.jpg" alt="" style="width:465px;"/></li>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010145803/15753458406302.jpg" alt="" style="width:465px;"/></li>
 </ol>
 
 <p>双亲委托模型的好处：</p>

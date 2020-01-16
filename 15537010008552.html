@@ -148,16 +148,16 @@
 
 <h4 id="toc_2">10.1.2 Java虚拟机执行流程</h4>
 
-<p><img src="media/15537010008552/15748433740583.jpg" alt="" style="width:524px;"/><br/>
-<img src="media/15537010008552/15748433876904.jpg" alt="" style="width:426px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748433740583.jpg" alt="" style="width:524px;"/><br/>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748433876904.jpg" alt="" style="width:426px;"/></p>
 
 <h3 id="toc_3">10.2 Java虚拟机结构</h3>
 
-<p><img src="media/15537010008552/15748434308127.jpg" alt="" style="width:453px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748434308127.jpg" alt="" style="width:453px;"/></p>
 
 <h4 id="toc_4">10.2.1 Class文件格式</h4>
 
-<p><img src="media/15537010008552/15748435663601.jpg" alt="" style="width:654px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748435663601.jpg" alt="" style="width:654px;"/></p>
 
 <h4 id="toc_5">10.2.2 类的生命周期</h4>
 
@@ -177,7 +177,7 @@
 <li>卸载</li>
 </ol>
 
-<p><img src="media/15537010008552/15748439274778.jpg" alt="" style="width:386px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748439274778.jpg" alt="" style="width:386px;"/></p>
 
 <h4 id="toc_6">10.2.3 类加载子系统</h4>
 
@@ -226,13 +226,13 @@
 
 <p>以HotSpot虚拟机为例，对象在堆内存的布局分为三个区域，分别是对象头（Header）、实例数据（Instance Data）、对齐填充（Padding）。</p>
 
-<p><img src="media/15537010008552/15748470536456.jpg" alt="" style="width:191px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748470536456.jpg" alt="" style="width:191px;"/></p>
 
 <h3 id="toc_10">10.5 oop-klass模型</h3>
 
 <p>oop-klass模型模型是用来描述Java对象实例的一种模型，它分为两个部分，OOP（Ordinary  Object Pointer）指普通对象指针，用来表示对象的实例信息。klass用来描述元数据。</p>
 
-<p><img src="media/15537010008552/15748473947755.jpg" alt="" style="width:426px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748473947755.jpg" alt="" style="width:426px;"/></p>
 
 <h3 id="toc_11">10.6 垃圾标记算法</h3>
 
@@ -255,7 +255,7 @@
 
 <p>思想：选定一些对象作为GC Roots，并组成根对象集合，然后以这些GC Roots的对象作为起始点，向下搜索，如果目标对象到GC Roots是连接着的，我们则称为该对象是可达的，如果不可达则说说明目标对象是可以被回收的对象。如图：</p>
 
-<p><img src="media/15537010008552/15748489005643.jpg" alt="" style="width:490px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15748489005643.jpg" alt="" style="width:490px;"/></p>
 
 <p>在Java中，可以作为GC Roots的对象主要有以下几种：</p>
 
@@ -297,7 +297,7 @@
 <li>清除阶段：回收被标记的对象所占的空间。</li>
 </ul>
 
-<p><img src="media/15537010008552/15749105545929.jpg" alt="" style="width:435px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15749105545929.jpg" alt="" style="width:435px;"/></p>
 
 <p><strong>缺点：</strong></p>
 
@@ -315,7 +315,7 @@
 <li>在垃圾收集时，遍历当前使用的区域，把存活的对象复制到另一个区域中，最后将当前使用的区域的可回收对象进行回收。</li>
 </ol>
 
-<p><img src="media/15537010008552/15749108305016.jpg" alt="" style="width:400px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15749108305016.jpg" alt="" style="width:400px;"/></p>
 
 <ul>
 <li>这种算法每次对整个半区进行内存回收，不需要考虑内存碎片问题，代价就是使用内存为原来的一般。</li>
@@ -328,7 +328,7 @@
 
 <p>标记-压缩算法在标记可回收的对象后，将所有存活的对象压缩到内存的另一端，使他们紧凑地排列在一起，然后对边界以外的内存进行回收。</p>
 
-<p><img src="media/15537010008552/15749117879560.jpg" alt="" style="width:394px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15749117879560.jpg" alt="" style="width:394px;"/></p>
 
 <h4 id="toc_20">10.8.4 分代收集算法</h4>
 
@@ -355,7 +355,7 @@
 
 <p>Full Collection通常情况下伴随至少一次的Minor Collection，收集频率较低，耗时较长。</p>
 
-<p><img src="media/15537010008552/15749127215885.jpg" alt="" style="width:426px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010008552/15749127215885.jpg" alt="" style="width:426px;"/></p>
 
 <h3 id="toc_21">10.9 本章小结</h3>
 

@@ -159,7 +159,7 @@
 
 <p>管程解决互斥问题的思路很简单，就是<mark>将共享变量及其对共享变量的操作统一封装起来</mark>。在下图中，管程 X 将共享变量 queue 这个队列和相关的操作入队 enq()、出队 deq() 都封装起来了；线程 A 和线程 B 如果想访问共享变量 queue，只能通过调用管程提供的 enq()、deq() 方法来实现；enq()、deq() 保证<mark>互斥性</mark>，只允许一个线程进入管程。</p>
 
-<p><img src="media/15755332165533/15758857831652.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755332165533/15758857831652.jpg" alt=""/></p>
 
 <p><strong>管程如何解决线程间的同步问题?</strong></p>
 
@@ -167,7 +167,7 @@
 
 <p>那<mark>条件变量和等待队列</mark>的作用是什么呢？其实就是解决线程同步问题。</p>
 
-<p><img src="media/15755332165533/15758858118089.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755332165533/15758858118089.jpg" alt=""/></p>
 
 <pre><code class="language-text">public class BlockedQueue&lt;T&gt;{
   final Lock lock =
@@ -235,7 +235,7 @@
 
 <p>Java 参考了 MESA 模型，语言内置的管程（synchronized）对 MESA 模型进行了精简。MESA 模型中，条件变量可以有多个，Java 语言内置的管程里只有一个条件变量。具体如下图所示。</p>
 
-<p><img src="media/15755332165533/15758864080151.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755332165533/15758864080151.jpg" alt=""/></p>
 
 <p>Java 内置的管程方案（synchronized）使用简单，synchronized 关键字修饰的代码块，在编译期会自动生成相关加锁和解锁的代码，但是仅支持一个条件变量；而 Java SDK 并发包实现的管程支持多个条件变量，不过并发包里的锁，需要开发人员自己进行加锁和解锁操作。</p>
 

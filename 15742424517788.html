@@ -149,12 +149,12 @@
 
 <p><strong>Trie 树的本质，就是利用字符串之间的公共前缀，将重复的前缀合并在一起。</strong></p>
 
-<p><img src="media/15742424517788/15757094157669.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757094157669.jpg" alt=""/></p>
 
 <p>其中，根节点不包含任何信息。每个节点表示一个字符串中的字符，从根节点到红色节点的一条路径表示一个字符串（注意：红色节点并不都是叶子节点）。</p>
 
-<p><img src="media/15742424517788/15757095020770.jpg" alt=""/><br/>
-<img src="media/15742424517788/15757095056783.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757095020770.jpg" alt=""/><br/>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757095056783.jpg" alt=""/></p>
 
 <h3 id="toc_1">如何实现一棵 Trie 树？</h3>
 
@@ -178,7 +178,7 @@
 
 <p>我先介绍其中一种存储方式，也是经典的存储方式——散列表。借助散列表的思想，我们通过一个下标与字符一一映射的数组，来存储子节点的指针。</p>
 
-<p><img src="media/15742424517788/15757097447111.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757097447111.jpg" alt=""/></p>
 
 <p>当我们在 Trie 树中查找字符串的时候，我们就可以通过字符的 ASCII 码减去“a”的 ASCII 码，迅速找到匹配的子节点的指针。</p>
 
@@ -239,7 +239,7 @@
 
 <p>实际上，Trie 树的变体有很多，都可以在一定程度上解决内存消耗的问题。比如，<strong>缩点优化</strong>，就是对只有一个子节点的节点，而且此节点不是一个串的结束节点，可以将此节点与子节点合并。这样可以节省空间，但却增加了编码难度。</p>
 
-<p><img src="media/15742424517788/15757100539598.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757100539598.jpg" alt=""/></p>
 
 <h3 id="toc_3">Trie 树与散列表、红黑树的比较</h3>
 
@@ -260,7 +260,7 @@
 
 <p>我们假设关键词库由用户的热门搜索关键词组成。我们将这个词库构建成一个 Trie 树。当用户输入其中某个单词的时候，把这个词作为一个前缀子串在 Trie 树中匹配。为了讲解方便，我们假设词库里只有 hello、her、hi、how、so、see 这 6 个关键词。当用户输入了字母 h 的时候，我们就把以 h 为前缀的 hello、her、hi、how 展示在搜索提示框内。当用户继续键入字母 e 的时候，我们就把以 he 为前缀的 hello、her 展示在搜索提示框内。这就是搜索关键词提示的最基本的算法原理。</p>
 
-<p><img src="media/15742424517788/15757105209082.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757105209082.jpg" alt=""/></p>
 
 <p>Trie 树的这个应用可以扩展到更加广泛的一个应用上，就是自动输入补全，比如输入法自动补全功能、IDE 代码编辑器自动补全功能、浏览器网址输入的自动补全功能等等。</p>
 

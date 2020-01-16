@@ -160,7 +160,7 @@
 
 <p>我们假设背包的最大承载重量是 9。我们有 5 个不同的物品，每个物品的重量分别是 2，2，4，6，3。如果我们把这个例子的回溯求解过程，用递归树画出来，就是下面这个样子：</p>
 
-<p><img src="media/15742424717033/15760623533035.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760623533035.jpg" alt=""/></p>
 
 <p>递归树中的每个节点表示一种状态，我们用（i, cw）来表示。其中，i 表示将要决策<mark>第几个物品是否装入背包</mark>，cw 表示<mark>当前背包中物品的总重量</mark>。比如，（2，2）表示我们将要决策第 2 个物品是否装入背包，在决策前，背包中物品的总重量是 2。</p>
 
@@ -199,8 +199,8 @@ public void f(int i, int cw) { // 调用f(0, 0)
 
 <p>以此类推，直到考察完所有的物品后，整个 states 状态数组就都计算好了。我把整个计算的过程画了出来，你可以看看。图中 0 表示 false，1 表示 true。我们只需要在最后一层，找一个值为 true 的最接近 w（这里是 9）的值，就是背包中物品总重量的最大值。</p>
 
-<p><img src="media/15742424717033/15760644982240.jpg" alt=""/><br/>
-<img src="media/15742424717033/15760645046695.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760644982240.jpg" alt=""/><br/>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760645046695.jpg" alt=""/></p>
 
 <pre><code class="language-text">weight:物品重量，n:物品个数，w:背包可承载重量
 public int knapsack(int[] weight, int n, int w) {
@@ -236,7 +236,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>这个问题依旧可以用回溯算法来解决。在递归树中，每个节点表示一个状态。现在我们需要 3 个变量（i, cw, cv）来表示一个状态。其中，i 表示即将要决策第 i 个物品是否装入背包，cw 表示当前背包中物品的总重量，cv 表示当前背包中物品的总价值。</p>
 
-<p><img src="media/15742424717033/15760648707513.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760648707513.jpg" alt=""/></p>
 
 <p>我们发现，在递归树中，有几个节点的 i 和 cw 是完全相同的，比如 f(2,2,4) 和 f(2,2,3)。在背包中物品总重量一样的情况下，f(2,2,4) 这种状态对应的物品总价值更大，我们可以舍弃 f(2,2,3) 这种状态，只需要沿着 f(2,2,4) 这条决策路线继续往下决策就可以。</p>
 
@@ -289,7 +289,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>假设你站在第一层，往下移动，我们把移动到最底层所经过的所有数字之和，定义为路径的长度。请你编程求出从最高层移动到最底层的最短路径长度。</p>
 
-<p><img src="media/15742424717033/15760652019393.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760652019393.jpg" alt=""/></p>
 
 
     

@@ -146,7 +146,7 @@
 
 <p>我们知道应用程序进程之间是彼此独立的，应用程序进程和系统进程之间也是如此，想要在应用程序进程更改系统进程的某些行为很难直接实现，有了Hook 技术，我们就可以在进程间进行行为更改，如图所示。</p>
 
-<p><img src="media/15537010310819/15777731979912.jpg" alt="" style="width:730px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010310819/15777731979912.jpg" alt="" style="width:730px;"/></p>
 
 <p>可以看到Hook可以将自己融入到它所要劫持的对象(对象B)所在的进程中，成为系统进程的一部分，这样我们就可以通过Hook来更改对象B的行为。被劫持的对象(对象B)，称作Hook点，为了保证Hook的稳定性，Hook点一般选择容易找到并且不易变化的对象，静态变量和单例就符合这一条件。</p>
 
@@ -189,7 +189,7 @@
 <li>Client: 客户端类。</li>
 </ul>
 
-<p><img src="media/15537010310819/15777735922722.jpg" alt="" style="width:639px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010310819/15777735922722.jpg" alt="" style="width:639px;"/></p>
 
 <h3 id="toc_3">14.3.1 代理模式简单实现</h3>
 

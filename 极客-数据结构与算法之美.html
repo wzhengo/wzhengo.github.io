@@ -123,7 +123,7 @@
                       
                       <div class="a-content-text">
                         
-                        	<p><img src="media/15541287435641/15549789364139.jpg" alt=""/></p>
+                        	<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541287435641/15549789364139.jpg" alt=""/></p>
 
                         
                       </div>
@@ -259,7 +259,7 @@
 
 <h2 id="toc_3">几种常见时间复杂度实例分析</h2>
 
-<p><img src="media/15541288256392/15552535885967.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288256392/15552535885967.jpg" alt=""/></p>
 
 <p>粗略地分为两类，多项式量级和非多项式量级。其中，非多项式量级只有两个：O(2n) 和 O(n!)。</p>
 
@@ -376,17 +376,17 @@
 
 <p><strong>线性表</strong>（Linear List），顾名思义，线性表就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。其实除了数组，链表、队列、栈等也是线性表结构。</p>
 
-<p><img src="media/15541288875308/15554983702123.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15554983702123.jpg" alt=""/></p>
 
 <p>而与它相对立的概念是<strong>非线性表</strong>，比如二叉树、堆、图等。之所以叫非线性，是因为，在非线性表中，数据之间并不是简单的前后关系。</p>
 
-<p><img src="media/15541288875308/15554984373245.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15554984373245.jpg" alt=""/></p>
 
 <p><strong>连续的内存空间和相同类型的数据</strong></p>
 
 <p>数组支持<strong>随机访问</strong>，<strong>根据下标</strong>随机访问的时间复杂度为 O(1)。</p>
 
-<p><img src="media/15541288875308/15555032746157.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15555032746157.jpg" alt=""/></p>
 
 <h2 id="toc_1">低效的“插入”和“删除”</h2>
 
@@ -406,7 +406,7 @@
 <li>把新的元素直接放入第k个位置。</li>
 </ul>
 
-<p><img src="media/15541288875308/15555036600604.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15555036600604.jpg" alt=""/></p>
 
 <p><strong>删除操作：</strong></p>
 
@@ -422,7 +422,7 @@
 
 <p>我们继续来看例子。数组 a[10] 中存储了 8 个元素：a，b，c，d，e，f，g，h。现在，我们要依次删除 a，b，c 三个元素。</p>
 
-<p><img src="media/15541288875308/15555043030984.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15555043030984.jpg" alt=""/></p>
 
 <p>为了避免 d，e，f，g，h 这几个数据会被搬移三次，我们可以先记录下已经删除的数据。每次的删除操作并不是真正地搬移数据，只是记录数据已经被删除。当数组没有更多空间存储数据时，我们再触发执行一次真正的删除操作，这样就大大减少了删除操作导致的数据搬移。</p>
 
@@ -522,7 +522,7 @@
 <p>数组需要一块<strong>连续的内存空间</strong>来存储，对内存的要求比较高。<br/>
 链表并不需要一块连续的内存空间，它通过“指针”将一组<strong>零散的内存块</strong>串联起来使用。</p>
 
-<p><img src="media/15541289308027/15556695598204.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541289308027/15556695598204.jpg" alt=""/></p>
 
 <p>常见的链表结构：<code>单链表</code>、<code>双向链表</code>和<code>循环链表</code>。</p>
 
@@ -534,7 +534,7 @@
 
 <p>链表的插入和删除操作，只需要考虑相邻结点的指针改变，所以对应的时间复杂度是O(1)。</p>
 
-<p><img src="media/15541289308027/15558555696445.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541289308027/15558555696445.jpg" alt=""/></p>
 
 <p>链表要想随机访问第k个元素，需要根据指针一个结点一个结点地依次遍历，直到找到相应的结点，需要O(n)的时间复杂度。</p>
 
@@ -542,7 +542,7 @@
 
 <p>循环链表是一种特殊的单链表，它的<strong>尾结点指针是指向链表的头结点</strong>。</p>
 
-<p><img src="media/15541289308027/15558560653047.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541289308027/15558560653047.jpg" alt=""/></p>
 
 <p>和单链表相比，循环链表的优点是<strong>从链尾到链头</strong>比较方便。当要处理的数据具有环型结构特点时，就特别适合采用循环链表。</p>
 
@@ -550,7 +550,7 @@
 
 <p>双向链表，它支持两个方向，每个结点不止有一个后继指针next指向后面的结点，还有一个前驱指针prev指向前面的结点。</p>
 
-<p><img src="media/15541289308027/15558562543394.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541289308027/15558562543394.jpg" alt=""/></p>
 
 <p>双向链表需要额外的两个空间来存储后继结点和前驱结点的地址。</p>
 
@@ -577,7 +577,7 @@
 
 <p><strong>链表VS数组性能大比拼</strong></p>
 
-<p><img src="media/15541289308027/15558570301462.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541289308027/15558570301462.jpg" alt=""/></p>
 
 <p>数组简单易用，在实现上使用的是连续的内存空间，可以借助CPU的缓存机制，预读数组中的数据，所以访问效率更高。而链表在内存中并不是连续存储，所以对CPU缓存不友好，没办法有效预读。</p>
 
@@ -745,7 +745,7 @@
 <li>当栈满了之后，申请一个更大的数组，将原来的数据搬移到新数组中。</li>
 </ol>
 
-<p><img src="media/15541289870216/15565401658387.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541289870216/15565401658387.jpg" alt=""/></p>
 
 <ul>
 <li><code>出栈</code>的时间复杂度仍然是 O(1)。</li>
@@ -764,7 +764,7 @@
 <li>如果比运算符栈顶元素的优先级高，就将当前运算符压入栈；如果比运算符栈顶元素的优先级低或者相同，从运算符栈中取栈顶运算符，从操作数栈的栈顶取2个操作数，然后进行计算，再把计算完的结果压入操作数栈，继续比较。</li>
 </ol>
 
-<p><img src="media/15541289870216/15565407969721.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541289870216/15565407969721.jpg" alt=""/></p>
 
 <p><strong>栈在括号匹配中的应用</strong></p>
 
@@ -828,7 +828,7 @@
 <li><strong>出队</strong>dequeue()，从队列头部取一个元素。</li>
 </ul>
 
-<p><img src="media/15541290210444/15579173042687.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579173042687.jpg" alt=""/></p>
 
 <p>队列跟栈一样，也是一种<strong>操作受限的线性表数据结构</strong>。</p>
 
@@ -841,20 +841,20 @@
 <p>对于栈来说，我们只需要一个栈顶指针就可以了。但是队列需要两个指针：一个是<strong>head</strong>指针，指向队头；一个是<strong>tail</strong>指针，指向队尾。</p>
 
 <p>a b c d 入队：<br/>
-<img src="media/15541290210444/15579192979223.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579192979223.jpg" alt=""/></p>
 
 <p>a b 出队：<br/>
-<img src="media/15541290210444/15579193044779.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579193044779.jpg" alt=""/></p>
 
 <p>随着不停地进行入队、出队操作，head和tail都会持续往后移动。当tail移动到最右边，即使数组中还有空闲空间，也无法继续往队列中添加数据了。这个问题该如何解决呢？</p>
 
 <p>答：<strong>数据搬移</strong></p>
 
-<p><img src="media/15541290210444/15579193852852.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579193852852.jpg" alt=""/></p>
 
 <p><strong>基于链表的队列实现方法</strong></p>
 
-<p><img src="media/15541290210444/15579194168528.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579194168528.jpg" alt=""/></p>
 
 <p><strong>循环队列</strong></p>
 
@@ -867,19 +867,19 @@
 
 <p>当队列满时，图中的tail指向的位置实际上是没有存储数据的。所以，循环队列会浪费一个数组的存储空间。</p>
 
-<p><img src="media/15541290210444/15579197398803.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579197398803.jpg" alt=""/></p>
 
 <p><strong>阻塞队列和并发队列</strong></p>
 
 <p>阻塞队列其实就是在队列基础上增加了<strong>阻塞操作</strong>。简单来说，就是在队列为空的时候，从队头取数据会被阻塞。因为此时还没有数据可取，直到队列中有了数据才能返回；如果队列已经满了，那么插入数据的操作就会被阻塞，直到队列中有空闲位置后再插入数据，然后再返回。</p>
 
-<p><img src="media/15541290210444/15579198293618.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579198293618.jpg" alt=""/></p>
 
 <p>这种基于阻塞队列实现的“生产者-消费者模型”，可以有效地协调生产和消费的速度。当“生产者”生产数据的速度过快，“消费者”来不及消费时，存储数据的队列很快就会满了。这个时候，生产者就阻塞等待，直到“消费者”消费了数据，“生产者”才会被唤醒继续“生产”。</p>
 
 <p>而且不仅如此，基于阻塞队列，我们还可以通过协调“生产者”和“消费者”的个数，来提高数据的处理效率。比如前面的例子，我们可以多配置几个“消费者”，来应对一个“生产者”。</p>
 
-<p><img src="media/15541290210444/15579198615206.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290210444/15579198615206.jpg" alt=""/></p>
 
 <p>在多线程情况下，会有多个线程同时操作队列，这个时候就会存在线程安全问题，那如何实现一个线程安全的队列呢？</p>
 
@@ -968,7 +968,7 @@
 </ol>
 
 <p><strong>递归代码要警惕重复计算</strong><br/>
-<img src="media/15541290614714/15584350100246.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541290614714/15584350100246.jpg" alt=""/></p>
 
 <p>为了避免重复计算，我们可以通过一个数据结构（比如散列表）来保存已经求解过的f(k)。当递归调用到f(k)时，先看下是否已经求解过了。如果是，则直接从散列表中取值返回，不需要重复计算，这样就能避免刚讲的问题了。</p>
 
@@ -1019,7 +1019,7 @@
                         
                         	<p>最经典的、最常用的：冒泡排序、插入排序、选择排序、归并排序、快速排序、计数排序、基数排序、桶排序。</p>
 
-<p><img src="media/15580895004658/15722496250641.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895004658/15722496250641.jpg" alt=""/></p>
 
 <h4 id="toc_0">如何分析一个“排序算法”？</h4>
 
@@ -1042,7 +1042,7 @@
 
 <p>冒泡排序只会操作相邻的两个数据。每次冒泡操作都会对相邻的两个元素进行比较，看是否满足大小关系要求。如果不满足就让它俩互换。一次冒泡会让至少一个元素移动到它应该在的位置，重复 n 次，就完成了 n 个数据的排序工作。</p>
 
-<p><img src="media/15580895004658/15722502869685.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895004658/15722502869685.jpg" alt=""/></p>
 
 <p>经过一次冒泡操作之后，6 这个元素已经存储在正确的位置上。要想完成所有数据的排序，我们只要进行 6 次这样的冒泡操作就行了。</p>
 
@@ -1081,7 +1081,7 @@ public void bubbleSort(int[] a, int n) {
 
 <p>我们将数组中的数据分为两个区间，<strong>已排序区间</strong>和<strong>未排序区间</strong>。初始已排序区间只有一个元素，就是数组的第一个元素。插入算法的核心思想是取未排序区间中的元素，在已排序区间中找到合适的插入位置将其插入，并保证已排序区间数据一直有序。重复这个过程，直到未排序区间中元素为空，算法结束。</p>
 
-<p><img src="media/15580895004658/15724183953801.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895004658/15724183953801.jpg" alt=""/></p>
 
 <p>插入排序也包含两种操作，一种是<strong>元素的比较</strong>，一种是<strong>元素的移动</strong>。当我们需要将一个数据 a 插入到已排序区间时，需要拿 a 与已排序区间的元素依次比较大小，找到合适的插入位置。找到插入点之后，我们还需要将插入点之后的元素顺序往后移动一位，这样才能腾出位置给元素 a 插入。</p>
 
@@ -1111,7 +1111,7 @@ public void insertionSort(int[] a, int n) {
 
 <p>选择排序算法的实现思路有点类似插入排序，也分已排序区间和未排序区间。但是选择排序每次会从未排序区间中找到最小的元素，将其放到已排序区间的末尾。</p>
 
-<p><img src="media/15580895004658/15724256632913.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895004658/15724256632913.jpg" alt=""/></p>
 
 <h4 id="toc_4">解答开篇</h4>
 
@@ -1123,7 +1123,7 @@ public void insertionSort(int[] a, int n) {
 
 <h4 id="toc_5">总结</h4>
 
-<p><img src="media/15580895004658/15724287421994.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895004658/15724287421994.jpg" alt=""/></p>
 
                         
                       </div>
@@ -1164,7 +1164,7 @@ public void insertionSort(int[] a, int n) {
 
 <p>如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
 
-<p><img src="media/15580895382477/15725218517564.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15725218517564.jpg" alt=""/></p>
 
 <p>归并排序使用的就是<strong>分治思想</strong>。分治，顾名思义，就是分而治之，将一个大问题分解成小的子问题来解决。小的子问题解决了，大问题也就解决了。</p>
 
@@ -1203,7 +1203,7 @@ merge_sort_c(A, p, r) {
 
 <p>merge()函数过程和伪代码</p>
 
-<p><img src="media/15580895382477/15725262135069.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15725262135069.jpg" alt=""/></p>
 
 <pre><code class="language-text">merge(A[p...r], A[p...q], A[q+1...r]) {
   var i := p，j := q+1，k := 0 // 初始化变量i, j, k
@@ -1248,7 +1248,7 @@ merge_sort_c(A, p, r) {
 
 <p>根据分治、递归的处理思想，我们可以用递归排序下标从 p 到 q-1 之间的数据和下标从 q+1 到 r 之间的数据，直到区间缩小为 1，就说明所有的数据都有序了。</p>
 
-<p><img src="media/15580895382477/15726007685737.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15726007685737.jpg" alt=""/></p>
 
 <p>递推公式和终止条件：</p>
 
@@ -1292,7 +1292,7 @@ quick_sort_c(A, p, r) {
 
 <p>过程如图：</p>
 
-<p><img src="media/15580895382477/15726017538109.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15726017538109.jpg" alt=""/></p>
 
 <h4 id="toc_3">快速排序的性能分析</h4>
 
@@ -1303,7 +1303,7 @@ quick_sort_c(A, p, r) {
 
 <h4 id="toc_4">归并排序和快速排序的异同：</h4>
 
-<p><img src="media/15580895382477/15728621133857.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15728621133857.jpg" alt=""/></p>
 
 <ul>
 <li>归并排序的处理过程是<strong>由下到上</strong>的，先处理子问题，然后再合并。</li>
@@ -1362,7 +1362,7 @@ quick_sort_c(A, p, r) {
 
 <p>首先，我们来看桶排序。桶排序，顾名思义，会用到“桶”，核心思想是将要排序的数据分到几个有序的桶里，每个桶里的数据再单独进行排序。桶内排完序之后，再把每个桶里的数据按照顺序依次取出，组成的序列就是有序的了。</p>
 
-<p><img src="media/15580898258498/15729470016977.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580898258498/15729470016977.jpg" alt=""/></p>
 
 <p><strong>桶排序看起来很优秀，那它是不是可以替代我们之前讲的排序算法呢？</strong></p>
 
@@ -1380,7 +1380,7 @@ quick_sort_c(A, p, r) {
 <p><strong>计数排序其实是桶排序的一种特殊情况。</strong><br/>
 当要排序的 n 个数据，所处的范围并不大的时候，比如最大值是 k，我们就可以把数据划分成 k 个桶。<mark>每个桶内的数据值都是相同的</mark>，省掉了桶内排序的时间。</p>
 
-<p><img src="media/15580898258498/15729539018465.gif" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580898258498/15729539018465.gif" alt=""/></p>
 
 <p><strong>计数排序只能用在数据范围不大的场景中，如果数据范围 k 比要排序的数据 n 大很多，就不适合用计数排序了。而且，计数排序只能给非负整数排序，如果要排序的数据是其他类型的，要将其在不改变相对大小的情况下，转化为非负整数。</strong></p>
 
@@ -1388,7 +1388,7 @@ quick_sort_c(A, p, r) {
 
 <p>基数排序是按照低位先排序，然后收集；再按照高位排序，然后再收集；依次类推，直到最高位。有时候有些属性是有优先级顺序的，先按低优先级排序，再按高优先级排序。最后的次序就是高优先级高的在前，高优先级相同的低优先级高的在前。基数排序基于分别排序，分别收集，所以是稳定的。</p>
 
-<p><img src="media/15580898258498/15729542399654.gif" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580898258498/15729542399654.gif" alt=""/></p>
 
 <p><strong>基数排序对要排序的数据是有要求的，需要可以分割出独立的“位”来比较，而且位之间有递进的关系，如果 a 数据的高位比 b 数据大，那剩下的低位就不用比较了。除此之外，每一位的数据范围不能太大，要可以用线性排序算法来排序，否则，基数排序的时间复杂度就无法做到 O(n) 了</strong></p>
 
@@ -1427,7 +1427,7 @@ quick_sort_c(A, p, r) {
                         
                         	<h4 id="toc_0">如何选择合适的排序算法？</h4>
 
-<p><img src="media/15580898531467/15730337107427.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580898531467/15730337107427.jpg" alt=""/></p>
 
 <ol>
 <li>线性排序算法的时间复杂度比较低，适用场景比较特殊，所以不能选择线性排序算法。</li>
@@ -1502,7 +1502,7 @@ quick_sort_c(A, p, r) {
 
 <p>随机写一个 0 到 99 之间的数字，然后你来猜我写的是什么。假设我写的数字是 23，你可以按照下面的步骤来试一试。</p>
 
-<p><img src="media/15580898794579/15731294280646.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580898794579/15731294280646.jpg" alt=""/></p>
 
 <p><strong>二分查找针对的是一个有序的数据集合，查找思想有点类似分治思想。每次都通过跟区间的中间元素对比，将待查找的区间缩小为之前的一半，直到找到要查找的元素，或者区间被缩小为 0。</strong></p>
 
@@ -1639,13 +1639,13 @@ private int bsearchInternally(int[] a, int low, int high, int value) {
                         
                         	<p>“十个二分九个错”。二分查找虽然原理极其简单，但是想要写出没有 Bug 的二分查找并不容易。</p>
 
-<p><img src="media/15580899097146/15735522642575.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899097146/15735522642575.jpg" alt=""/></p>
 
 <h4 id="toc_0">变体一：查找第一个值等于给定值的元素</h4>
 
 <p>比如下面这样一个有序数组，其中，a[5]，a[6]，a[7] 的值都等于 8，是重复的数据。我们希望查找第一个等于 8 的数据，也就是下标是 5 的元素。如果我们用上一节课讲的二分查找的代码实现，首先拿 8 与区间的中间值 a[4] 比较，8 比 6 大，于是在下标 5 到 9 之间继续查找。下标 5 和 9 的中间位置是下标 7，a[7] 正好等于 8，所以代码就返回了。</p>
 
-<p><img src="media/15580899097146/15735524562038.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899097146/15735524562038.jpg" alt=""/></p>
 
 <p>代码实现：</p>
 
@@ -1783,11 +1783,11 @@ private int bsearchInternally(int[] a, int low, int high, int value) {
 
 <p>对于一个单链表来讲，即便链表中存储的数据是有序的，如果我们要想在其中查找某个数据，也只能从头到尾遍历链表。这样查找效率就会很低，时间复杂度会很高，是 O(n)。</p>
 
-<p><img src="media/15580899335621/15736454641989.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899335621/15736454641989.jpg" alt=""/></p>
 
 <p>如果像图中那样，对链表建立一级“索引”，查找起来是不是就会更快一些呢？每两个结点提取一个结点到上一级，我们把抽出来的那一级叫作索引或索引层。</p>
 
-<p><img src="media/15580899335621/15736454728957.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899335621/15736454728957.jpg" alt=""/></p>
 
 <p>原来如果要查找 16，需要遍历 10 个结点，现在只需要遍历 7 个结点。</p>
 
@@ -1795,7 +1795,7 @@ private int bsearchInternally(int[] a, int low, int high, int value) {
 
 <p>例子2：</p>
 
-<p><img src="media/15580899335621/15736455727076.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899335621/15736455727076.jpg" alt=""/></p>
 
 <p>原来没有索引的时候，查找 62 需要遍历 62 个结点，现在只需要遍历 11 个结点。</p>
 
@@ -1819,7 +1819,7 @@ private int bsearchInternally(int[] a, int low, int high, int value) {
 
 <p>当我们不停地往跳表中插入数据时，如果我们不更新索引，就有可能出现某 2 个索引结点之间数据非常多的情况。极端情况下，跳表还会退化成单链表。</p>
 
-<p><img src="media/15580899335621/15736463549380.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899335621/15736463549380.jpg" alt=""/></p>
 
 <p>作为一种动态数据结构，我们需要某种手段来维护索引与原始链表大小之间的平衡，也就是说，如果链表中结点多了，索引结点就相应地增加一些，避免复杂度退化，以及查找、插入、删除操作性能下降。</p>
 
@@ -1827,7 +1827,7 @@ private int bsearchInternally(int[] a, int low, int high, int value) {
 
 <p>我们通过一个随机函数，来决定将这个结点插入到哪几级索引中，比如随机函数生成了值 K，那我们就将这个结点添加到第一级到第 K 级这 K 级索引中。</p>
 
-<p><img src="media/15580899335621/15736467171093.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899335621/15736467171093.jpg" alt=""/></p>
 
 <h4 id="toc_5">解答开篇</h4>
 
@@ -1886,7 +1886,7 @@ private int bsearchInternally(int[] a, int low, int high, int value) {
 
 <p>参赛选手的编号我们叫作<strong>键</strong>（key）或者<strong>关键字</strong>。我们用它来标识一个选手。我们把参赛编号转化为数组下标的映射方法就叫作<strong>散列函数</strong>（或“Hash函数”“哈希函数”），而散列函数计算得到的值就叫作<strong>散列值</strong>（或“Hash值”“哈希值”）。</p>
 
-<p><img src="media/15580899548602/15738116045089.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899548602/15738116045089.jpg" alt=""/></p>
 
 <p>散列表用的就是数组支持按照下标随机访问的时候，时间复杂度是O(1)的特性。我们通过散列函数把元素的键值映射为下标，然后将数据存储在数组中对应下标的位置。当我们按照键值查询元素时，我们用同样的散列函数，将键值转化数组下标，从对应的数组下标的位置取数据。</p>
 
@@ -1942,7 +1942,7 @@ private int bsearchInternally(int[] a, int low, int high, int value) {
 
 <p>链表法是一种更加常用的散列冲突解决办法，相比开放寻址法，它要简单很多。我们来看这个图，在散列表中，每个“桶（bucket）”或者“槽（slot）”会对应一条链表，所有散列值相同的元素我们都放到相同槽位对应的链表中。</p>
 
-<p><img src="media/15580899548602/15738797287694.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580899548602/15738797287694.jpg" alt=""/></p>
 
 <p>当插入的时候，我们只需要通过散列函数计算出对应的散列槽位，将其插入到对应链表中即可，所以插入的时间复杂度是 O(1)。当查找、删除一个元素时，我们同样通过散列函数计算出对应的槽，然后遍历链表查找或者删除。那查找或删除操作的时间复杂度是多少呢？</p>
 
@@ -2119,7 +2119,7 @@ HashMap 底层采用链表法来解决冲突。即使负载因子和散列函数
 
 <p>这三个操作都要涉及“查找”操作，如果单纯地采用链表的话，时间复杂度只能是 O(n)。如果我们将散列表和链表两种数据结构组合使用，可以将这三个操作的时间复杂度都降低到 O(1)。具体的结构就是下面这个样子：</p>
 
-<p><img src="media/15580900101811/15740687332020.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580900101811/15740687332020.jpg" alt=""/></p>
 
 <p>散列表通过链表法解决散列冲突的，所以每个结点会在两条链中。一个链是刚刚我们提到的<strong>双向链表</strong>，另一个链是散列表中的<strong>拉链</strong>。<strong>前驱和后继指针是为了将结点串在双向链表中，hnext 指针是为了将结点串在散列表的拉链中。</strong></p>
 
@@ -2181,15 +2181,15 @@ for (Map.Entry e : m.entrySet()) {
 <p><em>分析：</em></p>
 
 <p>在前四个操作完成之后，链表中的数据是下面这样：<br/>
-<img src="media/15580900101811/15740709887359.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580900101811/15740709887359.jpg" alt=""/></p>
 
 <p><code>m.put(3, 26);</code>后：</p>
 
-<p><img src="media/15580900101811/15740710583300.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580900101811/15740710583300.jpg" alt=""/></p>
 
 <p><code>m.get(5);</code>后：</p>
 
-<p><img src="media/15580900101811/15740717432246.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580900101811/15740717432246.jpg" alt=""/></p>
 
 <p>按照访问时间排序的 LinkedHashMap 本身就是一个支持 LRU 缓存淘汰策略的缓存系统。<br/>
 <strong>LinkedHashMap 是通过双向链表和散列表这两种数据结构组合实现的。LinkedHashMap 中的“Linked”实际上是指的是双向链表，并非指用链表法解决散列冲突。</strong></p>
@@ -2384,7 +2384,7 @@ for (Map.Entry e : m.entrySet()) {
 
 <p>我们可以借用前面数据分片的思想，即通过哈希算法对数据取哈希值，然后对机器个数取模，这个最终值就是应该存储的缓存机器编号。但是，如果数据增多，原来的 10 个机器已经无法承受了，我们就需要扩容了，比如扩到 11 个机器，这时候麻烦就来了。因为，这里并不是简单地加个机器就可以了。原来的数据是通过与 10 来取模的。比如 13 这个数据，存储在编号为 3 这台机器上。但是新加了一台机器中，我们对数据按照 11 取模，原来 13 这个数据就被分配到 2 号这台机器上了。</p>
 
-<p><img src="media/15742422914360/15742523287473.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742422914360/15742523287473.jpg" alt=""/></p>
 
 <p>所有的数据都要重新计算哈希值，然后重新搬移到正确的机器上。这样就相当于，缓存中的数据一下子就都失效了。所有的数据请求都会穿透缓存，直接去请求数据库。这样就可能发生<strong>雪崩效应</strong>，压垮数据库。</p>
 
@@ -2435,7 +2435,7 @@ for (Map.Entry e : m.entrySet()) {
 
 <p><strong>什么是“树”？</strong></p>
 
-<p><img src="media/15742423251170/15743398844463.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15743398844463.jpg" alt=""/></p>
 
 <p>这里面每个元素我们叫作“节点”；用来连线相邻节点之间的关系，我们叫作“父子关系”。父节点，子节点，兄弟节点，根节点，叶（子）节点。</p>
 
@@ -2450,20 +2450,20 @@ for (Map.Entry e : m.entrySet()) {
 
 <p>如图：</p>
 
-<p><img src="media/15742423251170/15743402612681.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15743402612681.jpg" alt=""/></p>
 
 <h4 id="toc_1">二叉树（Binary Tree）</h4>
 
 <p>二叉树，顾名思义，每个节点<mark>最多</mark>有两个“叉”，也就是两个子节点，分别是左子节点和右子节点。也可以有只一个节点。</p>
 
 <p>如图：<br/>
-<img src="media/15742423251170/15743404283628.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15743404283628.jpg" alt=""/></p>
 
 <p>编号 2 的二叉树中，叶子节点全都在最底层，除了叶子节点之外，每个节点都有左右两个子节点，这种二叉树就叫作<strong>满二叉树</strong>。</p>
 
 <p>编号 3 的二叉树中，叶子节点都在最底下两层，最后一层的叶子节点都靠左排列，并且除了最后一层，其他层的节点个数都要达到最大，这种二叉树叫作<strong>完全二叉树</strong>。</p>
 
-<p><img src="media/15742423251170/15743408598005.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15743408598005.jpg" alt=""/></p>
 
 <p>要理解完全二叉树定义的由来，我们需要先了解，<strong>如何表示（或者存储）一棵二叉树？</strong></p>
 
@@ -2471,11 +2471,11 @@ for (Map.Entry e : m.entrySet()) {
 
 <p><strong>链式存储法</strong>如图所示，每个节点有三个字段，其中一个存储数据，另外两个是指向左右子节点的指针。我们只要拎住根节点，就可以通过左右子节点的指针，把整棵树都串起来。这种存储方式我们比较常用。大部分二叉树代码都是通过这种结构来实现的。</p>
 
-<p><img src="media/15742423251170/15743411885424.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15743411885424.jpg" alt=""/></p>
 
 <p>下面是基于数组的<strong>顺序存储法：</strong></p>
 
-<p><img src="media/15742423251170/15743412233390.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15743412233390.jpg" alt=""/></p>
 
 <p>如果节点存储在数组中下标为 i 的位置，那么：</p>
 
@@ -2487,7 +2487,7 @@ for (Map.Entry e : m.entrySet()) {
 
 <p>如果是非完全二叉树，会浪费比较多的数组存储空间：</p>
 
-<p><img src="media/15742423251170/15743415012714.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15743415012714.jpg" alt=""/></p>
 
 <p>所以，如果某棵二叉树是一棵完全二叉树，那用数组存储无疑是最节省内存的一种方式。因为数组的存储方式并不需要像链式存储法那样，要存储额外的左右子节点的指针。</p>
 
@@ -2503,7 +2503,7 @@ for (Map.Entry e : m.entrySet()) {
 <li>后序遍历是指，对于树中的任意节点来说，先打印它的左子树，然后再打印它的右子树，最后打印这个节点本身。左右根</li>
 </ul>
 
-<p><img src="media/15742423251170/15745028172840.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423251170/15745028172840.jpg" alt=""/></p>
 
 <p>实际上，二叉树的前、中、后序遍历就是一个<mark>递归</mark>的过程。写递归代码的关键，就是看能不能写出<mark>递推公式</mark>，而写递推公式的关键就是，如果要解决问题 A，就假设子问题 B、C 已经解决，然后再来看如何利用 B、C 来解决 A。所以，我们可以把前、中、后序遍历的递推公式都写出来。</p>
 
@@ -2568,7 +2568,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>二叉查找树要求，在<strong>树中的任意一个节点，其左子树中的每个节点的值，都要小于这个节点的值，而右子树节点的值都大于这个节点的值。</strong></p>
 
-<p><img src="media/15742423309937/15746767591469.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423309937/15746767591469.jpg" alt=""/></p>
 
 <h4 id="toc_1">1. 二叉查找树的查找操作</h4>
 
@@ -2593,7 +2593,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 <li>第三种情况是，如果要删除的节点有两个子节点，这就比较复杂了。我们需要找到这个节点的右子树中的最小节点，把它替换到要删除的节点上。然后再删除掉这个最小节点，因为最小节点肯定没有左子节点（如果有左子结点，那就不是最小节点了），所以，我们可以应用上面两条规则来删除这个最小节点。比如图中的删除节点 18。</li>
 </ul>
 
-<p><img src="media/15742423309937/15746819081212.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423309937/15746819081212.jpg" alt=""/></p>
 
 <h4 id="toc_4">4. 二叉查找树的其他操作</h4>
 
@@ -2612,7 +2612,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>二叉查找树的形态各式各样。</p>
 
-<p><img src="media/15742423309937/15746829625607.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423309937/15746829625607.jpg" alt=""/></p>
 
 <h3 id="toc_6">解答开篇</h3>
 
@@ -2682,7 +2682,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 <li>每个节点，从该节点到达其可达叶子节点的所有路径，都包含相同数目的黑色节点；</li>
 </ul>
 
-<p><img src="media/15742423352063/15746860663540.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423352063/15746860663540.jpg" alt=""/></p>
 
 <h3 id="toc_2">为什么说红黑树是“近似平衡”的？</h3>
 
@@ -2691,7 +2691,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 <p>如果要证明红黑树是近似平衡的，我们只需要分析，红黑树的高度是否比较稳定地趋近 log2n 就好了。</p>
 
 <p>首先，我们来看，如果我们将红色节点从红黑树中去掉，那单纯包含黑色节点的红黑树的高度是多少呢？<br/>
-<img src="media/15742423352063/15746863396644.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423352063/15746863396644.jpg" alt=""/></p>
 
 <p>我们现在知道只包含黑色节点的“黑树”的高度，那我们现在把红色节点加回去，高度会变成多少呢？</p>
 
@@ -2766,7 +2766,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 <li>右旋（rotate right）：围绕某个节点的右旋。</li>
 </ul>
 
-<p><img src="media/15742423422927/15748553873365.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423422927/15748553873365.jpg" alt=""/></p>
 
 <h3 id="toc_1">插入操作的平衡调整</h3>
 
@@ -2830,7 +2830,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p><strong>如何用递归树来求解时间复杂度。</strong></p>
 
-<p><img src="media/15742423473233/15749361962479.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423473233/15749361962479.jpg" alt=""/></p>
 
 <ol>
 <li>因为每次分解都是一分为二，所以代价很低，我们把时间上的消耗记作常量 1。</li>
@@ -2899,7 +2899,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>节点大于子树节点的堆叫“大顶堆”，否则为“小顶堆”。</p>
 
-<p><img src="media/15742423511680/15751034746068.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423511680/15751034746068.jpg" alt=""/></p>
 
 <p>1、2是大顶堆，3是小顶堆，4不是堆。</p>
 
@@ -2917,7 +2917,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 </ul>
 
 <p><strong>从下往上</strong>的堆化：<br/>
-<img src="media/15742423511680/15751038657781.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423511680/15751038657781.jpg" alt=""/></p>
 
 <p><strong>2.删除堆顶元素</strong></p>
 
@@ -2927,7 +2927,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 </ol>
 
 <p><strong>从上往下</strong>的堆化：<br/>
-<img src="media/15742423511680/15751041351935.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423511680/15751041351935.jpg" alt=""/></p>
 
 <p>一个包含 n 个节点的完全二叉树，树的高度不会超过 log2​n。堆化的过程是顺着节点所在路径比较交换的，所以堆化的时间复杂度跟树的高度成正比，也就是 O(logn)。插入数据和删除堆顶元素的主要逻辑就是堆化，所以，往堆中插入一个元素和删除堆顶元素的时间复杂度都是 O(logn)。</p>
 
@@ -3056,7 +3056,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>同理“99% 响应时间”也是类似方法。</p>
 
-<p><img src="media/15742423549739/15752894796910.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423549739/15752894796910.jpg" alt=""/></p>
 
 <h3 id="toc_3">解答开篇</h3>
 
@@ -3107,24 +3107,24 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>树中的元素我们称为节点，图中的元素我们就叫作<strong>顶点</strong>（vertex）。图中的一个顶点可以与任意其他顶点建立连接关系。我们把这种建立的关系叫作<strong>边</strong>（edge）。顶点与顶点相连接的边的条数，叫做顶点的<strong>度</strong>（degree）。</p>
 
-<p><img src="media/15742423594200/15753660181164.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423594200/15753660181164.jpg" alt=""/></p>
 
 <p>边有方向的图叫作“有向图”；边没有方向的图就叫作“无向图”。</p>
 
-<p><img src="media/15742423594200/15753672758654.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423594200/15753672758654.jpg" alt=""/></p>
 
 <p>在有向图中，我们把度分为<strong>入度</strong>（In-degree）和<strong>出度</strong>（Out-degree）。顶点的入度，表示有多少条边指向这个顶点；顶点的出度，表示有多少条边是以这个顶点为起点指向其他顶点。</p>
 
 <p><strong>带权图</strong>（weighted graph），每条边都有一个权重（weight）。</p>
 
-<p><img src="media/15742423594200/15753675147431.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423594200/15753675147431.jpg" alt=""/></p>
 
 <h3 id="toc_1">邻接矩阵存储方法</h3>
 
 <p>图最直观的一种存储方法就是，<strong>邻接矩阵</strong>（Adjacency Matrix）。<br/>
 邻接矩阵的底层依赖一个二维数组。对于无向图来说，如果顶点 i 与顶点 j 之间有边，我们就将 A[i][j] 和 A[j][i] 标记为 1；对于有向图来说，如果顶点 i 到顶点 j 之间，有一条箭头从顶点 i 指向顶点 j 的边，那我们就将 A[i][j] 标记为 1。同理，如果有一条箭头从顶点 j 指向顶点 i 的边，我们就将 A[j][i] 标记为 1。对于带权图，数组中就存储相应的权重。</p>
 
-<p><img src="media/15742423594200/15753678160693.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423594200/15753678160693.jpg" alt=""/></p>
 
 <p>优点：简单、直观；方便计算。<br/>
 缺点：浪费存储空间。</p>
@@ -3133,7 +3133,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>如图，图中画的是一个有向图的邻接表存储方式，每个顶点对应的链表里面，存储的是指向的顶点。对于无向图来说，也是类似的，不过，每个顶点的链表中存储的，是跟这个顶点有边相连的顶点。</p>
 
-<p><img src="media/15742423594200/15753679698216.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742423594200/15753679698216.jpg" alt=""/></p>
 
 <p>在基于链表法解决冲突的散列表中，如果链过长，为了提高查找效率，我们可以将链表换成其他更加高效的数据结构，比如平衡二叉查找树等。实际开发中，我们可以选择用红黑树。这样，我们就可以更加快速地查找两个顶点之间是否存在边了。当然，这里的二叉查找树可以换成其他动态数据结构，比如跳表、散列表等。除此之外，我们还可以将链表改成有序动态数组，可以通过二分查找的方法来快速定位两个顶点之间否是存在边。</p>
 
@@ -3216,7 +3216,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>广度优先搜索（Breadth-First-Search），简称为 BFS。直观地讲，它其实就是一种“地毯式”层层推进的搜索策略，即先查找离起始顶点最近的，然后是次近的，依次往外搜索。</p>
 
-<p><img src="media/15742424378549/15754584747431.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424378549/15754584747431.jpg" alt=""/></p>
 
 <p>V 表示顶点的个数，E 表示边的个数。<br/>
 广度优先搜索的时间复杂度也可以简写为 O(E)。<br/>
@@ -3226,7 +3226,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>深度优先搜索（Depth-First-Search），简称 DFS。最直观的例子就是“走迷宫”。</p>
 
-<p><img src="media/15742424378549/15754593308212.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424378549/15754593308212.jpg" alt=""/></p>
 
 <p>深度优先搜索用的是一种比较著名的算法思想，回溯思想。</p>
 
@@ -3289,7 +3289,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p><strong>算法思想：</strong>我们在主串中，检查起始位置分别是 0、1、2…n-m 且长度为 m 的 n-m+1 个子串，看有没有跟模式串匹配的。</p>
 
-<p><img src="media/15742424414473/15754615349838.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424414473/15754615349838.jpg" alt=""/></p>
 
 <p>BF 算法的时间复杂度很高，是 O(n*m)，但在实际的开发中，它却是一个比较常用的字符串匹配算法。原因：第一，大部分情况下，模式串和主串的长度都不会太长，不会达到最坏情况；第二，算法思想和实现简单。</p>
 
@@ -3366,43 +3366,43 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 <h4 id="toc_2">1. 坏字符规则</h4>
 
 <p>我们从模式串的末尾往前倒着匹配，当我们发现某个字符没法匹配的时候。我们把这个没有匹配的字符叫作<strong>坏字符</strong>（主串中的字符）。<br/>
-<img src="media/15742424449181/15757063934055.jpg" alt=""/></p>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757063934055.jpg" alt=""/></p>
 
 <p>我们拿坏字符 c 在模式串中查找，发现模式串中并不存在这个字符，也就是说，字符 c 与模式串中的任何字符都不可能匹配。这个时候，我们可以将模式串直接往后滑动三位，将模式串滑动到 c 后面的位置，再从模式串的末尾字符开始比较。</p>
 
-<p><img src="media/15742424449181/15757069769768.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757069769768.jpg" alt=""/></p>
 
 <p>这个时候，我们发现，模式串中最后一个字符 d，还是无法跟主串中的 a 匹配，这个时候，还能将模式串往后滑动三位吗？答案是不行的。因为这个时候，坏字符 a 在模式串中是存在的，模式串中下标是 0 的位置也是字符 a。这种情况下，我们可以将模式串往后滑动两位，让两个 a 上下对齐，然后再从模式串的末尾字符开始，重新匹配。</p>
 
-<p><img src="media/15742424449181/15757070312780.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757070312780.jpg" alt=""/></p>
 
 <h4 id="toc_3">2. 好后缀规则</h4>
 
 <p>好后缀规则实际上跟坏字符规则的思路很类似。你看我下面这幅图。当模式串滑动到图中的位置的时候，模式串和主串有 2 个字符是匹配的，倒数第 3 个字符发生了不匹配的情况。</p>
 
-<p><img src="media/15742424449181/15757074592628.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757074592628.jpg" alt=""/></p>
 
 <p>我们把已经匹配的 bc 叫作好后缀，记作{u}。我们拿它在模式串中查找，如果找到了另一个跟{u}相匹配的子串{u*}，那我们就将模式串滑动到子串{u*}与主串中{u}对齐的位置。</p>
 
-<p><img src="media/15742424449181/15757075749264.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757075749264.jpg" alt=""/></p>
 
 <p>如果在模式串中找不到另一个等于{u}的子串，我们就直接将模式串，滑动到主串中{u}的后面，因为之前的任何一次往后滑动，都没有匹配主串中{u}的情况。</p>
 
-<p><img src="media/15742424449181/15757081099068.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757081099068.jpg" alt=""/></p>
 
 <p>不过，当模式串中不存在等于{u}的子串时，我们直接将模式串滑动到主串{u}的后面。这样做是否有点太过头呢？我们来看下面这个例子。这里面 bc 是好后缀，尽管在模式串中没有另外一个相匹配的子串{u*}，但是如果我们将模式串移动到好后缀的后面，如图所示，那就会错过模式串和主串可以匹配的情况。</p>
 
-<p><img src="media/15742424449181/15757082879297.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757082879297.jpg" alt=""/></p>
 
 <p>如果好后缀在模式串中不存在可匹配的子串，那在我们一步一步往后滑动模式串的过程中，只要主串中的{u}与模式串有重合，那肯定就无法完全匹配。但是当模式串滑动到前缀与主串中{u}的后缀有部分重合的时候，并且重合的部分相等的时候，就有可能会存在完全匹配的情况。</p>
 
-<p><img src="media/15742424449181/15757083012163.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757083012163.jpg" alt=""/></p>
 
 <p>所以，针对这种情况，我们不仅要看好后缀在模式串中，是否有另一个匹配的子串，我们还要考察好后缀的后缀子串，是否存在跟模式串的前缀子串匹配的。</p>
 
 <p>所谓某个字符串 s 的后缀子串，就是最后一个字符跟 s 对齐的子串，比如 abc 的后缀子串就包括 c, bc。所谓前缀子串，就是起始字符跟 s 对齐的子串，比如 abc 的前缀子串有 a，ab。我们从好后缀的后缀子串中，找一个最长的并且能跟模式串的前缀子串匹配的，假设是{v}，然后将模式串滑动到如图所示的位置。</p>
 
-<p><img src="media/15742424449181/15757083223781.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424449181/15757083223781.jpg" alt=""/></p>
 
 <p>坏字符和好后缀的基本原理都讲完了，我现在回答一下前面那个问题。当模式串和主串中的某个字符不匹配的时候，如何选择用好后缀规则还是坏字符规则，来计算模式串往后滑动的位数？</p>
 
@@ -3519,12 +3519,12 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p><strong>Trie 树的本质，就是利用字符串之间的公共前缀，将重复的前缀合并在一起。</strong></p>
 
-<p><img src="media/15742424517788/15757094157669.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757094157669.jpg" alt=""/></p>
 
 <p>其中，根节点不包含任何信息。每个节点表示一个字符串中的字符，从根节点到红色节点的一条路径表示一个字符串（注意：红色节点并不都是叶子节点）。</p>
 
-<p><img src="media/15742424517788/15757095020770.jpg" alt=""/><br/>
-<img src="media/15742424517788/15757095056783.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757095020770.jpg" alt=""/><br/>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757095056783.jpg" alt=""/></p>
 
 <h3 id="toc_1">如何实现一棵 Trie 树？</h3>
 
@@ -3548,7 +3548,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>我先介绍其中一种存储方式，也是经典的存储方式——散列表。借助散列表的思想，我们通过一个下标与字符一一映射的数组，来存储子节点的指针。</p>
 
-<p><img src="media/15742424517788/15757097447111.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757097447111.jpg" alt=""/></p>
 
 <p>当我们在 Trie 树中查找字符串的时候，我们就可以通过字符的 ASCII 码减去“a”的 ASCII 码，迅速找到匹配的子节点的指针。</p>
 
@@ -3609,7 +3609,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>实际上，Trie 树的变体有很多，都可以在一定程度上解决内存消耗的问题。比如，<strong>缩点优化</strong>，就是对只有一个子节点的节点，而且此节点不是一个串的结束节点，可以将此节点与子节点合并。这样可以节省空间，但却增加了编码难度。</p>
 
-<p><img src="media/15742424517788/15757100539598.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757100539598.jpg" alt=""/></p>
 
 <h3 id="toc_3">Trie 树与散列表、红黑树的比较</h3>
 
@@ -3630,7 +3630,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>我们假设关键词库由用户的热门搜索关键词组成。我们将这个词库构建成一个 Trie 树。当用户输入其中某个单词的时候，把这个词作为一个前缀子串在 Trie 树中匹配。为了讲解方便，我们假设词库里只有 hello、her、hi、how、so、see 这 6 个关键词。当用户输入了字母 h 的时候，我们就把以 h 为前缀的 hello、her、hi、how 展示在搜索提示框内。当用户继续键入字母 e 的时候，我们就把以 he 为前缀的 hello、her 展示在搜索提示框内。这就是搜索关键词提示的最基本的算法原理。</p>
 
-<p><img src="media/15742424517788/15757105209082.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424517788/15757105209082.jpg" alt=""/></p>
 
 <p>Trie 树的这个应用可以扩展到更加广泛的一个应用上，就是自动输入补全，比如输入法自动补全功能、IDE 代码编辑器自动补全功能、浏览器网址输入的自动补全功能等等。</p>
 
@@ -3770,7 +3770,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>假设我们有 n 个区间，区间的起始端点和结束端点分别是 [l1, r1]，[l2, r2]，[l3, r3]，……，[ln, rn]。我们从这 n 个区间中选出一部分区间，这部分区间满足两两不相交（端点相交的情况不算相交），最多能选出多少个区间呢？</p>
 
-<p><img src="media/15742424600205/15759744732606.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424600205/15759744732606.jpg" alt=""/></p>
 
 <p>这个问题的处理思路在很多贪心算法问题中都有用到，比如任务调度、教师排课等等问题。</p>
 
@@ -3781,7 +3781,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 <li>我们每次选择的时候，左端点跟前面的已经覆盖的区间不重合的，右端点又尽量小的，这样可以让剩下的未覆盖区间尽可能的大，就可以放置更多的区间。这实际上就是一种贪心的选择方法。</li>
 </ol>
 
-<p><img src="media/15742424600205/15759752450311.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424600205/15759752450311.jpg" alt=""/></p>
 
 <h3 id="toc_2">解答开篇</h3>
 
@@ -3795,17 +3795,17 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>假设这 6 个字符出现的频率从高到低依次是 a、b、c、d、e、f。我们把它们编码下面这个样子，任何一个字符的编码都不是另一个的前缀，在解压缩的时候，我们每次会读取尽可能长的可解压的二进制串，所以在解压缩的时候也不会歧义。经过这种编码压缩之后，这 1000 个字符只需要 2100bits 就可以了。</p>
 
-<p><img src="media/15742424600205/15759755140906.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424600205/15759755140906.jpg" alt=""/></p>
 
 <p>但是如何根据字符出现频率的不同，给不同的字符进行不同长度的编码呢？</p>
 
 <p>我们把每个字符看作一个节点，并且辅带着把频率放到优先级队列中。我们从队列中取出频率最小的两个节点 A、B，然后新建一个节点 C，把频率设置为两个节点的频率之和，并把这个新节点 C 作为节点 A、B 的父节点。最后再把 C 节点放入到优先级队列中。重复这个过程，直到队列中没有数据。</p>
 
-<p><img src="media/15742424600205/15759755413222.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424600205/15759755413222.jpg" alt=""/></p>
 
 <p>现在，我们给每一条边加上画一个权值，指向左子节点的边我们统统标记为 0，指向右子节点的边，我们统统标记为 1，那从根节点到叶节点的路径就是叶节点对应字符的霍夫曼编码。</p>
 
-<p><img src="media/15742424600205/15759755543037.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424600205/15759755543037.jpg" alt=""/></p>
 
 <h3 id="toc_3">内容小结</h3>
 
@@ -3891,7 +3891,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>假设我们有 n 个数据，我们期望数据从小到大排列，那完全有序的数据的有序度就是 n(n-1)/2，逆序度等于 0；相反，倒序排列的数据的有序度就是 0，逆序度是 n(n-1)/2。除了这两种极端情况外，我们通过计算有序对或者逆序对的个数，来表示数据的有序度或逆序度。</p>
 
-<p><img src="media/15742424638417/15760587527848.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424638417/15760587527848.jpg" alt=""/></p>
 
 <p><strong>如何编程求出一组数据的有序对个数或者逆序对个数呢？</strong></p>
 
@@ -3899,7 +3899,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 如何快速计算出两个子问题 A1 与 A2 之间的逆序对个数呢？<br/>
 这里就要借助归并排序算法了。归并排序中有一个非常关键的操作，就是将两个有序的小数组，合并成一个有序的数组。实际上，在这个合并的过程中，我们就可以计算这两个小数组的逆序对个数了。每次合并操作，我们都计算逆序对个数，把这些计算出来的逆序对个数求和，就是这个数组的逆序对个数了。</p>
 
-<p><img src="media/15742424638417/15760588080860.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424638417/15760588080860.jpg" alt=""/></p>
 
 <p>关于分治算法，我这还有两道比较经典的问题，你可以自己练习一下。</p>
 
@@ -3984,7 +3984,7 @@ postOrder(r) = postOrder(r-&gt;left)-&gt;postOrder(r-&gt;right)-&gt;print r
 
 <p>我举一个经典的回溯例子，我想你可能已经猜到了，那就是八皇后问题。我们有一个 8x8 的棋盘，希望往里放 8 个棋子（皇后），每个棋子所在的行、列、对角线都不能有另一个棋子。你可以看我画的图，第一幅图是满足条件的一种方法，第二幅图是不满足条件的。八皇后问题就是期望找到所有满足这种要求的放棋子方式。</p>
 
-<p><img src="media/15742424672731/15760600790363.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424672731/15760600790363.jpg" alt=""/></p>
 
 <p>我们把这个问题划分成 8 个阶段，依次将 8 个棋子放到第一行、第二行、第三行……第八行。在放置的过程中，我们不停地检查当前的方法，是否满足要求。如果满足，则跳到下一行继续放置棋子；如果不满足，那就再换一种方法，继续尝试。</p>
 
@@ -4093,7 +4093,7 @@ public void f(int i, int cw, int[] items, int n, int w) {
 
 <p>我们假设背包的最大承载重量是 9。我们有 5 个不同的物品，每个物品的重量分别是 2，2，4，6，3。如果我们把这个例子的回溯求解过程，用递归树画出来，就是下面这个样子：</p>
 
-<p><img src="media/15742424717033/15760623533035.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760623533035.jpg" alt=""/></p>
 
 <p>递归树中的每个节点表示一种状态，我们用（i, cw）来表示。其中，i 表示将要决策<mark>第几个物品是否装入背包</mark>，cw 表示<mark>当前背包中物品的总重量</mark>。比如，（2，2）表示我们将要决策第 2 个物品是否装入背包，在决策前，背包中物品的总重量是 2。</p>
 
@@ -4132,8 +4132,8 @@ public void f(int i, int cw) { // 调用f(0, 0)
 
 <p>以此类推，直到考察完所有的物品后，整个 states 状态数组就都计算好了。我把整个计算的过程画了出来，你可以看看。图中 0 表示 false，1 表示 true。我们只需要在最后一层，找一个值为 true 的最接近 w（这里是 9）的值，就是背包中物品总重量的最大值。</p>
 
-<p><img src="media/15742424717033/15760644982240.jpg" alt=""/><br/>
-<img src="media/15742424717033/15760645046695.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760644982240.jpg" alt=""/><br/>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760645046695.jpg" alt=""/></p>
 
 <pre><code class="language-text">weight:物品重量，n:物品个数，w:背包可承载重量
 public int knapsack(int[] weight, int n, int w) {
@@ -4169,7 +4169,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>这个问题依旧可以用回溯算法来解决。在递归树中，每个节点表示一个状态。现在我们需要 3 个变量（i, cw, cv）来表示一个状态。其中，i 表示即将要决策第 i 个物品是否装入背包，cw 表示当前背包中物品的总重量，cv 表示当前背包中物品的总价值。</p>
 
-<p><img src="media/15742424717033/15760648707513.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760648707513.jpg" alt=""/></p>
 
 <p>我们发现，在递归树中，有几个节点的 i 和 cw 是完全相同的，比如 f(2,2,4) 和 f(2,2,3)。在背包中物品总重量一样的情况下，f(2,2,4) 这种状态对应的物品总价值更大，我们可以舍弃 f(2,2,3) 这种状态，只需要沿着 f(2,2,4) 这条决策路线继续往下决策就可以。</p>
 
@@ -4222,7 +4222,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>假设你站在第一层，往下移动，我们把移动到最底层所经过的所有数字之和，定义为路径的长度。请你编程求出从最高层移动到最底层的最短路径长度。</p>
 
-<p><img src="media/15742424717033/15760652019393.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424717033/15760652019393.jpg" alt=""/></p>
 
                         
                       </div>
@@ -4299,7 +4299,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>假设我们有一个 n 乘以 n 的矩阵 w[n][n]。矩阵存储的都是正整数。棋子起始位置在左上角，终止位置在右下角。我们将棋子从左上角移动到右下角。每次只能向右或者向下移动一位。从左上角到右下角，会有很多不同的路径可以走。我们把每条路径经过的数字加起来看作路径的长度。那从左上角移动到右下角的最短路径长度是多少呢？</p>
 
-<p><img src="media/15742424750929/15761484003875.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424750929/15761484003875.jpg" alt=""/></p>
 
 <h3 id="toc_5">两种动态规划解题思路总结</h3>
 
@@ -4386,7 +4386,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>关于这两个计算方法，我举个例子给你说明一下。这里面，两个字符串 mitcmu 和 mtacnu 的莱文斯坦距离是 3，最长公共子串长度是 4。</p>
 
-<p><img src="media/15742424779150/15764930027615.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424779150/15764930027615.jpg" alt=""/></p>
 
 <h3 id="toc_1">如何编程计算莱文斯坦距离？</h3>
 
@@ -4404,7 +4404,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>根据回溯算法的代码实现，我们可以画出递归树，看是否存在重复子问题。如果存在重复子问题，那我们就可以考虑能否用动态规划来解决；如果不存在重复子问题，那回溯就是最好的解决方法。</p>
 
-<p><img src="media/15742424779150/15764931617599.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424779150/15764931617599.jpg" alt=""/></p>
 
 <p>在递归树中，每个节点代表一个状态，状态包含三个变量 (i, j, edist)，其中，edist 表示处理到 a[i] 和 b[j] 时，已经执行的编辑操作的次数。</p>
 
@@ -4412,7 +4412,7 @@ public int knapsack(int[] weight, int n, int w) {
 
 <p>上一节我们讲的矩阵最短路径问题中，到达状态 (i, j) 只能通过 (i-1, j) 或 (i, j-1) 两个状态转移过来，而今天这个问题，状态 (i, j) 可能从 (i-1, j)，(i, j-1)，(i-1, j-1)== 三个状态==中的任意一个转移过来。</p>
 
-<p><img src="media/15742424779150/15764933363506.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424779150/15764933363506.jpg" alt=""/></p>
 
 <p>基于刚刚的分析，我们可以尝试着将把状态转移的过程，用公式写出来。这就是我们前面讲的状态转移方程。</p>
 
@@ -4427,7 +4427,7 @@ min(min_edist(i-1,j)+1, min_edist(i,j-1)+1，min_edist(i-1,j-1))
 
 <p>了解了状态与状态之间的递推关系，我们画出一个二维的状态表，按行依次来填充状态表中的每个值。</p>
 
-<p><img src="media/15742424779150/15764933988811.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15742424779150/15764933988811.jpg" alt=""/></p>
 
 <p>当我们拿到一个问题的时候，<strong>我们可以先不思考，计算机会如何实现这个问题，而是单纯考虑“人脑”会如何去解决这个问题</strong>。人脑比较倾向于思考具象化的、摸得着看得见的东西，不适合思考过于抽象的问题。所以，我们需要把抽象问题具象化。那如何具象化呢？我们可以实例化几个测试数据，通过人脑去分析具体实例的解，然后总结规律，再尝试套用学过的算法，看是否能够解决。</p>
 

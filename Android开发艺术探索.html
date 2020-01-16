@@ -139,9 +139,9 @@
 14 JNI和NDK编程<br/>
 <a href="15518627896387.html">15 性能优化</a></p>
 
-<p><a href="media/15789721660565/Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.xmind">Android开发艺术探索.xmind</a></p>
+<p><a href="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15789721660565/Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.xmind">Android开发艺术探索.xmind</a></p>
 
-<p><img src="http://wz2img.oss-cn-beijing.aliyuncs.com/2020/01/15/android-kai-fa-yi-shu-tan-suo.png" alt="Android开发艺术探索"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15789721660565/Android%E5%BC%80%E5%8F%91%E8%89%BA%E6%9C%AF%E6%8E%A2%E7%B4%A2.png" alt="Android开发艺术探索"/></p>
 
                         
                       </div>
@@ -185,7 +185,7 @@
 
 <h3 id="toc_1">1.1.1 典型情况下的生命周期分析 / 2</h3>
 
-<p><img src="media/15511960673056/15762206826291.jpg" alt="" style="width:473px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15511960673056/15762206826291.jpg" alt="" style="width:473px;"/></p>
 
 <ul>
 <li>onStart和onResume，onPause和onStop的区别？
@@ -475,7 +475,7 @@ interface IBookManager{<br/>
 
 <p>首先，当客户端发起远程请求时，由于当前线程会被挂起直至服务端进程返回数据，所以如果一个远程方法是很耗时的，那么<mark>不能在UI线程中发起此远程请求</mark>；其它，由于服务端的Binder方法运行在Binder的线程池中，所以Binder方法不管是否耗时都应该采用<mark>同步</mark>的方式去实现，因为它已经运行在一个线程中了。</p>
 
-<p><img src="media/15513690535659/15764863288077.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15513690535659/15764863288077.jpg" alt=""/></p>
 
 <p><strong>Binder死亡通知</strong><br/>
 Binder的两个重要方法<code>linkToDeath</code>和<code>unlinkToDeath</code>。</p>
@@ -600,7 +600,7 @@ binder.linkToDeath(mDeathRecipient，0);
 }
 </code></pre>
 <p>流程图如下：<br/>
-<img src="media/15513690535659/15765748325024.jpg" alt=""/></p></li>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15513690535659/15765748325024.jpg" alt=""/></p></li>
 </ol>
 
 <p><strong>总结：</strong></p>
@@ -758,7 +758,7 @@ mListenerList.finishBroadcast();
 
 <h2 id="toc_16">2.6 选用合适的IPC方式</h2>
 
-<p><img src="media/15513690535659/15766526817701.jpg" alt="" style="width:614px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15513690535659/15766526817701.jpg" alt="" style="width:614px;"/></p>
 
                         
                       </div>
@@ -805,7 +805,7 @@ mListenerList.finishBroadcast();
 
 <h3 id="toc_2">3.1.2 View的位置参数</h3>
 
-<p><img src="media/15760469998530/15760473367818.jpg" alt="" style="width:702px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15760469998530/15760473367818.jpg" alt="" style="width:702px;"/></p>
 
 <ul>
 <li>坐标：X轴和Y轴，正方向为右和下</li>
@@ -1046,7 +1046,7 @@ public void smoothScrollTo(int destX,int destY){
 <p>分析：<br/>
 Scroller.invalidate方法导致View重绘，View.draw方法被执行，然后在重写的View.computeScroll方法中，会判断computeScrollOffset，true则调用scrollTo/scrollBy滚动、invalidate/postInvalidate再次重绘，如此反复，直到computeScrollOffset为false。</p>
 
-<p><img src="media/15760469998530/15760488044726.jpg" alt="" style="width:697px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15760469998530/15760488044726.jpg" alt="" style="width:697px;"/></p>
 
 <h3 id="toc_12">3.3.2 通过动画</h3>
 
@@ -1494,9 +1494,9 @@ for (int i = childrenCount - 1; i &gt;= 0; i--){<br/>
 </ol></li>
 </ol>
 
-<p><img src="media/15760471697724/15761424793755.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15760471697724/15761424793755.jpg" alt=""/></p>
 
-<p><img src="media/15760471697724/15761426152782.jpg" alt="" style="width:445px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15760471697724/15761426152782.jpg" alt="" style="width:445px;"/></p>
 
 <h2 id="toc_1">4.2 理解MeasureSpec</h2>
 
@@ -2080,7 +2080,7 @@ for (int i = childrenCount - 1; i &gt;= 0; i--){<br/>
 
 <h2 id="toc_1">9.2 Activity的工作过程 / 318</h2>
 
-<p><img src="media/15518627494454/15762322249731.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15518627494454/15762322249731.jpg" alt=""/></p>
 
 <p>performLaunchActivity主要完成：</p>
 
@@ -2096,7 +2096,7 @@ for (int i = childrenCount - 1; i &gt;= 0; i--){<br/>
 
 <h3 id="toc_3">9.3.1 Service的启动过程 / 336</h3>
 
-<p><img src="media/15518627494454/15764643787210.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15518627494454/15764643787210.jpg" alt=""/></p>
 
 <p>handleCreateService主要完成</p>
 
@@ -2109,11 +2109,11 @@ for (int i = childrenCount - 1; i &gt;= 0; i--){<br/>
 
 <h3 id="toc_4">9.3.2 Service的绑定过程 / 344</h3>
 
-<p><img src="media/15518627494454/15764645501108.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15518627494454/15764645501108.jpg" alt=""/></p>
 
 <h2 id="toc_5">9.4 BroadcastReceiver的工作过程 / 352</h2>
 
-<p><img src="media/15518627494454/15764650622524.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15518627494454/15764650622524.jpg" alt=""/></p>
 
 <h3 id="toc_6">9.4.1 广播的注册过程 / 353</h3>
 
@@ -2121,7 +2121,7 @@ for (int i = childrenCount - 1; i &gt;= 0; i--){<br/>
 
 <h2 id="toc_8">9.5 ContentProvider的工作过程 / 362</h2>
 
-<p><img src="media/15518627494454/15764651187428.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15518627494454/15764651187428.jpg" alt=""/></p>
 
                         
                       </div>
@@ -2202,7 +2202,7 @@ for (int i = childrenCount - 1; i &gt;= 0; i--){<br/>
 </ol></li>
 </ol>
 
-<p><img src="media/15518627703620/15773317153495.jpg" alt="" style="width:630px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15518627703620/15773317153495.jpg" alt="" style="width:630px;"/></p>
 
 <h3 id="toc_2">10.2.1 ThreadLocal的工作原理</h3>
 

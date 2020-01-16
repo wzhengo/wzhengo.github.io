@@ -144,17 +144,17 @@
 
 <p><strong>线性表</strong>（Linear List），顾名思义，线性表就是数据排成像一条线一样的结构。每个线性表上的数据最多只有前和后两个方向。其实除了数组，链表、队列、栈等也是线性表结构。</p>
 
-<p><img src="media/15541288875308/15554983702123.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15554983702123.jpg" alt=""/></p>
 
 <p>而与它相对立的概念是<strong>非线性表</strong>，比如二叉树、堆、图等。之所以叫非线性，是因为，在非线性表中，数据之间并不是简单的前后关系。</p>
 
-<p><img src="media/15541288875308/15554984373245.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15554984373245.jpg" alt=""/></p>
 
 <p><strong>连续的内存空间和相同类型的数据</strong></p>
 
 <p>数组支持<strong>随机访问</strong>，<strong>根据下标</strong>随机访问的时间复杂度为 O(1)。</p>
 
-<p><img src="media/15541288875308/15555032746157.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15555032746157.jpg" alt=""/></p>
 
 <h2 id="toc_1">低效的“插入”和“删除”</h2>
 
@@ -174,7 +174,7 @@
 <li>把新的元素直接放入第k个位置。</li>
 </ul>
 
-<p><img src="media/15541288875308/15555036600604.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15555036600604.jpg" alt=""/></p>
 
 <p><strong>删除操作：</strong></p>
 
@@ -190,7 +190,7 @@
 
 <p>我们继续来看例子。数组 a[10] 中存储了 8 个元素：a，b，c，d，e，f，g，h。现在，我们要依次删除 a，b，c 三个元素。</p>
 
-<p><img src="media/15541288875308/15555043030984.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15541288875308/15555043030984.jpg" alt=""/></p>
 
 <p>为了避免 d，e，f，g，h 这几个数据会被搬移三次，我们可以先记录下已经删除的数据。每次的删除操作并不是真正地搬移数据，只是记录数据已经被删除。当数组没有更多空间存储数据时，我们再触发执行一次真正的删除操作，这样就大大减少了删除操作导致的数据搬移。</p>
 

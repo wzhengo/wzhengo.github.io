@@ -167,7 +167,7 @@
 <li> <strong>Terminated</strong>：终止状态。表示当前线程已经执行完毕。导致线程终止有两种情况：第一种就是run方法执行完毕正常退出；第二种就是因为一个没有捕获的异常而终止了run方法，导致线程进入终止状态。</li>
 </ul>
 
-<p><img src="media/15536970568598/15774178989655.jpg" alt="" style="width:811px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774178989655.jpg" alt="" style="width:811px;"/></p>
 
 <h3 id="toc_3">4.1.3　创建线程</h3>
 
@@ -280,7 +280,7 @@ public void method() {
 
 <p>Java中的堆内存用来存储对象实例，堆内存是被所有线程共享的运行时内存区域，因此，它存在内存可见性的问题。而局部变量、方法定义的参数则不会在线程之间共享，它们不会有内存可见性问题，也不受内存模型的影响。Java 内存模型定义了线程和主存之间的抽象关系：线程之间的共享变量存储在主存中， 每个线程都有一个私有的本地内存，本地内存中存储了该线程共享变量的副本。需要注意的是本地内存是 Java内存模型的一个抽象概念，其并不真实存在，它涵盖了缓存、写缓冲区、寄存器等区域。Java内存模型控制线程之间的通信，它决定一个线程对主存共享变量的写入何时对另一个线程可见。</p>
 
-<p><img src="media/15536970568598/15774323929212.jpg" alt="" style="width:525px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774323929212.jpg" alt="" style="width:525px;"/></p>
 
 <p>线程A与线程B之间若要通信的话，必须要经历下面两个步骤：</p>
 
@@ -419,9 +419,9 @@ public void doWork() {<br/>
 
 <h3 id="toc_18">4.4.2　线程池的处理流程和原理</h3>
 
-<p><img src="media/15536970568598/15774373999521.jpg" alt="" style="width:361px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774373999521.jpg" alt="" style="width:361px;"/></p>
 
-<p><img src="media/15536970568598/15774374381979.jpg" alt="" style="width:652px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774374381979.jpg" alt="" style="width:652px;"/></p>
 
 <h3 id="toc_19">4.4.3　线程池的种类</h3>
 
@@ -431,7 +431,7 @@ public void doWork() {<br/>
 
 <p>FixedThreadPool 是可重用固定线程数的线程池。</p>
 
-<p><img src="media/15536970568598/15774375675934.jpg" alt="" style="width:597px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774375675934.jpg" alt="" style="width:597px;"/></p>
 
 <p>FixedThreadPool就是一个有固定数量核心线程的线程池，并且这些核心线程不会被回收。当线程数超过 corePoolSize 时，就将任务存储在任务队列中;当线程池有空闲线程时，则从任务队列中去取任务执行。</p>
 
@@ -439,19 +439,19 @@ public void doWork() {<br/>
 
 <p>CachedThreadPool是一个根据需要创建线程的线程池。CachedThreadPool 比较适于大量的需要立即处理并且耗时较少的任务。</p>
 
-<p><img src="media/15536970568598/15774377191970.jpg" alt="" style="width:592px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774377191970.jpg" alt="" style="width:592px;"/></p>
 
 <p><strong>3.SingleThreadExecutor</strong></p>
 
 <p>SingleThreadExecutor是使用单个工作线程的线程池。能确保所有的任务在一个线程中按照顺序逐一执行。</p>
 
-<p><img src="media/15536970568598/15774381710086.jpg" alt="" style="width:604px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774381710086.jpg" alt="" style="width:604px;"/></p>
 
 <p><strong>4.ScheduledThreadPool</strong></p>
 
 <p>ScheduledThreadPool是一个能实现定时和周期性任务的线程池。</p>
 
-<p><img src="media/15536970568598/15774382268529.jpg" alt="" style="width:650px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15536970568598/15774382268529.jpg" alt="" style="width:650px;"/></p>
 
 <h2 id="toc_20">4.5　AsyncTask的原理</h2>
 

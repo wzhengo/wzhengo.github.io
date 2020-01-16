@@ -142,7 +142,7 @@
 
 <p>如果要排序一个数组，我们先把数组从中间分成前后两部分，然后对前后两部分分别排序，再将排好序的两部分合并在一起，这样整个数组就都有序了。</p>
 
-<p><img src="media/15580895382477/15725218517564.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15725218517564.jpg" alt=""/></p>
 
 <p>归并排序使用的就是<strong>分治思想</strong>。分治，顾名思义，就是分而治之，将一个大问题分解成小的子问题来解决。小的子问题解决了，大问题也就解决了。</p>
 
@@ -181,7 +181,7 @@ merge_sort_c(A, p, r) {
 
 <p>merge()函数过程和伪代码</p>
 
-<p><img src="media/15580895382477/15725262135069.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15725262135069.jpg" alt=""/></p>
 
 <pre><code class="language-text">merge(A[p...r], A[p...q], A[q+1...r]) {
   var i := p，j := q+1，k := 0 // 初始化变量i, j, k
@@ -226,7 +226,7 @@ merge_sort_c(A, p, r) {
 
 <p>根据分治、递归的处理思想，我们可以用递归排序下标从 p 到 q-1 之间的数据和下标从 q+1 到 r 之间的数据，直到区间缩小为 1，就说明所有的数据都有序了。</p>
 
-<p><img src="media/15580895382477/15726007685737.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15726007685737.jpg" alt=""/></p>
 
 <p>递推公式和终止条件：</p>
 
@@ -270,7 +270,7 @@ quick_sort_c(A, p, r) {
 
 <p>过程如图：</p>
 
-<p><img src="media/15580895382477/15726017538109.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15726017538109.jpg" alt=""/></p>
 
 <h4 id="toc_3">快速排序的性能分析</h4>
 
@@ -281,7 +281,7 @@ quick_sort_c(A, p, r) {
 
 <h4 id="toc_4">归并排序和快速排序的异同：</h4>
 
-<p><img src="media/15580895382477/15728621133857.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15580895382477/15728621133857.jpg" alt=""/></p>
 
 <ul>
 <li>归并排序的处理过程是<strong>由下到上</strong>的，先处理子问题，然后再合并。</li>

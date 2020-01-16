@@ -158,7 +158,7 @@
 如何让 A 对象和 B 对象共享一把锁呢？<br/>
 答：<strong>用 Account.class 作为共享的锁</strong>。Account.class 是所有 Account 对象共享的，而且这个对象是 Java 虚拟机在加载 Account 类的时候创建的，所以我们不用担心它的唯一性。使用 Account.class 作为共享的锁，我们就无需在创建 Account 对象时传入了，代码更简单。</p>
 
-<p><img src="media/15755331997391/15756152046133.jpg" alt=""/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15755331997391/15756152046133.jpg" alt=""/></p>
 
 <h3 id="toc_3">总结</h3>
 

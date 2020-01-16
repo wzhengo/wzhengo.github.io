@@ -151,7 +151,7 @@ JVM基于栈则意味着需要去栈中读写数据，所需的指令会更多,�
 在Java SE程序中，Java类被编译成一个或多个.class文件，并打包成jar文件，而后JVM会通过相应的.class文件和jar文件获取相应的字节码。执行顺序为.java文件→.class 文件→.jar文件。<br/>
 而DVM会用dx工具将所有的.class文件转换为一个.dex文件，然后DVM会从该dex文件读取指令和数据。执行顺序为.java文件→.class文件一→.dex文件。</p>
 <p>jar 文件里面包含多个.class文件，每个.class文件里面包含了该类的常量池、类信息、属性等。当JVM加载该jar文件的时候，会加载里面的所有的.class文件，JVM的这种加载方式很慢，对于内存有限的移动设备并不合适。而在.apk文件中只包含了一个.dex文件，这个.dex文件将所有的.class里面所包含的信息全部整合在一起了，这样再加载就加快了速度。.class 文件存在很多的冗余信息，dex 工具会去除冗余信息，并把所有的.class文件整合到.dex文件中，减少了IO操作，加快了类的查找速度。<br/>
-<img src="media/15537010053206/15776932722358.jpg" alt="" style="width:590px;"/>   </p></li>
+<img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010053206/15776932722358.jpg" alt="" style="width:590px;"/>   </p></li>
 <li><p>DVM允许在有限的内存中同时运行多个进程<br/>
 DVM经过优化,允许在有限的内存中同时运行多个进程。在Android中的每一个应用都运行在一个DVM实例中，每一个DVM实例都运行在一个独立的进程空间中，独立的进程可以防止在虚拟机崩溃的时候所有程序都被关闭。</p></li>
 <li><p>DVM由Zygote创建和初始化<br/>
@@ -164,7 +164,7 @@ JVM使用了JIT编译器(Just In Time Compiler,即时编译器)，而DVM早期�
 
 <h3 id="toc_2">11.1.2 DVM架构</h3>
 
-<p><img src="media/15537010053206/15776935576868.jpg" alt="" style="width:328px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010053206/15776935576868.jpg" alt="" style="width:328px;"/></p>
 
 <p>首先Java编译器编译的.class文件经过DX工具转换为.dex文件，.dex文件由类加载器处理，接着解释器根据指令集对Dalvik字节码进行解释、执行，最后交于Linux处理。</p>
 
@@ -232,7 +232,7 @@ GC Reason就是引起GC的原因，有以下几种。</p>
 
 <p>与DVM的GC不同的是，ART采用了多种垃圾收集方案，每个方案会运行不同的垃圾收集器,默认是采用了CMS(Concurrent Mark一Sweep)方案,该方案主要使用了sticky一CMS和partial一CMS。根据不同的CMS方案，ART的运行时堆的空间也会有不同的划分，默认是由4个Space和多个辅助数据结构组成的，4个Space分别是Zygote Space、AllocationSpace、Image Space和Large Object Space。Zygote Space、Allocation Space和DVM中的作用是一样的，Image Space用来存放一些预加载类, Large Object Space用来分配一些大对象(默认大小为12KB)，其中Zygote Space和Image Space是进程间共享的。采用标记一清除算法的运行时堆空间划分如图11一3所示。</p>
 
-<p><img src="media/15537010053206/15776955652187.jpg" alt="" style="width:775px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537010053206/15776955652187.jpg" alt="" style="width:775px;"/></p>
 
 <p>除了这四个Space，ART的Java堆中还包括两个Mod Union Table, 一个Card Table,两个Heap Bitmap,两个Object Map，以及三个Object Stack。</p>
 

@@ -138,7 +138,7 @@
       <div class="article-content">
       <h2 id="toc_0">5.1 Context的关联类</h2>
 
-<p><img src="media/15537009340660/15768297234805.jpg" alt="" style="width:646px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009340660/15768297234805.jpg" alt="" style="width:646px;"/></p>
 
 <p>从图中我们可以看出，ContextImpl和ContextWrapper继承自Context，ContextWrapper内部包含有Context类型的mBase对象，mBase具体指向的是ContextImpl。ContextImpl提供了很多功能，但是外界需要使用并拓展ContextImpl的功能，因此设计上使用了装饰模式，ContextWrapper是装饰类，它对ContextImpl进行包装，ContextWrapper主要是起了方法传递作用，ContextWrapper中几乎所有的方法实现都是调用ContextImpl的相应方法来实现的。ContextThemeWrapper、Service和Application都继承自ContextWrapper，这样他们都可以通过mBase来使用Context的方法，同时它们也是装饰类，在ContextWrapper的基础上又添加了不同的功能。ContextThemeWrapper中包含和主题相关的方法（比如： getTheme方法），因此，需要主题的Activity继承ContextThemeWrapper，而不需要主题的Service则继承ContextWrapper。</p>
 
@@ -152,13 +152,13 @@
 
 <h3 id="toc_1">5.2 Application Context的创建过程</h3>
 
-<p><img src="media/15537009340660/15768303177957.jpg" alt="" style="width:854px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009340660/15768303177957.jpg" alt="" style="width:854px;"/></p>
 
 <h3 id="toc_2">5.3 Application Context的获取过程</h3>
 
 <h3 id="toc_3">5.4 Activity的Context创建过程</h3>
 
-<p><img src="media/15537009340660/15768306549478.jpg" alt="" style="width:959px;"/></p>
+<p><img src="https://wz2img.oss-cn-beijing.aliyuncs.com/mweb/media/15537009340660/15768306549478.jpg" alt="" style="width:959px;"/></p>
 
 <h3 id="toc_4">5.5 Service的Context创建过程</h3>
 
